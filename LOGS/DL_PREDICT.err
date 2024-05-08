@@ -1,0 +1,21 @@
+rm: cannot remove '/p/project/cesmtst/patakchiyousefi1/PREDICT_FILES/*': No such file or directory
+2024-03-05 16:51:15.113210: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38372 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-03-05 16:51:15.115237: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38372 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-03-05 16:51:15.117014: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38372 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-03-05 16:51:15.118730: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38372 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-03-05 16:51:36.102443: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+Traceback (most recent call last):
+  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 76, in <module>
+    func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
+  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 770, in de_prepare_produce
+    diff = model - Y_PRED
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/_typed_ops.py", line 209, in __sub__
+    return self._binary_op(other, operator.sub)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/dataarray.py", line 4142, in _binary_op
+    f(self.variable, other_variable)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/_typed_ops.py", line 399, in __sub__
+    return self._binary_op(other, operator.sub)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/variable.py", line 2575, in _binary_op
+    f(self_data, other_data) if not reflexive else f(other_data, self_data)
+ValueError: operands could not be broadcast together with shapes (52547,125,196) (52546,125,196) 
+srun: error: jwb0567: task 0: Exited with exit code 1

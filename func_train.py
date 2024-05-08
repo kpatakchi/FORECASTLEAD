@@ -313,11 +313,11 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
         
         for model in model_data:
             
-            dataset = xr.open_dataset(f"{ATMOS_DATA}/{model_data}")
+            dataset = xr.open_dataset(f"{ATMOS_DATA}/{model}")
             dataset = dataset[variable].sel(time=slice(date_start, date_end))
             datasets.append(dataset)
 
-        REFERENCE = xr.open_dataset(f"{ATMOS_DATA}/{reference_data}")
+        REFERENCE = xr.open_dataset(f"{ATMOS_DATA}/{reference_data[0]}")
         REFERENCE = REFERENCE[variable].sel(time=slice(date_start, date_end))
                                    
         # Align all datasets with the reference dataset
@@ -382,7 +382,11 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
         canvas_y = make_canvas(Y_TRAIN, canvas_size, trim)
         canvas_y = np.nan_to_num(canvas_y, nan=-999)  # fill values
         SPP = spatiodataloader(topo_dir, X_TRAIN.shape)
-
+        
+        if mask_type == "no_na":
+            canvas_m = np.ones_like(canvas_y)  
+            canvas_m[canvas_y == -999] = 0
+            
         if mask_type == "no_na_land":
             canvas_m = np.ones_like(canvas_y)  
             canvas_m[canvas_y == -999] = 0
@@ -390,9 +394,9 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
             land=SPP_canvas[..., 2]>0*1
             canvas_m[..., 0] = canvas_m[..., 0]*land
             # to remove the zeros out of the boundaries:
-            outbound = np.nanmean(canvas_m[:, ..., 0], axis=0) > 0.999
-            for i in range(canvas_m.shape[0]):
-                canvas_m[i, outbound, 0] = 0
+            #outbound = np.nanmean(canvas_m[:, ..., 0], axis=0) > 0.999
+            #for i in range(canvas_m.shape[0]):
+            #    canvas_m[i, outbound, 0] = 0
                 
         if mask_type == "no_na_intensity":
                                     
@@ -469,12 +473,12 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
         val_indices = np.sort(np.array(val_indices))
         train_indices = np.setdiff1d(indices, val_indices)
 
-        train_x = canvas_x[train_indices].astype(np.float32)
-        train_y = canvas_y[train_indices].astype(np.float32)
-        train_m = canvas_m[train_indices].astype(np.float32)
-        val_x = canvas_x[val_indices].astype(np.float32)
-        val_y = canvas_y[val_indices].astype(np.float32)
-        val_m = canvas_m[val_indices].astype(np.float32)
+        train_x = canvas_x[train_indices].astype(np.float16)
+        train_y = canvas_y[train_indices].astype(np.float16)
+        train_m = canvas_m[train_indices].astype(np.float16)
+        val_x = canvas_x[val_indices].astype(np.float16)
+        val_y = canvas_y[val_indices].astype(np.float16)
+        val_m = canvas_m[val_indices].astype(np.float16)
 
         canvas_y = None
         canvas_x = None
@@ -541,12 +545,22 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
         # 1) Open the datasets:
         datasets = []
         for model in model_data:
-            dataset = xr.open_dataset(f"{ATMOS_DATA}/{model}_{variable}.nc")
+            dataset = xr.open_dataset(f"{ATMOS_DATA}/{model}")
             dataset = dataset[variable].sel(time=slice(date_start, date_end))
             datasets.append(dataset)
 
-        REFERENCE = xr.open_dataset(f"{ATMOS_DATA}/{reference_data[0]}_{variable}.nc")
+        REFERENCE = xr.open_dataset(f"{ATMOS_DATA}/{reference_data[0]}")
         REFERENCE = REFERENCE[variable].sel(time=slice(date_start, date_end))
+        
+        # Align all datasets with the reference dataset
+        datasets_aligned = []
+        for dataset in datasets:
+            dataset_aligned, REFERENCE_aligned = xr.align(dataset, REFERENCE, join='inner')
+            datasets_aligned.append(dataset_aligned)
+            
+        # Update datasets to use aligned datasets
+        datasets = datasets_aligned
+        REFERENCE = REFERENCE_aligned
 
         # 2) Calculate the calendar data according to REFERENCE (starting the calendar one day later)
         dayofyear = REFERENCE[1:, ...].time.dt.dayofyear.values
@@ -578,6 +592,11 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
             canvas_size = (128, 256)
             trim=False
             daily=False
+        if reference_data == ["ADAPTER_DE05.day01.merged.nc"]:  #publication with HRES lead times
+            topo_dir = PPROJECT_DIR + '/IO/03-TOPOGRAPHY/HSAF-TOPO.npz'
+            canvas_size = (128, 256)
+            trim = False
+            daily = False
 
         # Close the netCDF files and release memory
         datasets = None
@@ -587,15 +606,21 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
         yeardate_resh = None
         
         # 3) Define X_Train and Y_Train
-        
+        print("Defining X_Train and Y_Train...")
+
         Y_TRAIN = TARGET[1:, ...]  # t
         X_TRAIN = MODEL[1:, ...]  # t
         X_TRAIN_tminus = MODEL[:-1, ...]
         canvas_y = make_canvas(Y_TRAIN, canvas_size, trim)
         canvas_y = np.nan_to_num(canvas_y, nan=-999)  # fill values
         SPP = spatiodataloader(topo_dir, X_TRAIN.shape)
-
+        
         if mask_type == "no_na":
+            canvas_m = np.ones_like(canvas_y)  
+            canvas_m[canvas_y == -999] = 0
+            
+
+        if mask_type == "no_na_land":
             canvas_m = np.ones_like(canvas_y)  # mask for na values (-9999)
             canvas_m[canvas_y == -999] = 0
             SPP_canvas = make_canvas(SPP, canvas_size, trim)
@@ -652,9 +677,9 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
 
         canvas_x = make_canvas(X_TRAIN, canvas_size, trim)
         
-        canvas_x = canvas_x.astype(np.float32)
-        canvas_y = canvas_y.astype(np.float32)
-        canvas_m = canvas_m.astype(np.float32)
+        canvas_x = canvas_x.astype(np.float16)
+        canvas_y = canvas_y.astype(np.float16)
+        canvas_m = canvas_m.astype(np.float16)
         
         X_TRAIN_tminus = None
         CAL = None
@@ -710,12 +735,17 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
         canvas_size = (128, 256)
         trim=False
         daily=False
-    
+    if reference_data == ["ADAPTER_DE05.day01.merged.nc"]:  #publication with HRES lead times
+        topo_dir = PPROJECT_DIR + '/IO/03-TOPOGRAPHY/HSAF-TOPO.npz'
+        canvas_size = (128, 256)
+        trim = False
+        daily = False
+        
     if onedelay==True:
         date_start = (pd.to_datetime(date_start) + pd.DateOffset(hours=1)).strftime("%Y-%m-%dT%H")
     
     # Open the first model in model_data
-    model = xr.open_dataset(f"{ATMOS_DATA}/{model_data[0]}_{variable}.nc")
+    model = xr.open_dataset(f"{ATMOS_DATA}/{model_data}")
     model = model[variable].sel(time=slice(date_start, date_end))
 
     # Retrieve lat and lon shape from the model
@@ -723,15 +753,15 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
     lon_shape = model.longitude.shape[0]
     
     # Load topographical data
-    SPP = spatiodataloader(topo_dir, model.shape)
-    SPP_canvas = make_canvas(SPP, canvas_size, trim)
+    #SPP = spatiodataloader(topo_dir, model.shape)
+    #SPP_canvas = make_canvas(SPP, canvas_size, trim)
 
     # Define ocean mask
-    land= SPP_canvas[..., 2]>0
-    land = land * 1
+    #land= SPP_canvas[..., 2]>0
+    #land = land * 1
     
     # mismatch predictions for ocean is removed. 
-    Y_PRED = Y_PRED * land
+    #Y_PRED = Y_PRED * land
 
     # Restore the original shape of Y_PRED using unmake_canvas function
     Y_PRED = unmake_canvas(Y_PRED, (lat_shape, lon_shape))
@@ -741,5 +771,5 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
 
     # Save the result in a NETCDF file
     data_unique_name = filename[:-4]
-    output_filename = f"{PREDICT_FILES}/HRES_C_{data_unique_name}_{training_unique_name}.nc"
+    output_filename = f"{PREDICT_FILES}/{model}.corrected.nc"
     diff.to_netcdf(output_filename)
