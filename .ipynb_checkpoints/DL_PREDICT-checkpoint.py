@@ -66,6 +66,8 @@ print("Predicting the mismatches ...")
 Y_PRED = model.predict(train_x, verbose=2)
 Y_PRED=Y_PRED[..., 0]
 
+print(Y_PRED.shape)
+
 train_x=None
 
 # Save in PREDICT_FILES
@@ -75,4 +77,4 @@ train_x=None
 # Save in PREDICT_FILES
 func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
                               model_data[0], date_start, date_end, variable, 
-                              training_unique_name, reference_data, onedelay=False)
+                              training_unique_name, reference_data, onedelay=True)

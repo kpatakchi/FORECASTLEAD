@@ -45,7 +45,7 @@ $script "$start"
 EOL
                 break
             else
-                echo "Too many submitted jobs; Sleeping Zzz ..."
+                echo "Too many submitted jobs; waiting ..."
                 sleep 600
             fi
         done
