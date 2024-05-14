@@ -66,8 +66,6 @@ print("Predicting the mismatches ...")
 Y_PRED = model.predict(train_x, verbose=2)
 Y_PRED=Y_PRED[..., 0]
 
-print(Y_PRED.shape)
-
 train_x=None
 
 # Save in PREDICT_FILES

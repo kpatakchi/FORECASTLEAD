@@ -740,9 +740,13 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
         canvas_size = (128, 256)
         trim = False
         daily = False
+    
+    print(date_start)
         
     if onedelay==True:
         date_start = (pd.to_datetime(date_start) + pd.DateOffset(hours=1)).strftime("%Y-%m-%dT%H")
+
+    print(date_start)
     
     # Open the first model in model_data
     model = xr.open_dataset(f"{ATMOS_DATA}/{model_data}")
