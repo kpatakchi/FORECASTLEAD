@@ -77,4 +77,4 @@ train_x=None
 # Save in PREDICT_FILES
 func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
                               model_data[0], date_start, date_end, variable, 
-                              training_unique_name, reference_data, onedelay=True)
+                              training_unique_name, reference_data, onedelay=False)

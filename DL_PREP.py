@@ -33,4 +33,8 @@ data_avail = func_train.prepare_train(PPROJECT_DIR, TRAIN_FILES, HRES_PREP, file
                          model_data, reference_data, task_name, mm, date_start,
                          date_end, variable, mask_type, laginensemble, val_split)
 
+data_avail = None
 
+data_avail = func_train.prepare_produce(PPROJECT_DIR, PRODUCE_FILES, HRES_PREP, filename,
+                     model_data, reference_data, task_name, mm, date_start,
+                       date_end, variable, mask_type, laginensemble)
