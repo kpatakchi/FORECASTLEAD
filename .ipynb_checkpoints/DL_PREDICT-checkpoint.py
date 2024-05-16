@@ -21,7 +21,7 @@ lr_factor=args.lr_factor
 Filters=args.filters
 if leadtime in ["day02", "day03", "day04"]:
     delayh = int(24*(int(leadtime[3:])-1))+1
-elif leadtime in ["day05", "day06", "day07"]:
+elif leadtime in ["day05", "day06"]:
     delayh = int(24*(int(leadtime[3:])-1))+3
 else:
     delayh = int(24*(int(leadtime[3:])-1))+6
@@ -69,7 +69,7 @@ model.load_weights(model_path)
 
 # produce 
 print("Predicting the mismatches ...")
-Y_PRED = model.predict(train_x, verbose=1)
+Y_PRED = model.predict(train_x, verbose=2)
 Y_PRED=Y_PRED[..., 0]
 
 train_x=None

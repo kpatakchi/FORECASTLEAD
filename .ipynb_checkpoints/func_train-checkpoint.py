@@ -745,9 +745,8 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
     
     # Open the first model in model_data
     model = xr.open_dataset(f"{ATMOS_DATA}/{model_data}")
-    print(model)
     model = model[variable].sel(time=slice(date_start2, date_end))
-    print(model)
+
     # Retrieve lat and lon shape from the model
     lat_shape = model.latitude.shape[0]
     lon_shape = model.longitude.shape[0]
@@ -768,8 +767,9 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
 
     # Subtract Y_PRED from model
     diff = model - Y_PRED
+    
 
     # Save the result in a NETCDF file
     data_unique_name = filename[:-4]
-    output_filename = f"{PREDICT_FILES}/{model}.corrected.nc"
+    output_filename = f"{PREDICT_FILES}/{model_data}.corrected.nc"
     diff.to_netcdf(output_filename)
