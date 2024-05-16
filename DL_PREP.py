@@ -14,6 +14,7 @@ task_name = "spatiotemporal"
 mm = "MM"  # or DM
 date_start = "2018-01-01T13"
 date_end = "2023-12-31T23"
+
 variable = "pr"
 mask_type = "no_na"
 laginensemble = False
@@ -36,7 +37,6 @@ data_avail = func_train.prepare_train(PPROJECT_DIR, TRAIN_FILES, HRES_PREP, file
 data_avail = None
 
 # Create the production data (if doesn't exist)
-
 data_avail = func_train.prepare_produce(PPROJECT_DIR, PRODUCE_FILES, HRES_PREP, filename,
                      model_data, reference_data, task_name, mm, date_start,
                        date_end, variable, mask_type, laginensemble)

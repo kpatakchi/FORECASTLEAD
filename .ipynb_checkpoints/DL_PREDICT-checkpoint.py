@@ -19,13 +19,14 @@ LR=args.lr
 BS=args.bs
 lr_factor=args.lr_factor
 Filters=args.filters
+delay=0
 
 # Define the data specifications:
 model_data = ["ADAPTER_DE05."+ leadtime + ".merged.nc"]
 reference_data = ["ADAPTER_DE05.day01.merged.nc"]
 task_name = "spatiotemporal"
 mm = "MM"  # or DM
-date_start = "2018-01-01T13"
+date_start = "2018-01-01T13" # first day is not corrected
 date_end = "2023-12-31T23"
 variable = "pr"
 laginensemble = False
@@ -66,8 +67,6 @@ print("Predicting the mismatches ...")
 Y_PRED = model.predict(train_x, verbose=2)
 Y_PRED=Y_PRED[..., 0]
 
-print(Y_PRED.shape)
-
 train_x=None
 
 # Save in PREDICT_FILES
@@ -77,4 +76,4 @@ train_x=None
 # Save in PREDICT_FILES
 func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
                               model_data[0], date_start, date_end, variable, 
-                              training_unique_name, reference_data, onedelay=False)
+                              training_unique_name, reference_data, delayh)

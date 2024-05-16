@@ -720,7 +720,7 @@ def unmake_canvas(canvas, original_shape):
     data = canvas[:, top_pad:top_pad+original_dim1, left_pad:left_pad+original_dim2]
     return data
 
-def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, date_start, date_end, variable, training_unique_name, reference_data, onedelay):
+def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, date_start, date_end, variable, training_unique_name, reference_data, delayh):
         
     import xarray as xr
     import pandas as pd
@@ -741,17 +741,13 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
         trim = False
         daily = False
     
-    print(date_start)
-        
-    if onedelay==True:
-        date_start = (pd.to_datetime(date_start) + pd.DateOffset(hours=1)).strftime("%Y-%m-%dT%H")
-
-    print(date_start)
+    date_start = (pd.to_datetime(date_start) + pd.DateOffset(hours=delay)).strftime("%Y-%m-%dT%H")
     
     # Open the first model in model_data
     model = xr.open_dataset(f"{ATMOS_DATA}/{model_data}")
+    print(model)
     model = model[variable].sel(time=slice(date_start, date_end))
-
+    print(model)
     # Retrieve lat and lon shape from the model
     lat_shape = model.latitude.shape[0]
     lon_shape = model.longitude.shape[0]
