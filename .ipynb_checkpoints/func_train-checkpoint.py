@@ -741,12 +741,12 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
         trim = False
         daily = False
     
-    date_start = (pd.to_datetime(date_start) + pd.DateOffset(hours=delay)).strftime("%Y-%m-%dT%H")
+    date_start2 = (pd.to_datetime(date_start) + pd.DateOffset(hours=delayh)).strftime("%Y-%m-%dT%H")
     
     # Open the first model in model_data
     model = xr.open_dataset(f"{ATMOS_DATA}/{model_data}")
     print(model)
-    model = model[variable].sel(time=slice(date_start, date_end))
+    model = model[variable].sel(time=slice(date_start2, date_end))
     print(model)
     # Retrieve lat and lon shape from the model
     lat_shape = model.latitude.shape[0]

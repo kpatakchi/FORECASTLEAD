@@ -19,7 +19,12 @@ LR=args.lr
 BS=args.bs
 lr_factor=args.lr_factor
 Filters=args.filters
-delay=0
+if leadtime in ["day02", "day03", "day04"]:
+    delayh = int(24*(int(leadtime[3:])-1))+1
+elif leadtime in ["day05", "day06", "day07"]:
+    delayh = int(24*(int(leadtime[3:])-1))+3
+else:
+    delayh = int(24*(int(leadtime[3:])-1))+6
 
 # Define the data specifications:
 model_data = ["ADAPTER_DE05."+ leadtime + ".merged.nc"]
@@ -64,7 +69,7 @@ model.load_weights(model_path)
 
 # produce 
 print("Predicting the mismatches ...")
-Y_PRED = model.predict(train_x, verbose=2)
+Y_PRED = model.predict(train_x, verbose=1)
 Y_PRED=Y_PRED[..., 0]
 
 train_x=None
