@@ -13,8 +13,7 @@ This script utilizes argparse to specify lead time, specifications, unique filen
 This script defines training hyperparameters using argparse and prepares data for model training. It loads training data, constructs TensorFlow datasets, initializes a UNet model, compiles it with Adam optimizer, and defines callbacks for model checkpointing and early stopping. It then trains the model using defined datasets and saves the results. 
 
 #### Run `DL_PREDICT.py` using `run_DL_PREDICT.sh` for prediction: 
-This script loads production data, initializes a UNet model, loads trained weights, and predicts mismatches using the pretrained weights for each lead-time model. 
+This script loads production data, initializes the trained DL model, loads trained weights, and predicts mismatches using the pretrained weights for each lead-time model. 
 
-#### Run `HRES_POST.sh` and `HRES_POST2.sh` for post-processing the corrected data
-
-
+#### Run `HRES_POST.sh` and `HRES_POST2.sh` using `run_HRES_POST.sh` for post-processing the corrected data.
+This script returns the data format back to original ECMWF format.

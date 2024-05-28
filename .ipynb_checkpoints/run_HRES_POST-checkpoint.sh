@@ -1,20 +1,27 @@
 #!/bin/bash
 
+#outer job for managing the job submissions in the loop
+
 #SBATCH --job-name=HRES_POST2_job
 #SBATCH --output=LOGS/HRES_POST2_job.out
 #SBATCH --error=LOGS/HRES_POST2_job.err
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=2
+#SBATCH --ntasks-per-node=16
 #SBATCH --time=24:00:00
 #SBATCH --partition=batch
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
 #SBATCH --account=deepacf
 
+
 # Your script file name
-source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv
+source bashenv
 rm $HRES_POST/* $HRES_DUMP4/* $HRES_LOG/*CDO*
 
+# run the first part of post-processing:
+./HRES_POST.sh
+
+# run the second part:
 script="/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/HRES_POST2.sh"
 
 # Loop over years
@@ -26,7 +33,7 @@ for year in {2018..2018}; do
         # Check the number of submitted jobs
         while true; do
             num_jobs=$(squeue -u patakchiyousefi1 | wc -l)
-            if ((num_jobs <= 3)); then
+            if ((num_jobs <= 5)); then
                 echo "submitted $start job!"
                 sbatch <<EOL
 #!/bin/bash

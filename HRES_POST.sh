@@ -1,17 +1,6 @@
 #!/bin/sh
 
-#SBATCH --job-name=HRES_POST
-#SBATCH --output=LOGS/HRES_POST.out
-#SBATCH --error=LOGS/HRES_POST.err
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=16
-#SBATCH --time=12:00:00
-#SBATCH --partition=batch
-#SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
-#SBATCH --mail-type=ALL
-#SBATCH --account=deepacf
-
-source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv
+source bashenv
 
 #mkdir $PSCRATCH_DIR $PSCRATCH_DIR2
 #mkdir $HRES_PREP $HRES_DUMP $HRES_DUMP2 $HRES_DUMP3 $HRES_DUMP4
@@ -19,9 +8,9 @@ source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv
 #mkdir $HRES_POST
 
 echo "Step 1) Split merged leadtime files into individual years and months using CDO splityearmon"
- for leadtimefile in $(ls $HRES_PREP)
+ for leadtimefile in $(ls $PREDICT_FILES)
  do
-    cdo -O -b F64 --no_history splityearmon $HRES_PREP/$leadtimefile $HRES_DUMP/$leadtimefile &>> $HRES_LOG/CDO_post_1.out
+    cdo -O -b F64 --no_history splityearmon $PREDICT_FILES/$leadtimefile $HRES_DUMP/$leadtimefile &>> $HRES_LOG/CDO_post_1.out
 done
 
 echo "Step 2) Split files into individual days using CDO splitday"
@@ -40,4 +29,3 @@ echo "Step 3) Split files into individual hours using CDO splithour"
     cdo -O -b F64 --no_history splithour $HRES_DUMP2/$file $HRES_DUMP3/ADAPTER_DE05.${day_part}.merged.${date_part} &>> $HRES_LOG/CDO_post_3.out
     echo $date_part $day_part
 done
-

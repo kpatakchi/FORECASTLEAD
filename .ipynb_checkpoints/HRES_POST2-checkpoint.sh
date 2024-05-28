@@ -7,7 +7,7 @@ if [ "$#" -ne 1 ]; then
 fi
 start="$1"
 
-source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv
+source bashenv
 
 echo "Step 4) Create datasets for each YYYYMMDD and temporal resolution (hourly, three-hourly, and six-hourly)"
 

@@ -25,6 +25,7 @@ export HRES_DUMP4="${homedir}${PSCRATCH_DIR2}HRES_DUMP4"
 export HRES_DUMP5="${homedir}${PSCRATCH_DIR2}HRES_DUMP5"
 export HRES_DUMP6="${homedir}${PSCRATCH_DIR2}HRES_DUMP6"
 export HRES_POST="${homedir}${PSCRATCH_DIR2}HRES_POST"
+export STATS="${homedir}${PSCRATCH_DIR2}STATS"
 
 # Define DL directories:
 export TRAIN_FILES="${homedir}${PSCRATCH_DIR2}TRAIN_FILES"
