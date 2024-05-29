@@ -29,4 +29,4 @@ This script loads production data, initializes the trained DL model, loads train
 ### Run `HRES_POST.sh` and `HRES_POST2.sh` using `run_HRES_POST.sh` for post-processing the corrected data:
 This script returns the data format back to the original ECMWF format.
 
-### Use `VISTAB.ipynb` to visualize results:
+### Use `VISTAB.ipynb` to visualize results
