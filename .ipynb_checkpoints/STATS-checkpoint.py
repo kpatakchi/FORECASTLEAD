@@ -1,6 +1,8 @@
 from py_env_train import *
 import argparse
 
+#### Part1) Calculate three error metrics for HRES and HRES_C in a daily scale
+
 # define the parameters
 parser = argparse.ArgumentParser(description="Add arguments")
 parser.add_argument("--leadtime", type=float, required=True, help="Lead time day")
