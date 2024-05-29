@@ -27,8 +27,8 @@ CMOD_D = func_stats.resample_dataset(CMOD, "daily")
 print("Datasets resampled.")
 
 # Calculate metrics
-MOD_METRICS = func_stats.calculate_metrics(REF_D, MOD_D)
-CMOD_METRICS = func_stats.calculate_metrics(REF_D, CMOD_D)
+MOD_METRICS = func_stats.calculate_metrics(REF_D.pr, MOD_D.pr)
+CMOD_METRICS = func_stats.calculate_metrics(REF_D.pr, CMOD_D.pr)
 print("Metrics calculated. saving ...")
 
 # Save the metrics to the STATS folder
