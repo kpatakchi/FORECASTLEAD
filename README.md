@@ -3,7 +3,7 @@ There is a decay in the accuracy of longer lead times in precipitation forecasts
 
 ![Forecast Lead Time Error Correction](images/idea.png)
 
-The figure illustrates forecast lead time error correction over using various DL models. For example, different forecast run times are shown for HRES runs starting from January 1, 2020, to January 10, 2020. The x-axis represents the date and time (in UTC) of the forecast runs, while the y-axis represents the forecast steps up to 240 hours.
+The figure illustrates forecast lead time error correction over using various DL models. For example, different forecast run times are shown for HRES runs. The x-axis represents the date and time (in UTC) of the forecast runs, while the y-axis represents the forecast steps.
 
 **Forecast Runs**: Different colored lines represent forecast runs starting from different dates. For instance, the blue line corresponds to the forecast starting on January 1, 2020, at 12:00 UTC, and the red line corresponds to January 2, 2020, at 12:00 UTC, and so on. The forecast step hours are hourly from 00h to 90h, 3-hourly from 91h to 150h, and 6-hourly from 151h to 240h. 
 
@@ -28,3 +28,5 @@ This script loads production data, initializes the trained DL model, loads train
 
 ### Run `HRES_POST.sh` and `HRES_POST2.sh` using `run_HRES_POST.sh` for post-processing the corrected data:
 This script returns the data format back to the original ECMWF format.
+
+### Use `VISTAB.ipynb` to visualize results:
