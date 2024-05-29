@@ -2,9 +2,9 @@
 
 #outer job for managing the job submissions in the loop
 
-#SBATCH --job-name=HRES_POST2_job
-#SBATCH --output=LOGS/HRES_POST2_job.out
-#SBATCH --error=LOGS/HRES_POST2_job.err
+#SBATCH --job-name=HRES_POST_job
+#SBATCH --output=LOGS/HRES_POST_job.out
+#SBATCH --error=LOGS/HRES_POST_job.err
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
 #SBATCH --time=24:00:00
@@ -13,23 +13,26 @@
 #SBATCH --mail-type=ALL
 #SBATCH --account=deepacf
 
-
-# Your script file name
 source bashenv
-rm $HRES_POST/* $HRES_DUMP4/* $HRES_LOG/*CDO*
+
+rm $HRES_POST/*
+rm $HRES_DUMP/*
+rm $HRES_DUMP2/*
+rm $HRES_DUMP3/* 
+rm $HRES_DUMP4/* 
 
 # run the first part of post-processing:
-./HRES_POST.sh
+#source HRES_POST.sh
 
 # run the second part:
 script="/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/HRES_POST2.sh"
 
 # Loop over years
-for year in {2018..2018}; do
+for year in {2018..2023}; do
     # Loop over months
     for month in {01..12}; do
         start="${year}${month}01 13"
-        job_name="HRES_POST2_$(date -d "$start" "+%Y%m%d_%H%M%S")"
+        job_name="HRES_POST_$(date -d "$start" "+%Y%m%d_%H%M%S")"
         # Check the number of submitted jobs
         while true; do
             num_jobs=$(squeue -u patakchiyousefi1 | wc -l)
@@ -38,8 +41,8 @@ for year in {2018..2018}; do
                 sbatch <<EOL
 #!/bin/bash
 #SBATCH --job-name=$job_name
-#SBATCH --output=LOGS/HRES_POST2.out
-#SBATCH --error=LOGS/HRES_POST2.err
+#SBATCH --output=LOGS/HRES_POST.out
+#SBATCH --error=LOGS/HRES_POST.err
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
 #SBATCH --time=01:15:00
@@ -58,3 +61,5 @@ EOL
         done
     done
 done
+
+rm -r $HRES_DUMP/* $HRES_DUMP2/* $HRES_DUMP3/* $HRES_DUMP4/*

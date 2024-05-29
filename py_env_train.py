@@ -9,6 +9,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import xarray as xr
 import shutil
+import func_stats
 
 #------------------------#
 #shutil.rmtree(DUMP_PLOT)

@@ -1,33 +1,47 @@
-from py_env_hpc import *
+from py_env_train import *
+import argparse
+
+# define the parameters
+parser = argparse.ArgumentParser(description="Add arguments")
+parser.add_argument("--leadtime", type=float, required=True, help="Lead time day")
+args = parser.parse_args()
+
+# Load arguments
+day = int(args.leadtime)
 
 # Load the reference dataset
-REF = xr.open_dataset(HRES_PREP+"/ADAPTER_DE05.day01.merged")
+REF = xr.open_dataset(HRES_PREP+"/ADAPTER_DE05.day01.merged.nc")
 
-# Loop through the model data files from day02 to day10
-for day in range(2, 11):
-    MOD = os.path.join(HRES_PREP, f"ADAPTER_DE05.day{day:02d}.merged.nc")
-    CMOD = os.path.join(PREDICT_FILES, f"ADAPTER_DE05.day{day:02d}.merged.nc")
+print(f"Processing day {day:02d}...")
+MOD = os.path.join(HRES_PREP, f"ADAPTER_DE05.day{day:02d}.merged.nc")
+CMOD = os.path.join(PREDICT_FILES, f"ADAPTER_DE05.day{day:02d}.merged.nc.corrected.nc")
 
-    # Load the model dataset
-    MOD = xr.open_dataset(MOD)
-    CMOD = xr.open_dataset(CMOD)
+# Load the model dataset
+MOD = xr.open_dataset(MOD)
+CMOD = xr.open_dataset(CMOD)
 
-    # Resample both datasets to daily frequency
-    REF_D = func_stats.resample_dataset(REF, "daily")
-    MOD_D = func_stats.resample_dataset(MOD, "daily")
-    CMOD_D = func_stats.resample_dataset(CMOD, "daily")
+# Resample both datasets to daily frequency
+REF_D = func_stats.resample_dataset(REF, "daily")
+MOD_D = func_stats.resample_dataset(MOD, "daily")
+CMOD_D = func_stats.resample_dataset(CMOD, "daily")
+print("Datasets resampled.")
 
-    # Calculate metrics
-    MOD_METRICS = func_stats.calculate_metrics(REF_D, MOD_D)
-    CMOD_METRICS = func_stats.calculate_metrics(REF_D, CMOD_D)
+# Calculate metrics
+MOD_METRICS = func_stats.calculate_metrics(REF_D, MOD_D)
+CMOD_METRICS = func_stats.calculate_metrics(REF_D, CMOD_D)
+print("Metrics calculated. saving ...")
 
-    # Save the metrics to the STATS folder
-    MOD_OUT = os.path.join(STATS, f"ADAPTER_DE05.day{day:02d}_HRES_stats.nc")
-    CMOD_OUT = os.path.join(STATS, f"ADAPTER_DE05.day{day:02d}_HRES_C_stats.nc")
+# Save the metrics to the STATS folder
+MOD_OUT = os.path.join(STATS, f"ADAPTER_DE05.day{day:02d}_HRES_stats.nc")
+CMOD_OUT = os.path.join(STATS, f"ADAPTER_DE05.day{day:02d}_HRES_C_stats.nc")
 
-    xr.Dataset(MOD_METRICS).to_netcdf(MOD_OUT)
-    xr.Dataset(CMOD_METRICS).to_netcdf(CMOD_OUT)
+xr.Dataset(MOD_METRICS).to_netcdf(MOD_OUT)
+xr.Dataset(CMOD_METRICS).to_netcdf(CMOD_OUT)
 
-    # Close the datasets
-    MOD.close()
-    CMOD.close()
+# Close the datasets
+MOD.close()
+CMOD.close()
+
+    
+    
+
