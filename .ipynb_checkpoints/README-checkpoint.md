@@ -1,18 +1,13 @@
 ### Idea: 
-There is a decay in the accuracy of longer lead times in precipitation forecasts. The idea is to train various deep learning (DL) networks to learn the longer lead time errors (e.g., up to 240 hours) against the first 24-hour period used as a reference.
+There is a decay in the accuracy of longer lead times in precipitation forecasts. The idea is to train various deep learning (DL) networks to learn the longer lead time errors (e.g., up to 240 hours) against the first 24-hour period used as a reference. This method aims to improve the overall forecast accuracy by learning from the patterns and discrepancies observed in the initial 24-hour period and applying these corrections to subsequent forecast periods.
 
 ![Forecast Lead Time Error Correction](images/idea.png)
 
 The figure illustrates forecast lead time error correction over using various DL models. For example, different forecast run times are shown for HRES runs starting from January 1, 2020, to January 10, 2020. The x-axis represents the date and time (in UTC) of the forecast runs, while the y-axis represents the forecast steps up to 240 hours.
 
-The forecast step hours are hourly from 00h to 90h, 3-hourly from 91h to 150h, and 6-hourly from 151h to 240h. 
+**Forecast Runs**: Different colored lines represent forecast runs starting from different dates. For instance, the blue line corresponds to the forecast starting on January 1, 2020, at 12:00 UTC, and the red line corresponds to January 2, 2020, at 12:00 UTC, and so on. The forecast step hours are hourly from 00h to 90h, 3-hourly from 91h to 150h, and 6-hourly from 151h to 240h. 
 
-1. **Forecast Runs**: Different colored lines represent forecast runs starting from different dates. For instance, the blue line corresponds to the forecast starting on January 1, 2020, at 12:00 UTC, and the red line corresponds to January 2, 2020, at 12:00 UTC, and so on.
-2. **Correction Arrows**: Arrows indicate the correction applied by the DL models at the 24-hour mark. These arrows highlight the adjusted forecast values extending up to 240 hours.
-3. **Correction Intervals**: Shaded regions along the x-axis show the intervals where corrections are applied, indicating the periods that are adjusted by the DL models for each day.
-4. **Legend**: The legend provides information on the forecast start times and the correction models, making it easy to identify which forecasts and corrections correspond to specific dates.
-
-The idea behind the DL approach is to utilize the accuracy of shorter lead time forecasts (24 hours) to correct errors in longer lead time forecasts. This method aims to improve the overall forecast accuracy by learning from the patterns and discrepancies observed in the initial 24-hour period and applying these corrections to subsequent forecast periods.
+**Correction Models**: Arrows indicate the correction applied by the DL models at the 24-hour mark. These arrows highlight the adjusted forecast values extending up to 240 hours based on the first 24 hour forecast.
 
 ### Start from here: 
 
