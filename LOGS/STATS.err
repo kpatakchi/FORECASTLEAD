@@ -1,1 +1,11 @@
 rm: cannot remove '/p/scratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/STATS/*': No such file or directory
+Traceback (most recent call last):
+  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/STATS.py", line 30, in <module>
+    MOD_METRICS = func_stats.calculate_metrics(REF_D, MOD_D)
+  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_stats.py", line 44, in calculate_metrics
+    correlation = xr.corr(model, reference, dim='time')
+  File "/p/software/juwels/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/computation.py", line 1370, in corr
+    raise TypeError(
+TypeError: Only xr.DataArray is supported.Given [<class 'xarray.core.dataset.Dataset'>, <class 'xarray.core.dataset.Dataset'>].
+srun: error: jwc00n163: task 0: Exited with exit code 1
+error: *** job 9911743 CANCELLED DUE TO TIME LIMIT ***
