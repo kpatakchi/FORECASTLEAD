@@ -767,9 +767,9 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
 
     # Subtract Y_PRED from model
     diff = model - Y_PRED
+    diff_clipped = np.clip(diff, 0, None)
     
-
     # Save the result in a NETCDF file
     data_unique_name = filename[:-4]
     output_filename = f"{PREDICT_FILES}/{model_data}.corrected.nc"
-    diff.to_netcdf(output_filename)
+    diff_clipped.to_netcdf(output_filename)

@@ -22,7 +22,7 @@ rm $HRES_DUMP3/*
 rm $HRES_DUMP4/* 
 
 # run the first part of post-processing:
-#source HRES_POST.sh
+source HRES_POST.sh
 
 # run the second part:
 script="/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/HRES_POST2.sh"

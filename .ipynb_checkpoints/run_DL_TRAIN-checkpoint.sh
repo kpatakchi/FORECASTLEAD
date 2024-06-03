@@ -23,7 +23,7 @@ start_time=$(date +%s)
 
 for leadtime in {02..10}; do
     echo "Running DL_TRAIN.py for day$leadtime ..."
-    srun -N 1 -n 1 --gres=gpu:4 python DL_TRAIN.py --lr 0.01 --bs 16 --lr_factor 0.5 --filters 64 --mask_type "no_na" --HPT_path "HPT/" --leadtime day$leadtime &
+    srun -N 1 -n 1 --gres=gpu:4 python DL_TRAIN.py --lr 0.01 --bs 16 --lr_factor 0.8 --filters 64 --mask_type "no_na" --HPT_path "HPT/" --leadtime day$leadtime &
     sleep 1
 done
 

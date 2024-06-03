@@ -75,10 +75,6 @@ Y_PRED=Y_PRED[..., 0]
 train_x=None
 
 # Save in PREDICT_FILES
-#np.savez(PREDICT_FILES + "/predicted_for_" + data_unique_name + "_" +training_unique_name, Y_PRED=Y_PRED)
-#print("saved")
-
-# Save in PREDICT_FILES
 func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
                               model_data[0], date_start, date_end, variable, 
                               training_unique_name, reference_data, delayh)

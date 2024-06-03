@@ -18,6 +18,11 @@ rm $STATS/*
 
 for leadtime in {02..10}; do
     echo "Running STATS.py for day$leadtime ..."
-    srun -N 1 -n 1 python STATS.py --leadtime $leadtime &
+    # to run with sbatch:
+    # srun -N 1 -n 1 python STATS.py --leadtime $leadtime &
+    # to run with python
+    python STATS.py --leadtime $leadtime &
     sleep 2
 done
+
+wait

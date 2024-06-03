@@ -22,6 +22,9 @@ CMOD = os.path.join(PREDICT_FILES, f"ADAPTER_DE05.day{day:02d}.merged.nc.correct
 MOD = xr.open_dataset(MOD)
 CMOD = xr.open_dataset(CMOD)
 
+# Align MOD_D and CMOD_D with REF_D
+MOD_D, CMOD_D, REF_D = xr.align(MOD_D, CMOD_D, REF_D, join='inner')
+
 # Resample both datasets to daily frequency
 REF_D = func_stats.resample_dataset(REF, "daily")
 MOD_D = func_stats.resample_dataset(MOD, "daily")
