@@ -14,6 +14,13 @@ The figure illustrates forecast lead time error correction over using various DL
 ### Modify the environment and directories based on your working system: 
 Modify `bashenv`, `bashenv-train`, `directories.py`, and `directories.sh` accordingly. 
 
+### Run `run_all_jobs.sh` for automating the sequential submission of Slurm batch jobs:
+It submits a series of batch scripts ensuring that each script starts only after the previous one has completed successfully. The script uses job dependencies to manage the execution order.
+
+```
+./submit_all_jobs.sh
+```
+
 ### Run `HRES_PREP.sh` for preprocessing HRES data: 
 This script automates the preprocessing of HRES forecast data. It copies, adjusts, and merges data files, organizing them into daily forecasts. Finally, it adds metadata attributes to the processed data before output. 
 
@@ -30,10 +37,3 @@ This script loads production data, initializes the trained DL model, loads train
 This script returns the data format back to the original ECMWF format.
 
 ### Use `VISTAB.ipynb` to visualize results
-
-### Run `run_all_jobs.sh` for automating the sequential submission of Slurm batch jobs:
-It submits a series of batch scripts ensuring that each script starts only after the previous one has completed successfully. The script uses job dependencies to manage the execution order.
-
-```
-./submit_all_jobs.sh
-```
