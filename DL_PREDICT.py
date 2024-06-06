@@ -40,10 +40,10 @@ min_delta_or_lr=0.0000001 #just to avoid any limitations
 # Define the following for network configs:
 loss = "mse"
 min_LR = min_delta_or_lr
-lr_patience = 2
-patience = 8
+lr_patience = 4
+patience = 16
 epochs = 64
-val_split = 0.25
+val_split = 0.50
 n_channels = 7
 xpixels = 128
 ypixels = 256
