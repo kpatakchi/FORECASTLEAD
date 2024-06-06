@@ -13,14 +13,14 @@ reference_data = ["ADAPTER_DE05.day01.merged.nc"]
 task_name = "spatiotemporal"
 mm = "MM"  # or DM
 date_start = "2018-01-01T13"
-date_end = "2023-12-31T23"
+date_end = "2022-12-31T23"
 
 variable = "pr"
 mask_type = "no_na"
 laginensemble = False
 
 # Define the following for network configs:
-val_split = 0.25
+val_split = 0.5
 n_channels = 7
 xpixels = 128
 ypixels = 256

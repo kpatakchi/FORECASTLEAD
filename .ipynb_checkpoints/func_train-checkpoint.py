@@ -8,7 +8,7 @@ def UNET_ATT(n_lat, n_lon, n_channels, ifn):
     n_channels = n_channels  # t-1, t, t+1
     ifn = ifn  # initial feature number (number of initial filters)
     leakyrelu = tf.keras.layers.LeakyReLU()
-    dropout_rate=0.2
+    #dropout_rate = 0.2
 
     # Attention block
     def attention_block(input_tensor, filters):
@@ -25,35 +25,35 @@ def UNET_ATT(n_lat, n_lon, n_channels, ifn):
     # Contraction path
     c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs_bn)
     c1 = attention_block(c1, ifn)  # Add attention block here
-    c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
+    #c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
     c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c1)
     p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
     p1 = tf.keras.layers.BatchNormalization()(p1)
 
     c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
     c2 = attention_block(c2, ifn * 2)  # Add attention block here
-    c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
+    #c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
     c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
     p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
     p2 = tf.keras.layers.BatchNormalization()(p2)
 
     c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(p2)
     c3 = attention_block(c3, ifn * 4)  # Add attention block here
-    c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
+    #c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
     c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
     p3 = tf.keras.layers.MaxPooling2D((2, 2))(c3)
     p3 = tf.keras.layers.BatchNormalization()(p3)
 
     c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(p3)
     c4 = attention_block(c4, ifn * 8)  # Add attention block here
-    c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
+    #c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
     c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c4)
     p4 = tf.keras.layers.MaxPooling2D((2, 2))(c4)
     p4 = tf.keras.layers.BatchNormalization()(p4)
 
     c5 = tf.keras.layers.Conv2D(ifn * 16, (3, 3), activation=leakyrelu, padding='same')(p4)
     c5 = attention_block(c5, ifn * 16)  # Add attention block here
-    c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
+    #c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
     c5 = tf.keras.layers.Conv2D(ifn * 16, (3, 3), activation=leakyrelu, padding='same')(c5)
     c5 = tf.keras.layers.BatchNormalization()(c5)
 
@@ -62,7 +62,7 @@ def UNET_ATT(n_lat, n_lon, n_channels, ifn):
     u6 = tf.keras.layers.concatenate([u6, c4])
     c6 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(u6)
     c6 = attention_block(c6, ifn * 8)  # Add attention block here
-    c6 = tf.keras.layers.Dropout(dropout_rate)(c6)  # Add dropout layer here
+    #c6 = tf.keras.layers.Dropout(dropout_rate)(c6)  # Add dropout layer here
     c6 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c6)
     c6 = tf.keras.layers.BatchNormalization()(c6)
 
@@ -70,7 +70,7 @@ def UNET_ATT(n_lat, n_lon, n_channels, ifn):
     u7 = tf.keras.layers.concatenate([u7, c3])
     c7 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(u7)
     c7 = attention_block(c7, ifn * 4)  # Add attention block here
-    c7 = tf.keras.layers.Dropout(dropout_rate)(c7)  # Add dropout layer here
+    #c7 = tf.keras.layers.Dropout(dropout_rate)(c7)  # Add dropout layer here
     c7 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c7)
     c7 = tf.keras.layers.BatchNormalization()(c7)
 
@@ -78,7 +78,7 @@ def UNET_ATT(n_lat, n_lon, n_channels, ifn):
     u8 = tf.keras.layers.concatenate([u8, c2])
     c8 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u8)
     c8 = attention_block(c8, ifn * 2)  # Add attention block here
-    c8 = tf.keras.layers.Dropout(dropout_rate)(c8)  # Add dropout layer here
+    #c8 = tf.keras.layers.Dropout(dropout_rate)(c8)  # Add dropout layer here
     c8 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c8)
     c8 = tf.keras.layers.BatchNormalization()(c8)
 
@@ -86,7 +86,7 @@ def UNET_ATT(n_lat, n_lon, n_channels, ifn):
     u9 = tf.keras.layers.concatenate([u9, c1], axis=3)
     c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(u9)
     c9 = attention_block(c9, ifn)  # Add attention block here
-    c9 = tf.keras.layers.Dropout(dropout_rate)(c9)  # Add dropout layer here
+    #c9 = tf.keras.layers.Dropout(dropout_rate)(c9)  # Add dropout layer here
     c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c9)
     c9 = tf.keras.layers.BatchNormalization()(c9)
 

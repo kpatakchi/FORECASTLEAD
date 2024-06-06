@@ -13,13 +13,14 @@
 #SBATCH --gres=gpu:4
 
 source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
+source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.sh 
 
 rm -r $PREDICT_FILES/*
-#mkdir $TRAIN_FILES
 
 for leadtime in {02..10}; do
     echo "Running DL_PREDICT.py for day$leadtime ..."
-    srun --exclusive --ntasks=1 --nodes=1 --gres=gpu:4 python DL_PREDICT.py --lr 0.01 --bs 16 --lr_factor 0.5 --filters 64 --mask_type "no_na" --HPT_path "HPT/" --leadtime day$leadtime &
+    srun --exclusive --ntasks=1 --nodes=1 --gres=gpu:4 python DL_PREDICT.py --lr $LR --bs $BS --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path $HPT_PATH --leadtime day$leadtime &
+    
     sleep 1
 done
 
