@@ -3,7 +3,7 @@
 #SBATCH --job-name=STATS
 #SBATCH --output=LOGS/STATS.out
 #SBATCH --error=LOGS/STATS.err
-#SBATCH --time=00:15:00
+#SBATCH --time=00:05:00
 #SBATCH --partition=batch
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
@@ -19,9 +19,9 @@ rm $STATS/*
 for leadtime in {02..10}; do
     echo "Running STATS.py for day$leadtime ..."
     # to run with sbatch:
-    # srun -N 1 -n 1 python STATS.py --leadtime $leadtime &
+    srun -N 1 -n 1 python STATS.py --leadtime $leadtime &
     # to run with python
-    python STATS.py --leadtime $leadtime &
+    #python STATS.py --leadtime $leadtime &
     sleep 2
 done
 

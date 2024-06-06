@@ -10,7 +10,7 @@
 #SBATCH --account=deepacf
 #SBATCH --nodes=9
 #SBATCH --ntasks-per-node=1
-#SBATCH --gres=gpu:4
+#SBATCH --gres=gpu:1
 
 source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
 #source /p/project/deepacf/kiste/patakchiyousefi1/SC_VENV/bin/activate prc_env
@@ -24,7 +24,7 @@ start_time=$(date +%s)
 
 for leadtime in {02..10}; do
     echo "Running DL_TRAIN.py for day$leadtime ..."
-    srun -N 1 -n 1 --gres=gpu:4 python DL_TRAIN.py --lr $LR --bs $BS --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path $HPT_PATH --leadtime day$leadtime &
+    srun -N 1 -n 1 --gres=gpu:1 python DL_TRAIN.py --lr $LR --bs $BS --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path $HPT_PATH --leadtime day$leadtime &
     sleep 1
 done
 

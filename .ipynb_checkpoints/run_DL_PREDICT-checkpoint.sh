@@ -9,8 +9,8 @@
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
-#SBATCH --account=esmtst
-#SBATCH --gres=gpu:4
+#SBATCH --account=deepacf
+#SBATCH --gres=gpu:1
 
 source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
 source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.sh 
@@ -19,7 +19,7 @@ rm -r $PREDICT_FILES/*
 
 for leadtime in {02..10}; do
     echo "Running DL_PREDICT.py for day$leadtime ..."
-    srun --exclusive --ntasks=1 --nodes=1 --gres=gpu:4 python DL_PREDICT.py --lr $LR --bs $BS --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path $HPT_PATH --leadtime day$leadtime &
+    srun --exclusive --ntasks=1 --nodes=1 --gres=gpu:1 python DL_PREDICT.py --lr $LR --bs $BS --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path $HPT_PATH --leadtime day$leadtime &
     
     sleep 1
 done

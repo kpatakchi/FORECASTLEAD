@@ -11,6 +11,7 @@
 #)
 
 batch_scripts=(
+  "run_DL_TRAIN.sh"
   "run_DL_PREDICT.sh"
   "run_STATS.sh"
 )

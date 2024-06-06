@@ -18,7 +18,7 @@ Modify `bashenv`, `bashenv-train`, `directories.py`, and `directories.sh` accord
 It submits a series of batch scripts ensuring that each script starts only after the previous one has completed successfully. The script uses job dependencies to manage the execution order.
 
 ```
-./submit_all_jobs.sh
+./run_all_jobs.sh
 ```
 
 ### Run `HRES_PREP.sh` for preprocessing HRES data: 
