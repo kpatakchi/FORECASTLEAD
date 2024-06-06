@@ -55,6 +55,7 @@ train_x = train_files["train_x"]
 train_y = train_files["train_y"]
 val_x = train_files["val_x"]
 val_y = train_files["val_y"]
+train_m = train_files["train_m"]
 print("Data loaded!")
 
 train_dataset = tf.data.Dataset.from_tensor_slices((train_x, train_y)).batch(BS)
@@ -91,7 +92,7 @@ with strategy.scope():
     print("Training the model...")
 
     # Train the model using train_dataset and val_dataset
-    results = model.fit(train_dataset, validation_data=val_dataset, epochs=epochs, verbose=2, callbacks=[callbacks, checkpointer, reduce_lr])
+    results = model.fit(train_dataset, validation_data=val_dataset, sample_weight=train_m, epochs=epochs, verbose=2, callbacks=[callbacks, checkpointer, reduce_lr])
 
 # Save and plot the results
 print("Saving and plotting the results...")
