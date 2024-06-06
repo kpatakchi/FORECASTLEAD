@@ -35,7 +35,7 @@ date_start = "2018-01-01T13" # first day is not corrected
 date_end = "2022-12-31T23"
 variable = "pr"
 laginensemble = False
-min_delta_or_lr=0.00000000000001 #just to avoid any limitations
+min_delta_or_lr=0.0000001 #just to avoid any limitations
 
 # Define the following for network configs:
 loss = "mse"

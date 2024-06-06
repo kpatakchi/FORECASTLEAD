@@ -34,4 +34,4 @@ This script returns the data format back to the original ECMWF format.
 ### Run `run_all_jobs.sh` for automating the sequential submission of Slurm batch jobs:
 It submits a series of batch scripts ensuring that each script starts only after the previous one has completed successfully. The script uses job dependencies to manage the execution order.
 
-        ```./submit_all_jobs.sh
+```./submit_all_jobs.sh
