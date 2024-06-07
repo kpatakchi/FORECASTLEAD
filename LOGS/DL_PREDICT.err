@@ -1,136 +1,18 @@
-rm: cannot remove '/p/scratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/*': No such file or directory
-2024-06-06 17:31:10.242615: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-06 17:31:10.244727: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-06 17:31:10.390816: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-06 17:31:10.458460: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 68, in <module>
-Traceback (most recent call last):
-  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 68, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-07_0.5_4_16_16_0.5_64_day09.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-07_0.5_4_16_16_0.5_64_day08.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-Traceback (most recent call last):
-  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 68, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-07_0.5_4_16_16_0.5_64_day07.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-Traceback (most recent call last):
-  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 68, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-07_0.5_4_16_16_0.5_64_day10.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-srun: error: jwb1183: task 0: Exited with exit code 1
-srun: error: jwb1179: task 0: Exited with exit code 1
-srun: error: jwb1184: task 0: Exited with exit code 1
-srun: error: jwb1180: task 0: Exited with exit code 1
-2024-06-06 17:31:29.419399: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-06 17:31:29.460160: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 68, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-Traceback (most recent call last):
-  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 68, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-07_0.5_4_16_16_0.5_64_day06.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-07_0.5_4_16_16_0.5_64_day05.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-srun: error: jwb1177: task 0: Exited with exit code 1
-srun: error: jwb1161: task 0: Exited with exit code 1
-2024-06-06 17:31:37.528019: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-06 17:31:41.655982: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-06 17:31:42.056166: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 68, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-07_0.5_4_16_16_0.5_64_day04.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-srun: error: jwb1159: task 0: Exited with exit code 1
-Traceback (most recent call last):
-  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 68, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-07_0.5_4_16_16_0.5_64_day03.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-Traceback (most recent call last):
-  File "/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 68, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-07_0.5_4_16_16_0.5_64_day02.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-srun: error: jwb1158: task 0: Exited with exit code 1
-srun: error: jwb1157: task 0: Exited with exit code 1
+2024-06-07 15:39:20.739354: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-07 15:39:23.014340: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-07 15:39:26.720736: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-07 15:39:31.378987: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-07 15:39:31.597026: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-07 15:39:32.597692: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-07 15:39:33.043971: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-07 15:39:33.312896: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-07 15:39:33.393409: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-07 15:39:34.447307: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-07 15:39:38.555542: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-07 15:39:40.503065: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-07 15:39:41.844315: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-07 15:39:42.824575: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-07 15:39:46.306905: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-07 15:39:47.139043: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-07 15:39:49.952310: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-07 15:39:50.233396: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600

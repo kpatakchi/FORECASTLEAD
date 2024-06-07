@@ -24,35 +24,35 @@ def UNET_ATT(n_lat, n_lon, n_channels, ifn):
 
     # Contraction path
     c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs_bn)
-    c1 = attention_block(c1, ifn)  # Add attention block here
+    #c1 = attention_block(c1, ifn)  # Add attention block here
     c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c1)
     #c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
     p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
     p1 = tf.keras.layers.BatchNormalization()(p1)
 
     c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
-    c2 = attention_block(c2, ifn * 2)  # Add attention block here
+    #c2 = attention_block(c2, ifn * 2)  # Add attention block here
     c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
     #c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
     p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
     p2 = tf.keras.layers.BatchNormalization()(p2)
 
     c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(p2)
-    c3 = attention_block(c3, ifn * 4)  # Add attention block here
+    #c3 = attention_block(c3, ifn * 4)  # Add attention block here
     c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
     #c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
     p3 = tf.keras.layers.MaxPooling2D((2, 2))(c3)
     p3 = tf.keras.layers.BatchNormalization()(p3)
 
     c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(p3)
-    c4 = attention_block(c4, ifn * 8)  # Add attention block here
+    #c4 = attention_block(c4, ifn * 8)  # Add attention block here
     c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c4)
     #c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
     p4 = tf.keras.layers.MaxPooling2D((2, 2))(c4)
     p4 = tf.keras.layers.BatchNormalization()(p4)
 
     c5 = tf.keras.layers.Conv2D(ifn * 16, (3, 3), activation=leakyrelu, padding='same')(p4)
-    c5 = attention_block(c5, ifn * 16)  # Add attention block here
+    #c5 = attention_block(c5, ifn * 16)  # Add attention block here
     c5 = tf.keras.layers.Conv2D(ifn * 16, (3, 3), activation=leakyrelu, padding='same')(c5)
     #c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
     c5 = tf.keras.layers.BatchNormalization()(c5)

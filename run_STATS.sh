@@ -4,12 +4,12 @@
 #SBATCH --output=LOGS/STATS.out
 #SBATCH --error=LOGS/STATS.err
 #SBATCH --time=00:05:00
-#SBATCH --partition=batch
+#SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
 #SBATCH --account=deepacf
 #SBATCH --nodes=9
-#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks-per-node=9
 
 source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
 

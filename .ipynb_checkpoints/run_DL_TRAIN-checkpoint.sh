@@ -11,7 +11,7 @@
 #SBATCH --nodes=9
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=48
+#SBATCH --cpus-per-task=8
 
 source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
 source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.sh
@@ -25,7 +25,7 @@ start_time=$(date +%s)
 # Run DL_TRAIN.py for each lead time in parallel
 for leadtime in {02..10}; do
     echo "Running DL_TRAIN.py for day$leadtime ..."
-    srun --nodes=1 --ntasks=1 --gres=gpu:4 --cpus-per-task=48 python DL_TRAIN.py --lr $LR --bs $BS --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path $HPT_PATH --leadtime day$leadtime &
+    srun --nodes=1 --ntasks=1 --gres=gpu:4 --cpus-per-task=8 python DL_TRAIN.py --lr $LR --bs $BS --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path $HPT_PATH --leadtime day$leadtime &
     sleep 1
 done
 

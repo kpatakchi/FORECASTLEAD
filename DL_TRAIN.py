@@ -56,10 +56,21 @@ train_y = train_files["train_y"]
 val_x = train_files["val_x"]
 val_y = train_files["val_y"]
 train_m = train_files["train_m"]
+val_m = train_files["val_m"]
+
+# remove the boundaries (=0) from training
+mean_train_y = np.mean(train_y, axis=0)
+mask = mean_train_y < 0.001
+train_m[:, mask] = 0
+
+mean_val_y = np.mean(val_y, axis=0)
+mask = mean_val_y < 0.001
+val_m[:, mask] = 0
+
 print("Data loaded!")
 
 train_dataset = tf.data.Dataset.from_tensor_slices((train_x, train_y, train_m)).batch(BS)
-val_dataset = tf.data.Dataset.from_tensor_slices((val_x, val_y, train_m)).batch(BS)
+val_dataset = tf.data.Dataset.from_tensor_slices((val_x, val_y, val_m)).batch(BS)
 
 # Disable auto sharding
 options = tf.data.Options()
@@ -79,7 +90,7 @@ strategy = tf.distribute.MirroredStrategy()
 with strategy.scope():
     model = func_train.UNET_ATT(xpixels, ypixels, n_channels, Filters)
     optimizer = tf.keras.optimizers.Adam(learning_rate=LR, name='Adam')
-    model.compile(optimizer=optimizer, loss=loss)
+    model.compile(optimizer=optimizer, loss=loss, weighted_metrics=['mse'])
 
     # Define the model checkpoint and early stopping callbacks
     model_path = PPROJECT_DIR2 + HPT_path + training_unique_name + '_' + leadtime + '.h5'
