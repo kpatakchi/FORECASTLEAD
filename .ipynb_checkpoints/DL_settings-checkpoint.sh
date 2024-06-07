@@ -4,7 +4,7 @@
 
 # parameters for DL scripts
 
-LR=0.0001
+LR=0.01
 BS=16
 LR_FACTOR=0.5
 FILTERS=64
