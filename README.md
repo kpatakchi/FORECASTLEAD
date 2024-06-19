@@ -9,6 +9,8 @@ The figure illustrates forecast lead time error correction over using various DL
 
 **Correction reference**: Arrows indicate the correction applied by the DL models at the 24-hour mark. These arrows highlight each forecast run corrected based on the first 24 hour forecast (correction reference).
 
+**Forecast steps**: Precipitation forecast initialized at a specific date and time with run for every hour up to 90 hours, then every 3-hours up to 150 hours, and every 6-hours up to 240 hours.
+
 ## Start from here: 
 
 ### Modify the environment and directories based on your working system: 
