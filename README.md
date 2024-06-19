@@ -5,9 +5,9 @@ There is a decay in the accuracy of longer lead times in precipitation forecasts
 
 The figure illustrates forecast lead time error correction over using various DL models. For example, different forecast run times are shown for HRES runs. The x axis represents the forecast steps in date and time, and the y axis represents the forecast initialization dates.
 
-**Forecast Runs**: Different colored lines represent forecast runs starting from different dates. For instance, the blue line corresponds to the forecast starting on January 1, 2020, at 12:00 UTC, and the red line corresponds to January 2, 2020, at 12:00 UTC, and so on. The forecast step hours are hourly from 00h to 90h, 3-hourly from 91h to 150h, and 6-hourly from 151h to 240h. 
+**Forecast runs**: Lines represent forecast runs starting every day (Initialization date). 
 
-**Correction Models**: Arrows indicate the correction applied by the DL models at the 24-hour mark. These arrows highlight the adjusted forecast values extending up to 240 hours based on the first 24 hour forecast.
+**Correction reference**: Arrows indicate the correction applied by the DL models at the 24-hour mark. These arrows highlight each forecast run corrected based on the first 24 hour forecast (correction reference).
 
 ## Start from here: 
 
