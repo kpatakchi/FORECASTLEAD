@@ -12,8 +12,8 @@
 #SBATCH --account=deepacf
 #SBATCH --gres=gpu:1
 
-source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
-source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.sh 
+source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
+source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.sh 
 
 rm -r $PREDICT_FILES/*
 

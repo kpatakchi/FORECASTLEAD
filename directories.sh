@@ -3,10 +3,10 @@
 # Define Python-related variables:
 homedir=""  # Update this with the appropriate value
 
-PSCRATCH_DIR="/p/scratch/deepacf/kiste/patakchiyousefi1/FORECASTLEAD_KISTE_SCRATCH/"
-PSCRATCH_DIR2="/p/scratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/"
-PPROJECT_DIR="/p/project/deepacf/kiste/patakchiyousefi1/"
-PPROJECT_DIR2="/p/project/cesmtst/patakchiyousefi1/"
+PSCRATCH_DIR="/p/oldscratch/deepacf/kiste/patakchiyousefi1/FORECASTLEAD_KISTE_SCRATCH/"
+PSCRATCH_DIR2="/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/"
+PPROJECT_DIR="/p/project1/deepacf/kiste/patakchiyousefi1/"
+PPROJECT_DIR2="/p/project1/cesmtst/patakchiyousefi1/"
 
 # Define directories:
 export PF_FORECASTLEAD="${homedir}${PSCRATCH_DIR2}PF_FORECASTLEAD"

@@ -11,7 +11,7 @@
 #SBATCH --nodes=9
 #SBATCH --ntasks-per-node=9
 
-source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
+source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
 
 # remove existing directories:
 rm $STATS/*

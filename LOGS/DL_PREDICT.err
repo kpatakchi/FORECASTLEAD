@@ -1,18 +1,351 @@
-2024-06-07 15:39:20.739354: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-07 15:39:23.014340: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-07 15:39:26.720736: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-06-07 15:39:31.378987: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-07 15:39:31.597026: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-07 15:39:32.597692: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-06-07 15:39:33.043971: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-07 15:39:33.312896: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-07 15:39:33.393409: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-07 15:39:34.447307: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-07 15:39:38.555542: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38377 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-06-07 15:39:40.503065: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-06-07 15:39:41.844315: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-06-07 15:39:42.824575: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-06-07 15:39:46.306905: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-06-07 15:39:47.139043: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-06-07 15:39:49.952310: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-06-07 15:39:50.233396: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+rm: cannot remove '/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day02.merged.nc.corrected.nc': Read-only file system
+rm: cannot remove '/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day03.merged.nc.corrected.nc': Read-only file system
+rm: cannot remove '/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day04.merged.nc.corrected.nc': Read-only file system
+rm: cannot remove '/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day05.merged.nc.corrected.nc': Read-only file system
+rm: cannot remove '/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day06.merged.nc.corrected.nc': Read-only file system
+rm: cannot remove '/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day07.merged.nc.corrected.nc': Read-only file system
+rm: cannot remove '/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day08.merged.nc.corrected.nc': Read-only file system
+rm: cannot remove '/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day09.merged.nc.corrected.nc': Read-only file system
+rm: cannot remove '/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day10.merged.nc.corrected.nc': Read-only file system
+2024-06-18 18:07:08.225998: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-18 18:07:08.328051: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-18 18:07:09.064344: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-18 18:07:09.461640: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-18 18:07:09.759576: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-18 18:07:11.681383: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-18 18:07:14.468022: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-18 18:07:15.335657: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-18 18:07:15.833093: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-18 18:07:16.416834: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-18 18:07:16.567704: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-18 18:07:16.637251: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-18 18:07:17.505151: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-06-18 18:07:17.721008: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-18 18:07:17.804449: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-18 18:07:31.098453: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-18 18:07:33.502947: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-06-18 18:07:34.656599: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+Traceback (most recent call last):
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 201, in _acquire_with_cache_info
+    file = self._cache[self._key]
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day07.merged.nc.corrected.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 78, in <module>
+    func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 775, in de_prepare_produce
+    diff_clipped.to_netcdf(output_filename)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/dataarray.py", line 3739, in to_netcdf
+    return to_netcdf(  # type: ignore  # mypy cannot resolve the overloads:(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/api.py", line 1209, in to_netcdf
+    store = store_open(target, mode, format, group, **kwargs)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 384, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 332, in __init__
+    self.format = self.ds.data_model
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 393, in ds
+    return self._acquire()
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 387, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/p/software/juwelsbooster/stages/2023/software/Python/3.10.4-GCCcore-11.3.0/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 189, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 207, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+PermissionError: [Errno 13] Permission denied: b'/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day07.merged.nc.corrected.nc'
+Traceback (most recent call last):
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 201, in _acquire_with_cache_info
+    file = self._cache[self._key]
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day08.merged.nc.corrected.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 78, in <module>
+    func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 775, in de_prepare_produce
+    diff_clipped.to_netcdf(output_filename)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/dataarray.py", line 3739, in to_netcdf
+    return to_netcdf(  # type: ignore  # mypy cannot resolve the overloads:(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/api.py", line 1209, in to_netcdf
+    store = store_open(target, mode, format, group, **kwargs)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 384, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 332, in __init__
+    self.format = self.ds.data_model
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 393, in ds
+    return self._acquire()
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 387, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/p/software/juwelsbooster/stages/2023/software/Python/3.10.4-GCCcore-11.3.0/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 189, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 207, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+PermissionError: [Errno 13] Permission denied: b'/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day08.merged.nc.corrected.nc'
+srun: error: jwb0022: task 0: Exited with exit code 1
+Traceback (most recent call last):
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 201, in _acquire_with_cache_info
+    file = self._cache[self._key]
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day09.merged.nc.corrected.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 78, in <module>
+    func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 775, in de_prepare_produce
+    diff_clipped.to_netcdf(output_filename)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/dataarray.py", line 3739, in to_netcdf
+    return to_netcdf(  # type: ignore  # mypy cannot resolve the overloads:(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/api.py", line 1209, in to_netcdf
+    store = store_open(target, mode, format, group, **kwargs)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 384, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 332, in __init__
+    self.format = self.ds.data_model
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 393, in ds
+    return self._acquire()
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 387, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/p/software/juwelsbooster/stages/2023/software/Python/3.10.4-GCCcore-11.3.0/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 189, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 207, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+PermissionError: [Errno 13] Permission denied: b'/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day09.merged.nc.corrected.nc'
+srun: error: jwb0023: task 0: Exited with exit code 1
+srun: error: jwb0025: task 0: Exited with exit code 1
+Traceback (most recent call last):
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 201, in _acquire_with_cache_info
+    file = self._cache[self._key]
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day10.merged.nc.corrected.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 78, in <module>
+    func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 775, in de_prepare_produce
+    diff_clipped.to_netcdf(output_filename)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/dataarray.py", line 3739, in to_netcdf
+    return to_netcdf(  # type: ignore  # mypy cannot resolve the overloads:(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/api.py", line 1209, in to_netcdf
+    store = store_open(target, mode, format, group, **kwargs)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 384, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 332, in __init__
+    self.format = self.ds.data_model
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 393, in ds
+    return self._acquire()
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 387, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/p/software/juwelsbooster/stages/2023/software/Python/3.10.4-GCCcore-11.3.0/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 189, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 207, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+PermissionError: [Errno 13] Permission denied: b'/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day10.merged.nc.corrected.nc'
+srun: error: jwb0027: task 0: Exited with exit code 1
+Traceback (most recent call last):
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 201, in _acquire_with_cache_info
+    file = self._cache[self._key]
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day05.merged.nc.corrected.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 78, in <module>
+    func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 775, in de_prepare_produce
+    diff_clipped.to_netcdf(output_filename)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/dataarray.py", line 3739, in to_netcdf
+    return to_netcdf(  # type: ignore  # mypy cannot resolve the overloads:(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/api.py", line 1209, in to_netcdf
+    store = store_open(target, mode, format, group, **kwargs)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 384, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 332, in __init__
+    self.format = self.ds.data_model
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 393, in ds
+    return self._acquire()
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 387, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/p/software/juwelsbooster/stages/2023/software/Python/3.10.4-GCCcore-11.3.0/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 189, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 207, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+PermissionError: [Errno 13] Permission denied: b'/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day05.merged.nc.corrected.nc'
+Traceback (most recent call last):
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 201, in _acquire_with_cache_info
+    file = self._cache[self._key]
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day06.merged.nc.corrected.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 78, in <module>
+    func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 775, in de_prepare_produce
+    diff_clipped.to_netcdf(output_filename)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/dataarray.py", line 3739, in to_netcdf
+    return to_netcdf(  # type: ignore  # mypy cannot resolve the overloads:(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/api.py", line 1209, in to_netcdf
+    store = store_open(target, mode, format, group, **kwargs)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 384, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 332, in __init__
+    self.format = self.ds.data_model
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 393, in ds
+    return self._acquire()
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 387, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/p/software/juwelsbooster/stages/2023/software/Python/3.10.4-GCCcore-11.3.0/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 189, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 207, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+PermissionError: [Errno 13] Permission denied: b'/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day06.merged.nc.corrected.nc'
+srun: error: jwb0008: task 0: Exited with exit code 1
+srun: error: jwb0010: task 0: Exited with exit code 1
+Traceback (most recent call last):
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 201, in _acquire_with_cache_info
+    file = self._cache[self._key]
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day04.merged.nc.corrected.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 78, in <module>
+    func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 775, in de_prepare_produce
+    diff_clipped.to_netcdf(output_filename)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/dataarray.py", line 3739, in to_netcdf
+    return to_netcdf(  # type: ignore  # mypy cannot resolve the overloads:(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/api.py", line 1209, in to_netcdf
+    store = store_open(target, mode, format, group, **kwargs)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 384, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 332, in __init__
+    self.format = self.ds.data_model
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 393, in ds
+    return self._acquire()
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 387, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/p/software/juwelsbooster/stages/2023/software/Python/3.10.4-GCCcore-11.3.0/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 189, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 207, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+PermissionError: [Errno 13] Permission denied: b'/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day04.merged.nc.corrected.nc'
+srun: error: jwb0005: task 0: Exited with exit code 1
+Traceback (most recent call last):
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 201, in _acquire_with_cache_info
+    file = self._cache[self._key]
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day02.merged.nc.corrected.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 78, in <module>
+    func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 775, in de_prepare_produce
+    diff_clipped.to_netcdf(output_filename)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/dataarray.py", line 3739, in to_netcdf
+    return to_netcdf(  # type: ignore  # mypy cannot resolve the overloads:(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/api.py", line 1209, in to_netcdf
+    store = store_open(target, mode, format, group, **kwargs)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 384, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 332, in __init__
+    self.format = self.ds.data_model
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 393, in ds
+    return self._acquire()
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 387, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/p/software/juwelsbooster/stages/2023/software/Python/3.10.4-GCCcore-11.3.0/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 189, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 207, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+PermissionError: [Errno 13] Permission denied: b'/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day02.merged.nc.corrected.nc'
+Traceback (most recent call last):
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 201, in _acquire_with_cache_info
+    file = self._cache[self._key]
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day03.merged.nc.corrected.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 78, in <module>
+    func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 775, in de_prepare_produce
+    diff_clipped.to_netcdf(output_filename)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/dataarray.py", line 3739, in to_netcdf
+    return to_netcdf(  # type: ignore  # mypy cannot resolve the overloads:(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/api.py", line 1209, in to_netcdf
+    store = store_open(target, mode, format, group, **kwargs)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 384, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 332, in __init__
+    self.format = self.ds.data_model
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 393, in ds
+    return self._acquire()
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 387, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/p/software/juwelsbooster/stages/2023/software/Python/3.10.4-GCCcore-11.3.0/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 189, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/file_manager.py", line 207, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+PermissionError: [Errno 13] Permission denied: b'/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/ADAPTER_DE05.day03.merged.nc.corrected.nc'
+srun: error: jwb0002: task 0: Exited with exit code 1
+srun: error: jwb0004: task 0: Exited with exit code 1
