@@ -1,9 +1,9 @@
 ## Idea: 
-There is a decay in the accuracy of longer lead times in precipitation forecasts. The idea is to train various deep learning (DL) networks to learn the longer lead time errors (e.g., up to 240 hours) against the first 24-hour period used as a reference. This method aims to improve the overall forecast accuracy by learning from the patterns and discrepancies observed in the initial 24-hour period and applying these corrections to subsequent forecast periods.
+There is a decay in the accuracy of longer lead times in precipitation forecasts. The idea is to train various deep learning (DL) networks to learn the longer lead time errors (e.g., up to 240 hours) against the first 24-hour period used as a reference. This method aims to improve the overall forecast accuracy by learning from mismatches in longer lead times against the initial 24-hour period.
 
 ![Forecast Lead Time Error Correction](images/idea2.png)
 
-The figure illustrates forecast lead time error correction over using various DL models. For example, different forecast run times are shown for HRES runs. The x-axis represents the date and time (in UTC) of the forecast runs, while the y-axis represents the forecast steps.
+The figure illustrates forecast lead time error correction over using various DL models. For example, different forecast run times are shown for HRES runs. The x axis represents the forecast steps in date and time, and the y axis represents the forecast initialization dates.
 
 **Forecast Runs**: Different colored lines represent forecast runs starting from different dates. For instance, the blue line corresponds to the forecast starting on January 1, 2020, at 12:00 UTC, and the red line corresponds to January 2, 2020, at 12:00 UTC, and so on. The forecast step hours are hourly from 00h to 90h, 3-hourly from 91h to 150h, and 6-hourly from 151h to 240h. 
 
