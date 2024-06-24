@@ -3,8 +3,8 @@
 # Define Python-related variables:
 homedir=""  # Update this with the appropriate value
 
-PSCRATCH_DIR="/p/oldscratch/deepacf/kiste/patakchiyousefi1/FORECASTLEAD_KISTE_SCRATCH/"
-PSCRATCH_DIR2="/p/oldscratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/"
+PSCRATCH_DIR="/p/scratch/deepacf/kiste/patakchiyousefi1/FORECASTLEAD_KISTE_SCRATCH/"
+PSCRATCH_DIR2="/p/scratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/"
 PPROJECT_DIR="/p/project1/deepacf/kiste/patakchiyousefi1/"
 PPROJECT_DIR2="/p/project1/cesmtst/patakchiyousefi1/"
 
@@ -15,7 +15,7 @@ export PF_FORECASTLEAD="${homedir}${PSCRATCH_DIR2}PF_FORECASTLEAD"
 export HRES_UTI="${homedir}${PPROJECT_DIR}IO/hres_ut/"
 export HRES_LOG="${homedir}${PPROJECT_DIR2}CODES-MS3/FORECASTLEAD/LOGS"
 export HRES_TOPO="${homedir}${PPROJECT_DIR}HRES_TOPO"
-export HRES_RET="/p/project/pfgpude05/belleflamme1/ADAPTER_DE05_ECMWF-HRES-ENS-SEAS_FZJ-IBG3-ParFlowCLM_atmospheric_forcing/o.data.MARS_retrieval/HRES"
+export HRES_RET="/p/project1/pfgpude05/belleflamme1/ADAPTER_DE05_ECMWF-HRES-ENS-SEAS_FZJ-IBG3-ParFlowCLM_atmospheric_forcing/o.data.MARS_retrieval/HRES"
 export HRES_OR="${homedir}${PSCRATCH_DIR2}HRES_OR"
 export HRES_PREP="${homedir}${PSCRATCH_DIR2}HRES_PREP"
 export HRES_DUMP="${homedir}${PSCRATCH_DIR2}HRES_DUMP"

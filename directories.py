@@ -2,9 +2,9 @@
 homedir=""              #if using hpc
 #define all the necessary directories:
 PPROJECT_DIR="/p/project1/deepacf/kiste/patakchiyousefi1/"
-PSCRATCH_DIR="/p/oldscratch/deepacf/kiste/patakchiyousefi1/"
+PSCRATCH_DIR="/p/scratch/deepacf/kiste/patakchiyousefi1/"
 PPROJECT_DIR2="/p/project1/cesmtst/patakchiyousefi1/"
-PSCRATCH_DIR2="/p/oldscratch/cesmtst/patakchiyousefi1/"
+PSCRATCH_DIR2="/p/scratch/cesmtst/patakchiyousefi1/"
 PROJECT_NAME="/FORECASTLEAD/"
 
 # General directories

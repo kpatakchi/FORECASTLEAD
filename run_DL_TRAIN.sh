@@ -3,7 +3,7 @@
 #SBATCH --job-name=DL_TRAIN
 #SBATCH --output=LOGS/DL_TRAIN.out
 #SBATCH --error=LOGS/DL_TRAIN.err
-#SBATCH --time=06:00:00
+#SBATCH --time=03:00:00
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
