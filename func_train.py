@@ -1,14 +1,13 @@
 from py_env_train import *
 
-def UNET_ATT(n_lat, n_lon, n_channels, ifn):
+def UNET_ATT(n_lat, n_lon, n_channels, ifn, dropout_rate):
     import tensorflow as tf
-
     n_lat = n_lat
     n_lon = n_lon
     n_channels = n_channels  # t-1, t, t+1
     ifn = ifn  # initial feature number (number of initial filters)
     leakyrelu = tf.keras.layers.LeakyReLU()
-    dropout_rate=0.2
+    dropout_rate=dropout_rate
 
     # Attention block
     def attention_block(input_tensor, filters):

@@ -19,7 +19,7 @@ rm -r $PREDICT_FILES/*
 
 for leadtime in {02..10}; do
     echo "Running DL_PREDICT.py for day$leadtime ..."
-    srun --exclusive --ntasks=1 --nodes=1 --gres=gpu:1 python DL_PREDICT.py --lr $LR --bs $BS --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path $HPT_PATH --leadtime day$leadtime &
+    srun --exclusive --ntasks=1 --nodes=1 --gres=gpu:1 python DL_PREDICT.py --lr $LR --bs $BS --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path $HPT_PATH --leadtime day$leadtime --dropout $DROPOUT &
     
     sleep 1
 done

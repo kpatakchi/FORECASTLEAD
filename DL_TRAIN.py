@@ -11,6 +11,8 @@ parser.add_argument("--filters", type=int, required=True, help="Number of filter
 parser.add_argument("--mask_type", type=str, required=True, help="Mask Type")
 parser.add_argument("--HPT_path", type=str, required=True, help="Which HPT path for results?")
 parser.add_argument("--leadtime", type=str, required=True, help="Specify the lead time for correction (e.g., day02, day03 etc")
+parser.add_argument("--dropout", type=float, required=True, help="specify the dropout rate in U-Net")
+
 args = parser.parse_args()
 
 leadtime = args.leadtime 
@@ -20,6 +22,7 @@ LR = args.lr
 BS = args.bs
 lr_factor = args.lr_factor
 Filters = args.filters
+dropout = args.dropout
 
 # Define the data specifications:
 model_data = ["ADAPTER_DE05." + leadtime + ".merged.nc"]
@@ -88,12 +91,12 @@ print(training_unique_name)
 strategy = tf.distribute.MirroredStrategy()
 
 with strategy.scope():
-    model = func_train.UNET_ATT(xpixels, ypixels, n_channels, Filters)
+    model = func_train.UNET_ATT(xpixels, ypixels, n_channels, Filters, dropout)
     optimizer = tf.keras.optimizers.Adam(learning_rate=LR, name='Adam')
     model.compile(optimizer=optimizer, loss=loss, weighted_metrics=['mse'])
 
     # Define the model checkpoint and early stopping callbacks
-    model_path = PPROJECT_DIR2 + HPT_path + training_unique_name + '_' + leadtime + '.h5'
+    model_path = PPROJECT_DIR2 + HPT_path + training_unique_name + "_" + str(dropout) + '_' + leadtime + '.h5'
     checkpointer = tf.keras.callbacks.ModelCheckpoint(model_path, verbose=1, save_best_only=True, monitor='val_loss')
     callbacks = [tf.keras.callbacks.EarlyStopping(patience=patience, monitor='val_loss')]
 
@@ -108,4 +111,4 @@ with strategy.scope():
 # Save and plot the results
 print("Saving and plotting the results...")
 RESULTS_DF = pd.DataFrame(results.history)
-RESULTS_DF.to_csv(PPROJECT_DIR2 + HPT_path + training_unique_name + "_" + leadtime + ".csv")
+RESULTS_DF.to_csv(PPROJECT_DIR2 + HPT_path + training_unique_name + "_" + str(dropout) + "_" + leadtime +".csv")
