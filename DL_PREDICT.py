@@ -67,7 +67,7 @@ training_unique_name = func_train.generate_training_unique_name(loss, Filters, L
 
 # load the model and weights
 model = func_train.UNET_ATT(xpixels, ypixels, n_channels, Filters, dropout)
-model_path = PPROJECT_DIR2 + HPT_path + "/" + training_unique_name + '_' + leadtime + '.h5'
+model_path = PPROJECT_DIR2 + HPT_path + "/" + training_unique_name + '_' + dropout + '_' + leadtime + '.h5'
 model.load_weights(model_path)
 
 # produce 

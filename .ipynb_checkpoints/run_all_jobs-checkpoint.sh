@@ -1,20 +1,20 @@
 #!/bin/bash
 
 # Define the batch scripts in the desired order
-#batch_scripts=(
-#  "run_HRES_PREP.sh"
-#  "run_DL_PREP.sh"
-#  "run_DL_TRAIN.sh"
-#  "run_DL_PREDICT.sh"
-#  "run_STATS.sh"
-#  "run_HRES_POST.sh"
-#)
 
 batch_scripts=(
-  "run_DL_TRAIN.sh"
+  "run_HRES_PREP.sh"
+  "run_DL_HPT.sh"
   "run_DL_PREDICT.sh"
   "run_STATS.sh"
+  "run_HRES_POST.sh"
 )
+
+#batch_scripts=(
+#  "run_DL_HPT.sh"
+#  "run_DL_PREDICT.sh"
+#  "run_STATS.sh"
+#)
 
 # Initialize the dependency variable
 previous_job_id=""

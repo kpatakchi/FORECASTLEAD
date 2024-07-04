@@ -276,7 +276,65 @@ def generate_training_unique_name(loss, Filters, LR, min_LR, lr_factor, lr_patie
     training_unique_name = loss + "_" + str(Filters) + "_" + str(LR) + "_" + str(min_LR) + "_" + str(lr_factor) + "_" + str(lr_patience) + "_" + str(BS) + "_" + str(patience) + "_" + str(val_split) + "_" + str(epochs)
     return training_unique_name
 
-def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, reference_data, task_name, mm, date_start, date_end, variable, mask_type, laginensemble, val_split):
+def HRES_NETCDF_LEADTIME_TRAIN_PREPROCESS(dataset, variable, leadtime):
+    """
+    Process the dataset based on the leadtime requirements.
+    
+    Parameters:
+    dataset (xr.Dataset): The input dataset.
+    variable (str): The variable name in the dataset to process.
+    leadtime (str): The leadtime value ('day02', 'day03', 'day04', 'day05', 'day06', 'day07', 'day08', 'day09', 'day10').
+
+    Day02 and Day03: No changes are made to the dataset.
+    Day04: Applies the specific preprocessing by zeroing out hours 07, 08, 10, and 11, and summing the values for hours 09 and 12.
+    Day05 and Day06: Resamples the data to 3-hourly intervals.
+    Day07 to Day10: Resamples the data to 6-hourly intervals
+    """
+    if variable != "novar":
+        var_data = dataset[variable]
+    else:
+        var_data = dataset*1
+        
+    if leadtime == "day04":
+        # Assuming the time steps are hourly and formatted as 'YYYY-MM-DDTHH:00:00.000000000'
+        unique_days = np.unique(var_data.time.dt.floor('D').values)
+        
+        for day in unique_days:
+            # Mask for the specific day
+            mask_day = (var_data.time.dt.floor('D') == day)
+            
+            # Select the indices for the specified hours
+            indices_T07 = mask_day & (var_data.time.dt.hour == 7)
+            indices_T08 = mask_day & (var_data.time.dt.hour == 8)
+            indices_T09 = mask_day & (var_data.time.dt.hour == 9)
+            indices_T10 = mask_day & (var_data.time.dt.hour == 10)
+            indices_T11 = mask_day & (var_data.time.dt.hour == 11)
+            indices_T12 = mask_day & (var_data.time.dt.hour == 12)
+                
+            if np.sum(indices_T07.values) != 0:
+                # Replace T09 with the sum of values in T07, T08, and T09 for the specified variable
+                sum_T09 = var_data[indices_T07].values + var_data[indices_T08].values + var_data[indices_T09].values
+                var_data[indices_T09] = sum_T09
+    
+                # Replace T12 with the sum of values in T10, T11, and T12 for the specified variable
+                sum_T12 = var_data[indices_T10].values + var_data[indices_T11].values + var_data[indices_T12].values
+                var_data[indices_T12] = sum_T12
+
+                # Drop the time steps T07, T08, T10, and T11
+                drop_times = var_data.time[indices_T07 | indices_T08 | indices_T10 | indices_T11]
+                var_data = var_data.drop_sel(time=drop_times)
+                
+    elif leadtime in ["day05", "day06"]:
+        # Resample to 3-hourly data
+        var_data = var_data.resample(time='3H').sum()
+
+    elif leadtime in ["day07", "day08", "day09", "day10"]:
+        # Resample to 6-hourly data
+        var_data = var_data.resample(time='6H').sum()
+
+    return var_data
+
+def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, reference_data, task_name, mm, date_start, date_end, variable, mask_type, laginensemble, val_split, leadtime):
     
     """
     This function prepares the training data for UNET model.
@@ -318,6 +376,8 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
 
         REFERENCE = xr.open_dataset(f"{ATMOS_DATA}/{reference_data[0]}")
         REFERENCE = REFERENCE[variable].sel(time=slice(date_start, date_end))
+
+        REFERENCE = HRES_NETCDF_LEADTIME_TRAIN_PREPROCESS(REFERENCE, "novar", leadtime)
                                    
         # Align all datasets with the reference dataset
         datasets_aligned = []
@@ -511,7 +571,7 @@ def generate_produce_unique_name(loss, Filters, LR, min_LR, lr_factor, lr_patien
     training_unique_name = loss + "_" + str(Filters) + "_" + str(LR) + "_" + str(min_LR) + "_" + str(lr_factor) + "_" + str(lr_patience) + "_" + str(BS) + "_" + str(patience) + "_" + str(val_split) + "_" + str(epochs)
     return training_unique_name
 
-def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_data, reference_data, task_name, mm, date_start, date_end, variable, mask_type, laginensemble):
+def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_data, reference_data, task_name, mm, date_start, date_end, variable, mask_type, laginensemble, leadtime):
     
     """
     This function prepares the production data for UNET model.
@@ -550,7 +610,9 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
 
         REFERENCE = xr.open_dataset(f"{ATMOS_DATA}/{reference_data[0]}")
         REFERENCE = REFERENCE[variable].sel(time=slice(date_start, date_end))
-        
+
+        REFERENCE = HRES_NETCDF_LEADTIME_TRAIN_PREPROCESS(REFERENCE, "novar", leadtime)
+
         # Align all datasets with the reference dataset
         datasets_aligned = []
         for dataset in datasets:

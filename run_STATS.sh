@@ -8,7 +8,7 @@
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
 #SBATCH --account=deepacf
-#SBATCH --nodes=9
+#SBATCH --nodes=1
 #SBATCH --ntasks-per-node=9
 
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
@@ -22,7 +22,7 @@ for leadtime in {02..10}; do
     srun -N 1 -n 1 python STATS.py --leadtime $leadtime &
     # to run with python
     #python STATS.py --leadtime $leadtime &
-    sleep 2
+    sleep 1
 done
 
 wait

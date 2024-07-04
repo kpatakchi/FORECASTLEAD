@@ -5,7 +5,7 @@
 #SBATCH --error=LOGS/DL_PREP.err
 #SBATCH --nodes=9
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=00:15:00
+#SBATCH --time=01:00:00
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL

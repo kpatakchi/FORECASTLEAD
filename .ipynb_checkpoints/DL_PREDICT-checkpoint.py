@@ -10,6 +10,7 @@ parser.add_argument("--filters", type=int, required=True, help="Number of filter
 parser.add_argument("--mask_type", type=str, required=True, help="Mask Type")
 parser.add_argument("--HPT_path", type=str, required=True, help="Which HPT path for results?")
 parser.add_argument("--leadtime", type=str, required=True, help="Specify the lead time for correction (e.g., day02, day03 etc")
+parser.add_argument("--dropout", type=float, required=True, help="specify the dropout rate in U-Net")
 args = parser.parse_args()
 
 leadtime=args.leadtime 
@@ -19,6 +20,8 @@ LR=args.lr
 BS=args.bs
 lr_factor=args.lr_factor
 Filters=args.filters
+dropout = args.dropout
+
 if leadtime in ["day02", "day03", "day04"]:
     delayh = int(24*(int(leadtime[3:])-1))+1
 elif leadtime in ["day05", "day06"]:
@@ -63,8 +66,8 @@ train_x = tf.data.Dataset.from_tensor_slices(train_x).batch(BS)
 training_unique_name = func_train.generate_training_unique_name(loss, Filters, LR, min_LR, lr_factor, lr_patience, BS, patience, val_split, epochs)
 
 # load the model and weights
-model = func_train.UNET_ATT(xpixels, ypixels, n_channels, Filters)
-model_path = PPROJECT_DIR2 + HPT_path + "/" + training_unique_name + '_' + leadtime + '.h5'
+model = func_train.UNET_ATT(xpixels, ypixels, n_channels, Filters, dropout)
+model_path = PPROJECT_DIR2 + HPT_path + "/" + training_unique_name + '_' + dropout + '_' + leadtime + '.h5'
 model.load_weights(model_path)
 
 # produce 
