@@ -29,7 +29,7 @@ This script automates the preprocessing of HRES forecast data. It copies, adjust
 ### Run `DL_PREP.py` using `run_DL_PREP.sh` for preparing the data for training and production in DL: 
 This script utilizes argparse to specify lead time, specifications, unique filenames based on parameters, and prepares training and production data. 
 
-### Run `DL_TRAIN.py` using `run_DL_TRAIN.sh` for training: 
+### Run `DL_TRAIN.py` using `run_DL_HPT.sh` for hyperparameter tuning and training: 
 This script defines training hyperparameters using argparse and prepares data for model training. It loads training data, constructs TensorFlow datasets, initializes a UNet model, compiles it with the Adam optimizer, and defines callbacks for model checkpointing and early stopping. It then trains the model using defined datasets and saves the results. 
 
 ### Run `DL_PREDICT.py` using `run_DL_PREDICT.sh` for prediction: 
