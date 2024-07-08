@@ -4,10 +4,13 @@ import argparse
 # define the parameters
 parser = argparse.ArgumentParser(description="Prepare data for DL")
 parser.add_argument("--leadtime", type=str, required=True, help="Specify the lead time for correction (e.g., day02, day03 etc")
+parser.add_argument("--mask_type", type=str, required=True, help="Specify mask type")
 args = parser.parse_args()
 
 # Define the data specifications:
 leadtime=args.leadtime 
+mask_type=args.mask_type 
+
 model_data = ["ADAPTER_DE05."+ leadtime + ".merged.nc"]
 reference_data = ["ADAPTER_DE05.day01.merged.nc"]
 task_name = "spatiotemporal"
@@ -16,7 +19,6 @@ date_start = "2018-01-01T13"
 date_end = "2022-12-31T23"
 
 variable = "pr"
-mask_type = "no_na"
 laginensemble = False
 
 # Define the following for network configs:

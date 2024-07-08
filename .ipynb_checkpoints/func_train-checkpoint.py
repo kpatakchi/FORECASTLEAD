@@ -296,10 +296,12 @@ def HRES_NETCDF_LEADTIME_TRAIN_PREPROCESS(dataset, variable, leadtime):
         var_data = dataset*1
         
     if leadtime == "day04":
+
         # Assuming the time steps are hourly and formatted as 'YYYY-MM-DDTHH:00:00.000000000'
         unique_days = np.unique(var_data.time.dt.floor('D').values)
         
         for day in unique_days:
+
             # Mask for the specific day
             mask_day = (var_data.time.dt.floor('D') == day)
             
@@ -323,6 +325,7 @@ def HRES_NETCDF_LEADTIME_TRAIN_PREPROCESS(dataset, variable, leadtime):
                 # Drop the time steps T07, T08, T10, and T11
                 drop_times = var_data.time[indices_T07 | indices_T08 | indices_T10 | indices_T11]
                 var_data = var_data.drop_sel(time=drop_times)
+
                 
     elif leadtime in ["day05", "day06"]:
         # Resample to 3-hourly data
@@ -453,9 +456,9 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
             land=SPP_canvas[..., 2]>0*1
             canvas_m[..., 0] = canvas_m[..., 0]*land
             # to remove the zeros out of the boundaries:
-            #outbound = np.nanmean(canvas_m[:, ..., 0], axis=0) > 0.999
-            #for i in range(canvas_m.shape[0]):
-            #    canvas_m[i, outbound, 0] = 0
+            outbound = np.nanmean(canvas_y[:, ..., 0], axis=0) < 0.00001
+            for i in range(canvas_m.shape[0]):
+                canvas_m[i, outbound, 0] = 0
                 
         if mask_type == "no_na_intensity":
                                     
@@ -688,7 +691,7 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
             land=SPP_canvas[..., 2]>0*1
             canvas_m[..., 0] = canvas_m[..., 0]*land
             # to remove the zeros out of the boundaries:
-            outbound = np.nanmean(canvas_m[:, ..., 0], axis=0) > 0.999
+            outbound = np.nanmean(canvas_y[:, ..., 0], axis=0) < 0.00001
             for i in range(canvas_m.shape[0]):
                 canvas_m[i, outbound, 0] = 0
                 
@@ -781,54 +784,29 @@ def unmake_canvas(canvas, original_shape):
     data = canvas[:, top_pad:top_pad+original_dim1, left_pad:left_pad+original_dim2]
     return data
 
-def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, date_start, date_end, variable, training_unique_name, reference_data, delayh):
+def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, date_start, date_end, variable, training_unique_name, reference_data):
         
     import xarray as xr
     import pandas as pd
-    
-    if reference_data == ["COSMO_REA6"]:
-        canvas_size = (400, 400) 
-        topo_dir=PPROJECT_DIR+'/IO/03-TOPOGRAPHY/EU-11-TOPO.npz'
-        trim=True
-        daily=True
-    if reference_data == ["HSAF"]:
-        topo_dir=PPROJECT_DIR+'/IO/03-TOPOGRAPHY/HSAF-TOPO.npz'
-        canvas_size = (128, 256)
-        trim=False
-        daily=False
-    if reference_data == ["ADAPTER_DE05.day01.merged.nc"]:  #publication with HRES lead times
-        topo_dir = PPROJECT_DIR + '/IO/03-TOPOGRAPHY/HSAF-TOPO.npz'
-        canvas_size = (128, 256)
-        trim = False
-        daily = False
-    
-    date_start2 = (pd.to_datetime(date_start) + pd.DateOffset(hours=delayh)).strftime("%Y-%m-%dT%H")
-    
-    # Open the first model in model_data
+
+    REFERENCE = xr.open_dataset(f"{ATMOS_DATA}/{reference_data}")
+    REFERENCE = REFERENCE[variable].sel(time=slice(date_start, date_end))
+    REFERENCE = HRES_NETCDF_LEADTIME_TRAIN_PREPROCESS(REFERENCE, "novar", leadtime)
     model = xr.open_dataset(f"{ATMOS_DATA}/{model_data}")
-    model = model[variable].sel(time=slice(date_start2, date_end))
+    model = model[variable].sel(time=slice(date_start, date_end))
+    
+    model_aligned, REFERENCE_aligned = xr.align(model, REFERENCE, join='inner')
 
     # Retrieve lat and lon shape from the model
-    lat_shape = model.latitude.shape[0]
-    lon_shape = model.longitude.shape[0]
+    lat_shape = model_aligned.latitude.shape[0]
+    lon_shape = model_aligned.longitude.shape[0]
     
-    # Load topographical data
-    #SPP = spatiodataloader(topo_dir, model.shape)
-    #SPP_canvas = make_canvas(SPP, canvas_size, trim)
-
-    # Define ocean mask
-    #land= SPP_canvas[..., 2]>0
-    #land = land * 1
-    
-    # mismatch predictions for ocean is removed. 
-    #Y_PRED = Y_PRED * land
-
     # Restore the original shape of Y_PRED using unmake_canvas function
     Y_PRED = unmake_canvas(Y_PRED, (lat_shape, lon_shape))
 
     # Subtract Y_PRED from model
-    diff = model - Y_PRED
-    diff_clipped = np.clip(diff, 0, None)
+    diff = model_aligned - Y_PRED
+    diff_clipped = np.clip(diff, 0, None) # so that there is no less than zero precip generated!
     
     # Save the result in a NETCDF file
     data_unique_name = filename[:-4]

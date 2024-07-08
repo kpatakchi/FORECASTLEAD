@@ -8,17 +8,16 @@
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
 #SBATCH --account=deepacf
-#SBATCH --nodes=32
+#SBATCH --nodes=36
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=48
 
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.sh
 
 # remove existing directories:
-rm -r $HPT_DIR
-rm -r LOGS/DL_HPT*
+rm -r $HPT_DIR/*
 
 # Record the start time
 start_time=$(date +%s)

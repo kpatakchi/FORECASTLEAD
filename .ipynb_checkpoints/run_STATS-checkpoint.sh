@@ -3,13 +3,13 @@
 #SBATCH --job-name=STATS
 #SBATCH --output=LOGS/STATS.out
 #SBATCH --error=LOGS/STATS.err
-#SBATCH --time=00:05:00
+#SBATCH --time=00:30:00
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
 #SBATCH --account=deepacf
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=9
+#SBATCH --nodes=3
+#SBATCH --ntasks-per-node=1
 
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
 
@@ -22,7 +22,7 @@ for leadtime in {02..10}; do
     srun -N 1 -n 1 python STATS.py --leadtime $leadtime &
     # to run with python
     #python STATS.py --leadtime $leadtime &
-    sleep 1
+    sleep 120
 done
 
 wait

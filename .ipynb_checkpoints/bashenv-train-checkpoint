@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Environment setup:
+{
+module --force purge
+module load Stages/2023  GCC/11.3.0  OpenMPI/4.1.4
+module load TensorFlow
+module load xarray Python matplotlib
+} &> /dev/null
+
+
+source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/directories.sh

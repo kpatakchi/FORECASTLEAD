@@ -22,13 +22,6 @@ lr_factor=args.lr_factor
 Filters=args.filters
 dropout = args.dropout
 
-if leadtime in ["day02", "day03", "day04"]:
-    delayh = int(24*(int(leadtime[3:])-1))+1
-elif leadtime in ["day05", "day06"]:
-    delayh = int(24*(int(leadtime[3:])-1))+3
-else:
-    delayh = int(24*(int(leadtime[3:])-1))+6
-
 # Define the data specifications:
 model_data = ["ADAPTER_DE05."+ leadtime + ".merged.nc"]
 reference_data = ["ADAPTER_DE05.day01.merged.nc"]
@@ -80,4 +73,4 @@ train_x=None
 # Save in PREDICT_FILES
 func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
                               model_data[0], date_start, date_end, variable, 
-                              training_unique_name, reference_data, delayh)
+                              training_unique_name, reference_data[0])
