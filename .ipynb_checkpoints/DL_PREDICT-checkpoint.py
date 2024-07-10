@@ -60,7 +60,7 @@ training_unique_name = func_train.generate_training_unique_name(loss, Filters, L
 
 # load the model and weights
 model = func_train.UNET_ATT(xpixels, ypixels, n_channels, Filters, dropout)
-model_path = PPROJECT_DIR2 + HPT_path + "/" + training_unique_name + '_' + dropout + '_' + leadtime + '.h5'
+model_path = PPROJECT_DIR2 + HPT_path + "/" + training_unique_name + '_' + str(dropout) + '_' + leadtime + '.h5'
 model.load_weights(model_path)
 
 # produce 
@@ -73,4 +73,4 @@ train_x=None
 # Save in PREDICT_FILES
 func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
                               model_data[0], date_start, date_end, variable, 
-                              training_unique_name, reference_data[0])
+                              training_unique_name, reference_data[0], leadtime)

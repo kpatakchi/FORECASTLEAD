@@ -25,6 +25,11 @@ CMOD = xr.open_dataset(CMOD)
 # Align MOD_D and CMOD_D with REF_D
 MOD, CMOD, REF = xr.align(MOD, CMOD, REF, join='inner')
 
+# Apply mask to ensure positive values
+MOD_D = MOD_D.where(MOD_D >= 0, drop=True)
+CMOD_D = CMOD_D.where(CMOD_D = 0, drop=True)
+REF_D = REF_D.where(REF_D >= 0, drop=True)
+
 # Resample both datasets to daily frequency
 REF_D = func_stats.resample_dataset(REF, "daily")
 MOD_D = func_stats.resample_dataset(MOD, "daily")

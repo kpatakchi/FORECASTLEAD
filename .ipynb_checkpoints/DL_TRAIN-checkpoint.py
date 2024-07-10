@@ -61,15 +61,6 @@ val_y = train_files["val_y"]
 train_m = train_files["train_m"]
 val_m = train_files["val_m"]
 
-# remove the boundaries (=0) from training
-mean_train_y = np.mean(train_y, axis=0)
-mask = mean_train_y < 0.001
-train_m[:, mask] = 0
-
-mean_val_y = np.mean(val_y, axis=0)
-mask = mean_val_y < 0.001
-val_m[:, mask] = 0
-
 print("Data loaded!")
 
 train_dataset = tf.data.Dataset.from_tensor_slices((train_x, train_y, train_m)).batch(BS)

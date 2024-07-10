@@ -15,9 +15,10 @@
 
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
 
+rm -r $PREDICT_FILES/*
 
 # Run DL_TRAIN.py for each lead time in parallel
-for leadtime in {02..10}; do
+for leadtime in {04..04}; do
     lead_day_file="day${leadtime}.csv"
     echo "Setting hyperparameters for $lead_day_file ..."
     
@@ -25,7 +26,7 @@ for leadtime in {02..10}; do
     source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.sh "$lead_day_file"
     
     # Now the hyperparameters LR, BS, and DROPOUT should be updated for the current lead day
-    echo "Running DL_TRAIN.py for day$leadtime with LR: $LR, BS: $BS, DROPOUT: $DROPOUT ..."
+    echo "Running DL_PREDICT.py for day$leadtime with LR: $LR, BS: $BS, DROPOUT: $DROPOUT ..."
     srun --nodes=1 --ntasks=1 --gres=gpu:4 --cpus-per-task=4 python DL_PREDICT.py --lr $LR --bs $BS --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path $HPT_PATH --leadtime "day$leadtime" --dropout $DROPOUT &
     sleep 180
 done

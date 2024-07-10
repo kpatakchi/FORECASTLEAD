@@ -784,7 +784,7 @@ def unmake_canvas(canvas, original_shape):
     data = canvas[:, top_pad:top_pad+original_dim1, left_pad:left_pad+original_dim2]
     return data
 
-def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, date_start, date_end, variable, training_unique_name, reference_data):
+def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, date_start, date_end, variable, training_unique_name, reference_data, leadtime):
         
     import xarray as xr
     import pandas as pd
@@ -805,7 +805,7 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
     Y_PRED = unmake_canvas(Y_PRED, (lat_shape, lon_shape))
 
     # Subtract Y_PRED from model
-    diff = model_aligned - Y_PRED
+    diff = model_aligned[1:, ...] - Y_PRED
     diff_clipped = np.clip(diff, 0, None) # so that there is no less than zero precip generated!
     
     # Save the result in a NETCDF file

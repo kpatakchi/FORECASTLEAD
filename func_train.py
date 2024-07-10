@@ -326,7 +326,6 @@ def HRES_NETCDF_LEADTIME_TRAIN_PREPROCESS(dataset, variable, leadtime):
                 drop_times = var_data.time[indices_T07 | indices_T08 | indices_T10 | indices_T11]
                 var_data = var_data.drop_sel(time=drop_times)
 
-                
     elif leadtime in ["day05", "day06"]:
         # Resample to 3-hourly data
         var_data = var_data.resample(time='3H').sum()
@@ -784,7 +783,7 @@ def unmake_canvas(canvas, original_shape):
     data = canvas[:, top_pad:top_pad+original_dim1, left_pad:left_pad+original_dim2]
     return data
 
-def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, date_start, date_end, variable, training_unique_name, reference_data):
+def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, date_start, date_end, variable, training_unique_name, reference_data, leadtime):
         
     import xarray as xr
     import pandas as pd
@@ -805,7 +804,7 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
     Y_PRED = unmake_canvas(Y_PRED, (lat_shape, lon_shape))
 
     # Subtract Y_PRED from model
-    diff = model_aligned - Y_PRED
+    diff = model_aligned[1:, ...] - Y_PRED
     diff_clipped = np.clip(diff, 0, None) # so that there is no less than zero precip generated!
     
     # Save the result in a NETCDF file
