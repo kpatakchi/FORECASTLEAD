@@ -97,7 +97,7 @@ with strategy.scope():
     print("Training the model...")
 
     # Train the model using train_dataset and val_dataset
-    results = model.fit(train_dataset, validation_data=val_dataset, epochs=epochs, verbose=2, callbacks=[callbacks, checkpointer, reduce_lr])
+    results = model.fit(train_dataset, validation_data=val_dataset, epochs=epochs, verbose=0, callbacks=[callbacks, checkpointer, reduce_lr])
 
 # Save and plot the results
 print("Saving and plotting the results...")

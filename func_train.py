@@ -325,6 +325,8 @@ def HRES_NETCDF_LEADTIME_TRAIN_PREPROCESS(dataset, variable, leadtime):
                 # Drop the time steps T07, T08, T10, and T11
                 drop_times = var_data.time[indices_T07 | indices_T08 | indices_T10 | indices_T11]
                 var_data = var_data.drop_sel(time=drop_times)
+            else:
+                print("indices_T07 doesn't exist for" + str(day))
 
     elif leadtime in ["day05", "day06"]:
         # Resample to 3-hourly data
@@ -455,7 +457,7 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
             land=SPP_canvas[..., 2]>0*1
             canvas_m[..., 0] = canvas_m[..., 0]*land
             # to remove the zeros out of the boundaries:
-            outbound = np.nanmean(canvas_y[:, ..., 0], axis=0) < 0.00001
+            outbound = np.nanmean(canvas_x[:, ..., 0], axis=0) < 0.00001
             for i in range(canvas_m.shape[0]):
                 canvas_m[i, outbound, 0] = 0
                 
@@ -690,7 +692,7 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
             land=SPP_canvas[..., 2]>0*1
             canvas_m[..., 0] = canvas_m[..., 0]*land
             # to remove the zeros out of the boundaries:
-            outbound = np.nanmean(canvas_y[:, ..., 0], axis=0) < 0.00001
+            outbound = np.nanmean(canvas_x[:, ..., 0], axis=0) < 0.00001
             for i in range(canvas_m.shape[0]):
                 canvas_m[i, outbound, 0] = 0
                 

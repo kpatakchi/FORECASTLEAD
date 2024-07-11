@@ -5,8 +5,8 @@
 #SBATCH --error=LOGS/DL_PREP.err
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=16
-#SBATCH --time=01:30:00
+#SBATCH --cpus-per-task=8
+#SBATCH --time=02:30:00
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
@@ -22,7 +22,7 @@ rm -r $PRODUCE_FILES/*
 for leadtime in {02..10}; do
     echo "Running DL_PREP.py for day$leadtime ..."
     srun --ntasks=1 --nodes=1 python DL_PREP.py --leadtime day$leadtime --mask_type  $MASK_TYPE &
-    sleep 300
+    sleep 120
 done
 
 # Wait for all background jobs to finish

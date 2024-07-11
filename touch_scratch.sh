@@ -16,11 +16,13 @@
 source directories.sh
 
 cd $PSCRATCH_DIR
+cd .. #go back one directory
 find -exec touch {} \;
 
 echo "done 1" 
 
 cd $PSCRATCH_DIR2
+cd .. # go back one directory
 find -exec touch {} \;
 
 echo "done 2" 

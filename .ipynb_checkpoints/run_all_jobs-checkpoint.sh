@@ -3,6 +3,7 @@
 # Define the batch scripts in the desired order
 
 batch_scripts=(
+  "run_DL_PREP.sh"
   "run_DL_HPT.sh"
   "run_DL_PREDICT.sh"
   "run_STATS.sh"
