@@ -1,6 +1,6 @@
 from py_env_train import *
 
-def UNET_ATT(n_lat, n_lon, n_channels, ifn, dropout_rate):
+def UNET_ATT_(n_lat, n_lon, n_channels, ifn, dropout_rate):
     import tensorflow as tf
     n_lat = n_lat
     n_lon = n_lon
@@ -85,6 +85,85 @@ def UNET_ATT(n_lat, n_lon, n_channels, ifn, dropout_rate):
     u9 = tf.keras.layers.concatenate([u9, c1], axis=3)
     c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(u9)
     c9 = attention_block(c9, ifn)  # Add attention block here
+    c9 = tf.keras.layers.Dropout(dropout_rate)(c9)  # Add dropout layer here
+    c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c9)
+    c9 = tf.keras.layers.BatchNormalization()(c9)
+
+    outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c9)
+
+    model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
+
+    return model
+
+
+def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate):
+    import tensorflow as tf
+    n_lat = n_lat
+    n_lon = n_lon
+    n_channels = n_channels  # t-1, t, t+1
+    ifn = ifn  # initial feature number (number of initial filters)
+    leakyrelu = tf.keras.layers.LeakyReLU()
+    dropout_rate=dropout_rate
+
+    # Inputs
+    inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
+    inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
+
+    # Contraction path
+    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs_bn)
+    c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
+    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c1)
+    p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
+    p1 = tf.keras.layers.BatchNormalization()(p1)
+
+    c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
+    c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
+    c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
+    p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
+    p2 = tf.keras.layers.BatchNormalization()(p2)
+
+    c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(p2)
+    c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
+    c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
+    p3 = tf.keras.layers.MaxPooling2D((2, 2))(c3)
+    p3 = tf.keras.layers.BatchNormalization()(p3)
+
+    c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(p3)
+    c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
+    c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c4)
+    p4 = tf.keras.layers.MaxPooling2D((2, 2))(c4)
+    p4 = tf.keras.layers.BatchNormalization()(p4)
+
+    c5 = tf.keras.layers.Conv2D(ifn * 16, (3, 3), activation=leakyrelu, padding='same')(p4)
+    c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
+    c5 = tf.keras.layers.Conv2D(ifn * 16, (3, 3), activation=leakyrelu, padding='same')(c5)
+    c5 = tf.keras.layers.BatchNormalization()(c5)
+
+    # Expansive path
+    u6 = tf.keras.layers.Conv2DTranspose(ifn * 8, (3, 3), strides=(2, 2), padding='same')(c5)
+    u6 = tf.keras.layers.concatenate([u6, c4])
+    c6 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(u6)
+    c6 = tf.keras.layers.Dropout(dropout_rate)(c6)  # Add dropout layer here
+    c6 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c6)
+    c6 = tf.keras.layers.BatchNormalization()(c6)
+
+    u7 = tf.keras.layers.Conv2DTranspose(ifn * 4, (3, 3), strides=(2, 2), padding='same')(c6)
+    u7 = tf.keras.layers.concatenate([u7, c3])
+    c7 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(u7)
+    c7 = tf.keras.layers.Dropout(dropout_rate)(c7)  # Add dropout layer here
+    c7 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c7)
+    c7 = tf.keras.layers.BatchNormalization()(c7)
+
+    u8 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c7)
+    u8 = tf.keras.layers.concatenate([u8, c2])
+    c8 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u8)
+    c8 = tf.keras.layers.Dropout(dropout_rate)(c8)  # Add dropout layer here
+    c8 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c8)
+    c8 = tf.keras.layers.BatchNormalization()(c8)
+
+    u9 = tf.keras.layers.Conv2DTranspose(ifn, (3, 3), strides=(2, 2), padding='same')(c8)
+    u9 = tf.keras.layers.concatenate([u9, c1], axis=3)
+    c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(u9)
     c9 = tf.keras.layers.Dropout(dropout_rate)(c9)  # Add dropout layer here
     c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c9)
     c9 = tf.keras.layers.BatchNormalization()(c9)
@@ -376,11 +455,15 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
             
             dataset = xr.open_dataset(f"{ATMOS_DATA}/{model}")
             dataset = dataset[variable].sel(time=slice(date_start, date_end))
+            if variable == "pr":
+                dataset = dataset.where(dataset > 0, 0)
             datasets.append(dataset)
 
         REFERENCE = xr.open_dataset(f"{ATMOS_DATA}/{reference_data[0]}")
         REFERENCE = REFERENCE[variable].sel(time=slice(date_start, date_end))
-
+        if variable == "pr":
+            REFERENCE = REFERENCE.where(REFERENCE > 0, 0)
+        
         REFERENCE = HRES_NETCDF_LEADTIME_TRAIN_PREPROCESS(REFERENCE, "novar", leadtime)
                                    
         # Align all datasets with the reference dataset
@@ -457,9 +540,9 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
             land=SPP_canvas[..., 2]>0*1
             canvas_m[..., 0] = canvas_m[..., 0]*land
             # to remove the zeros out of the boundaries:
-            outbound = np.nanmean(canvas_x[:, ..., 0], axis=0) < 0.00001
-            for i in range(canvas_m.shape[0]):
-                canvas_m[i, outbound, 0] = 0
+            #outbound = np.nanmean(canvas_x[:, ..., 0], axis=0) < 0.00001
+            #for i in range(canvas_m.shape[0]):
+            #    canvas_m[i, outbound, 0] = 0
                 
         if mask_type == "no_na_intensity":
                                     
@@ -547,6 +630,24 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
         canvas_x = None
         canvas_m = None
 
+        y_min = np.min(train_y)
+        y_max = np.max(train_y)
+
+        train_y = (train_y - y_min) / (y_max - y_min)
+        val_y = (val_y - y_min) / (y_max - y_min)
+
+        # Save min and max values to a CSV file
+        import csv
+        
+        csv_file = f"{PPROJECT_DIR2}/CODES-MS3/FORECASTLEAD/minmax_scaling.csv"
+        file_exists = os.path.isfile(csv_file)
+        
+        with open(csv_file, 'a', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            if not file_exists:  # If the file doesn't exist, write the header
+                writer.writerow(["leadtime", "y_min", "y_max"])
+            writer.writerow([leadtime, y_min, y_max])
+
         # Save as float32 files
         np.savez(TRAIN_FILES + "/" + filename,
                  train_x=train_x,
@@ -575,7 +676,7 @@ def generate_produce_unique_name(loss, Filters, LR, min_LR, lr_factor, lr_patien
     training_unique_name = loss + "_" + str(Filters) + "_" + str(LR) + "_" + str(min_LR) + "_" + str(lr_factor) + "_" + str(lr_patience) + "_" + str(BS) + "_" + str(patience) + "_" + str(val_split) + "_" + str(epochs)
     return training_unique_name
 
-def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_data, reference_data, task_name, mm, date_start, date_end, variable, mask_type, laginensemble, leadtime):
+def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_data, reference_data, task_name, mm, date_start, date_end, variable, mask_type, laginensemble, leadtime, datamin, datamax):
     
     """
     This function prepares the production data for UNET model.
@@ -610,11 +711,16 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
         for model in model_data:
             dataset = xr.open_dataset(f"{ATMOS_DATA}/{model}")
             dataset = dataset[variable].sel(time=slice(date_start, date_end))
+            if variable == "pr":
+                dataset = dataset.where(dataset > 0, 0)
             datasets.append(dataset)
 
         REFERENCE = xr.open_dataset(f"{ATMOS_DATA}/{reference_data[0]}")
         REFERENCE = REFERENCE[variable].sel(time=slice(date_start, date_end))
-
+        
+        if variable == "pr":
+            REFERENCE = REFERENCE.where(REFERENCE > 0, 0)
+            
         REFERENCE = HRES_NETCDF_LEADTIME_TRAIN_PREPROCESS(REFERENCE, "novar", leadtime)
 
         # Align all datasets with the reference dataset
@@ -692,9 +798,9 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
             land=SPP_canvas[..., 2]>0*1
             canvas_m[..., 0] = canvas_m[..., 0]*land
             # to remove the zeros out of the boundaries:
-            outbound = np.nanmean(canvas_x[:, ..., 0], axis=0) < 0.00001
-            for i in range(canvas_m.shape[0]):
-                canvas_m[i, outbound, 0] = 0
+            #outbound = np.nanmean(canvas_x[:, ..., 0], axis=0) < 0.00001
+            #for i in range(canvas_m.shape[0]):
+            #    canvas_m[i, outbound, 0] = 0
                 
                 
         if mask_type == "no_na_intensity":
@@ -745,6 +851,8 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
         canvas_x = canvas_x.astype(np.float16)
         canvas_y = canvas_y.astype(np.float16)
         canvas_m = canvas_m.astype(np.float16)
+
+        canvas_y = (canvas_y - datamin) / (datamax - datamin)
         
         X_TRAIN_tminus = None
         CAL = None
@@ -785,7 +893,7 @@ def unmake_canvas(canvas, original_shape):
     data = canvas[:, top_pad:top_pad+original_dim1, left_pad:left_pad+original_dim2]
     return data
 
-def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, date_start, date_end, variable, training_unique_name, reference_data, leadtime):
+def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, date_start, date_end, variable, training_unique_name, reference_data, leadtime, datamin, datamax):
         
     import xarray as xr
     import pandas as pd
@@ -804,6 +912,7 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
     
     # Restore the original shape of Y_PRED using unmake_canvas function
     Y_PRED = unmake_canvas(Y_PRED, (lat_shape, lon_shape))
+    Y_PRED = Y_PRED * (datamax - datamin) + datamin # rescale back to original format
 
     # Subtract Y_PRED from model
     diff = model_aligned[1:, ...] - Y_PRED

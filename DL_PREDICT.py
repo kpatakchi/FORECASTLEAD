@@ -28,7 +28,8 @@ reference_data = ["ADAPTER_DE05.day01.merged.nc"]
 task_name = "spatiotemporal"
 mm = "MM"  # or DM
 date_start = "2018-01-01T13" # first day is not corrected
-date_end = "2023-12-31T23"
+date_end = "2022-12-31T23"
+date_end2 = "2023-12-31T23"
 variable = "pr"
 laginensemble = False
 min_delta_or_lr=0.0000001 #just to avoid any limitations
@@ -59,7 +60,7 @@ train_x = tf.data.Dataset.from_tensor_slices(train_x).batch(BS)
 training_unique_name = func_train.generate_training_unique_name(loss, Filters, LR, min_LR, lr_factor, lr_patience, BS, patience, val_split, epochs)
 
 # load the model and weights
-model = func_train.UNET_ATT(xpixels, ypixels, n_channels, Filters, dropout)
+model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout)
 model_path = PPROJECT_DIR2 + HPT_path + "/" + training_unique_name + '_' + str(dropout) + '_' + leadtime + '.h5'
 model.load_weights(model_path)
 
@@ -72,5 +73,5 @@ train_x=None
 
 # Save in PREDICT_FILES
 func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
-                              model_data[0], date_start, date_end, variable, 
-                              training_unique_name, reference_data[0], leadtime)
+                              model_data[0], date_start, date_end2, variable, 
+                              training_unique_name, reference_data[0], leadtime, datamin, datamax)

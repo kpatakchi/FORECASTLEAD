@@ -7,7 +7,6 @@ batch_scripts=(
   "run_DL_HPT.sh"
   "run_DL_PREDICT.sh"
   "run_STATS.sh"
-  "run_HRES_POST.sh"
 )
 
 #batch_scripts=(

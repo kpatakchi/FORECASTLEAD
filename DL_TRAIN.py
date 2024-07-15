@@ -82,7 +82,7 @@ print(training_unique_name)
 strategy = tf.distribute.MirroredStrategy()
 
 with strategy.scope():
-    model = func_train.UNET_ATT(xpixels, ypixels, n_channels, Filters, dropout)
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout)
     optimizer = tf.keras.optimizers.Adam(learning_rate=LR, name='Adam')
     model.compile(optimizer=optimizer, loss=loss, weighted_metrics=['mse'])
 

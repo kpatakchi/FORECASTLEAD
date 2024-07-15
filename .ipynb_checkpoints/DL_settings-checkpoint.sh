@@ -3,13 +3,13 @@
 # DL_settings.sh
 # Parameters for DL scripts
 # Default values (will be overwritten if best_hyperparameters.csv is found and lead_day is provided)
-LR=0.00001
-BS=16
+lr=0.0001
+bs=32
 LR_FACTOR=0.5
 FILTERS=64
 MASK_TYPE="no_na_land"
 HPT_PATH="HPT/"
-DROPOUT=0.3
+dropout=0.1
 
 # Path to the CSV file containing best hyperparameters
 HYPERPARAM_CSV="/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/best_hyperparameters.csv"
@@ -25,9 +25,9 @@ function set_hyperparameters() {
         
         while IFS=, read -r day dropout lr bs val_loss; do
             if [ "$day" == "$lead_day" ]; then
-                DROPOUT=$dropout
-                LR=$lr
-                BS=$bs
+                dropout=$dropout
+                lr=$lr
+                bs=$bs
                 break
             fi
         done < "$temp_csv"
@@ -43,13 +43,13 @@ function set_hyperparameters() {
 if [ "$#" -eq 1 ]; then
     # Set hyperparameters for the specified lead day
     set_hyperparameters "$1"
-    echo "Using hyperparameters for lead day $1 - LR: $LR, BS: $BS, DROPOUT: $DROPOUT"
+    echo "Using hyperparameters for lead day $1 - LR: $lr, BS: $bs, DROPOUT: $dropout"
 else
     # Using default hyperparameters
-    echo "No lead day provided. Using default hyperparameters - LR: $LR, BS: $BS, DROPOUT: $DROPOUT"
+    echo "No lead day provided. Using default hyperparameters - LR: $ls, BS: $bs, DROPOUT: $dropout"
 fi
 
 # Export variables for use in other scripts or commands
-export LR
-export BS
-export DROPOUT
+export lr
+export bs
+export dropout
