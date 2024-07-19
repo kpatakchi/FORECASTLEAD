@@ -3,7 +3,7 @@
 #SBATCH --job-name=DL_HPT
 #SBATCH --output=LOGS/DL_HPT.out
 #SBATCH --error=LOGS/DL_HPT.err
-#SBATCH --time=03:00:00
+#SBATCH --time=04:00:00
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
@@ -29,7 +29,7 @@ for dropout in 0.1 0.3 0.5 0.7; do
       for leadtime in {02..10}; do
         echo "Running DL_TRAIN.py for day$leadtime with dropout=$dropout, lr=$lr, bs=$bs ..."
         srun --nodes=1 --ntasks=1 --gres=gpu:4 --cpus-per-task=4 python DL_TRAIN.py --lr $lr --bs $bs --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path ${HPT_PATH} --leadtime day$leadtime --dropout $dropout &
-        sleep 4 # to make sure all 576 jobs fit in 32 nodes over time.
+        sleep 2 # to make sure all 576 jobs fit in 32 nodes over time.
       done
     done
   done

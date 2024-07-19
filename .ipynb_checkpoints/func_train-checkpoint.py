@@ -253,7 +253,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate):
     inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
 
     # Contraction path
-    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs_bn)
+    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs)
     c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
     c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c1)
     p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
@@ -691,12 +691,23 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
             canvas_m[dry] *= 0.01  # Multiply by 0.01 in dry conditions
             canvas_m[light] *= 0.04  # Multiply by 0.04 in light conditions
             canvas_m[heavy] *= 0.95  # Multiply by 0.95 in heavy conditions
-                
+
+        # rescaling to 0-1:
         x_min = np.min(X_TRAIN)
         x_max = np.max(X_TRAIN)
 
         X_TRAIN = (X_TRAIN - x_min) / (x_max - x_min)
         X_TRAIN_tminus = (X_TRAIN_tminus - x_min) / (x_max - x_min)
+
+        for ch in range (0, 2):
+            cal_min = np.nanmin(CAL[..., ch])
+            cal_max = np.nanmax(CAL[..., ch])
+            CAL[..., ch] = (CAL[..., ch] - cal_min) / (cal_max - cal_min)
+            
+        for ch in range (0, 3):
+            spp_min = np.nanmin(SPP[..., ch])
+            spp_max = np.nanmax(SPP[..., ch])
+            SPP[..., ch] = (SPP[..., ch] - spp_min) / (spp_max - spp_min)
         
         if task_name == "model_only":
             X_TRAIN = X_TRAIN
@@ -789,8 +800,8 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
         val_y = None
         val_m = None
 
-        np.save(PPROJECT_DIR+'/AI MODELS/00-UNET/'+data_unique_name+"_train_indices.npy", train_indices)
-        np.save(PPROJECT_DIR+'/AI MODELS/00-UNET/'+data_unique_name+"_val_indices.npy", val_indices)
+        #np.save(PPROJECT_DIR+'/AI MODELS/00-UNET/'+data_unique_name+"_train_indices.npy", train_indices)
+        #np.save(PPROJECT_DIR+'/AI MODELS/00-UNET/'+data_unique_name+"_val_indices.npy", val_indices)
 
         print("Data generated")
     else:  
@@ -956,6 +967,16 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
 
         X_TRAIN = (X_TRAIN - x_min) / (x_max - x_min)
         X_TRAIN_tminus = (X_TRAIN_tminus - x_min) / (x_max - x_min)
+
+        for ch in range (0, 2):
+            cal_min = np.nanmin(CAL[..., ch])
+            cal_max = np.nanmax(CAL[..., ch])
+            CAL[..., ch] = (CAL[..., ch] - cal_min) / (cal_max - cal_min)
+            
+        for ch in range (0, 3):
+            spp_min = np.nanmin(SPP[..., ch])
+            spp_max = np.nanmax(SPP[..., ch])
+            SPP[..., ch] = (SPP[..., ch] - spp_min) / (spp_max - spp_min)
 
         if task_name == "model_only":
             X_TRAIN = X_TRAIN
