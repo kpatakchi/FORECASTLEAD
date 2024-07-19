@@ -32,7 +32,7 @@ date_end = "2022-12-31T23"
 date_end2 = "2023-12-31T23"
 variable = "pr"
 laginensemble = False
-min_delta_or_lr=0.0000001 #just to avoid any limitations
+min_delta_or_lr=0.00000000000000001 #just to avoid any limitations
 
 # Define the following for network configs:
 loss = "mse"
@@ -71,7 +71,22 @@ Y_PRED=Y_PRED[..., 0]
 
 train_x=None
 
+import csv
+def get_scaling_params(PPROJECT_DIR2, leadtime):
+    scaling_file = f"{PPROJECT_DIR2}/CODES-MS3/FORECASTLEAD/minmax_scaling.csv"
+    
+    with open(scaling_file, 'r') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row['leadtime'] == leadtime:
+                y_min = float(row['y_min'])
+                y_max = float(row['y_max'])
+                
+                return y_min, y_max
+                
+y_min, y_max = get_scaling_params(PPROJECT_DIR2, leadtime)
+
 # Save in PREDICT_FILES
 func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 
                               model_data[0], date_start, date_end2, variable, 
-                              training_unique_name, reference_data[0], leadtime, datamin, datamax)
+                              training_unique_name, reference_data[0], leadtime, y_min, y_max)

@@ -1,94 +1,83 @@
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/EXTRACT_HPT.py", line 56, in <module>
-    min_idx = np.argmin(val_losses)
-  File "<__array_function__ internals>", line 180, in argmin
-  File "/p/software/juwelsbooster/stages/2023/software/SciPy-bundle/2022.05-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 1312, in argmin
-    return _wrapfunc(a, 'argmin', axis=axis, out=out, **kwds)
-  File "/p/software/juwelsbooster/stages/2023/software/SciPy-bundle/2022.05-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 57, in _wrapfunc
-    return bound(*args, **kwds)
-ValueError: attempt to get argmin of an empty sequence
-srun: error: jwb1223: task 0: Exited with exit code 1
-2024-07-14 13:58:21.904280: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-07-14 13:58:21.907080: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-07-14 13:58:21.909764: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-07-14 13:58:21.911449: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 63, in <module>
-    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout)
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 113, in UNET
-    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs_bn)
-NameError: name 'inputs_bn' is not defined. Did you mean: 'inputs'?
-srun: error: jwb1223: task 0: Exited with exit code 1
-2024-07-14 13:59:21.571955: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-07-14 13:59:21.573813: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-07-14 13:59:21.576135: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-07-14 13:59:21.578684: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 63, in <module>
-    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout)
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 113, in UNET
-    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs_bn)
-NameError: name 'inputs_bn' is not defined. Did you mean: 'inputs'?
-srun: error: jwb1223: task 0: Exited with exit code 1
-2024-07-14 14:00:18.296142: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-07-14 14:00:18.299508: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-07-14 14:00:18.301064: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-07-14 14:00:18.302696: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 63, in <module>
-    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout)
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 113, in UNET
-    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs_bn)
-NameError: name 'inputs_bn' is not defined. Did you mean: 'inputs'?
-srun: error: jwb1223: task 0: Exited with exit code 1
-2024-07-14 14:01:10.292490: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-07-14 14:01:10.294309: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-07-14 14:01:10.295827: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-07-14 14:01:10.297340: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 63, in <module>
-    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout)
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 113, in UNET
-    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs_bn)
-NameError: name 'inputs_bn' is not defined. Did you mean: 'inputs'?
-srun: error: jwb1223: task 0: Exited with exit code 1
-2024-07-14 14:02:08.943098: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-07-14 14:02:08.946592: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-07-14 14:02:08.948118: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-07-14 14:02:08.949701: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 63, in <module>
-    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout)
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 113, in UNET
-    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs_bn)
-NameError: name 'inputs_bn' is not defined. Did you mean: 'inputs'?
-srun: error: jwb1223: task 0: Exited with exit code 1
-2024-07-14 14:03:05.834823: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-07-14 14:03:05.836699: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-07-14 14:03:05.840626: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-07-14 14:03:05.842945: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 63, in <module>
-    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout)
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 113, in UNET
-    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs_bn)
-NameError: name 'inputs_bn' is not defined. Did you mean: 'inputs'?
-srun: error: jwb1223: task 0: Exited with exit code 1
-2024-07-14 14:04:06.353552: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-07-14 14:04:06.355382: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-07-14 14:04:06.357026: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-07-14 14:04:06.358506: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 65, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project1/cesmtst/patakchiyousefi1/HPT//mse_64_0.01_1e-07_0.5_4_32_16_0.5_128_0.1_day08.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-srun: error: jwb1223: task 0: Exited with exit code 1
+2024-07-18 09:49:21.638458: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-07-18 09:49:21.640447: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-07-18 09:49:21.642810: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-07-18 09:49:21.645295: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-07-18 09:49:37.297233: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-07-18 09:49:39.940234: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-07-18 09:49:39.943594: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-07-18 09:49:39.945220: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-07-18 09:49:39.946893: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-07-18 09:49:56.204171: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+srun: Job 10052871 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10052871
+2024-07-18 09:51:40.920581: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-07-18 09:51:40.922325: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-07-18 09:51:40.923897: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-07-18 09:51:40.925404: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10052871
+2024-07-18 09:51:47.774706: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-07-18 09:51:53.589513: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-07-18 09:51:53.591213: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-07-18 09:51:53.593620: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-07-18 09:51:53.595244: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-07-18 09:51:58.597549: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10052871
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10052871
+2024-07-18 09:52:55.406584: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-07-18 09:52:55.409289: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-07-18 09:52:55.410941: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-07-18 09:52:55.412437: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-07-18 09:52:57.176267: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-07-18 09:52:57.179293: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-07-18 09:52:57.180834: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-07-18 09:52:57.182334: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-07-18 09:53:01.871321: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-07-18 09:53:02.275133: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10052871
+2024-07-18 09:53:54.401923: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-07-18 09:53:54.405001: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-07-18 09:53:54.406716: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-07-18 09:53:54.408343: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-07-18 09:53:59.166470: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10052871
+2024-07-18 09:54:25.199761: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-07-18 09:54:25.202365: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-07-18 09:54:25.205714: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-07-18 09:54:25.207907: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-07-18 09:54:38.067205: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+srun: Job 10052871 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10052871
+2024-07-18 09:54:51.660626: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-07-18 09:54:51.662464: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-07-18 09:54:51.664092: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-07-18 09:54:51.665588: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-07-18 09:54:56.500030: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+srun: Job step aborted: Waiting up to 6 seconds for job step to finish.
+srun: forcing job termination

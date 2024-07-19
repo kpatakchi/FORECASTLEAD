@@ -3,10 +3,10 @@
 #SBATCH --job-name=DL_PREP
 #SBATCH --output=LOGS/DL_PREP.out
 #SBATCH --error=LOGS/DL_PREP.err
-#SBATCH --nodes=1
+#SBATCH --nodes=4
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=8
-#SBATCH --time=00:15:00
+#SBATCH --time=02:00:00
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
@@ -21,10 +21,10 @@ rm minmax_scaling.csv
 
 #mkdir $TRAIN_FILES
 
-for leadtime in {10..10}; do
+for leadtime in {02..10}; do
     echo "Running DL_PREP.py for day$leadtime ..."
     srun --ntasks=1 --nodes=1 python DL_PREP.py --leadtime day$leadtime --mask_type  $MASK_TYPE &
-    sleep 60
+    sleep 30
 done
 
 # Wait for all background jobs to finish

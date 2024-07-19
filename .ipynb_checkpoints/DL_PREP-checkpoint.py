@@ -51,12 +51,14 @@ def get_scaling_params(PPROJECT_DIR2, leadtime):
             if row['leadtime'] == leadtime:
                 y_min = float(row['y_min'])
                 y_max = float(row['y_max'])
+                x_min = float(row['x_min'])
+                x_max = float(row['x_max'])
                 
-                return y_min, y_max
+                return y_min, y_max, x_min, x_max
                 
-datamin, datamax = get_scaling_params(PPROJECT_DIR2, leadtime)
+y_min, y_max, x_min, x_max = get_scaling_params(PPROJECT_DIR2, leadtime)
 
 # Create the production data (if doesn't exist)
 data_avail = func_train.prepare_produce(PPROJECT_DIR, PRODUCE_FILES, HRES_PREP, filename,
                      model_data, reference_data, task_name, mm, date_start,
-                       date_end2, variable, mask_type, laginensemble, leadtime, datamin, datamax)
+                       date_end2, variable, mask_type, laginensemble, leadtime, y_min, y_max, x_min, x_max)
