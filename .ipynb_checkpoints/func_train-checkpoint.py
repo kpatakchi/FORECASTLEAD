@@ -239,7 +239,7 @@ def UNET_M(n_lat, n_lon, n_channels, ifn, dropout_rate):
 
     return model
 
-def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate):
+def UNET_S(n_lat, n_lon, n_channels, ifn, dropout_rate):
     import tensorflow as tf
     n_lat = n_lat
     n_lon = n_lon
@@ -292,7 +292,49 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate):
 
     return model
 
+def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate):
+    import tensorflow as tf
+    leakyrelu = tf.keras.layers.LeakyReLU()
+    
+    # Inputs
+    inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
+    inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
 
+    # Contraction path (only one level)
+    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs)
+    c1 = tf.keras.layers.Dropout(dropout_rate)(c1)
+    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c1)
+    p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
+    p1 = tf.keras.layers.BatchNormalization()(p1)
+    c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
+    c2 = tf.keras.layers.Dropout(dropout_rate)(c2)
+    c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
+
+    # Bottleneck
+    c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c2)
+    c3 = tf.keras.layers.Dropout(dropout_rate)(c3)
+    c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
+    c3 = tf.keras.layers.BatchNormalization()(c3)
+
+    # Expansive path (only one level)
+    u4 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c3)
+    u4 = tf.keras.layers.concatenate([u4, c1])
+    c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u4)
+    c4 = tf.keras.layers.Dropout(dropout_rate)(c4)
+    c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c4)
+    c4 = tf.keras.layers.BatchNormalization()(c4)
+    c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c4)
+    c5 = tf.keras.layers.Dropout(dropout_rate)(c5)
+    c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c5)
+    c5 = tf.keras.layers.BatchNormalization()(c5)
+
+    outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
+
+    model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
+
+    return model
+
+    
 def make_canvas(data, canvas_shape, trim=True):
     """
     Pads the input data with zeros to create a canvas of the specified shape

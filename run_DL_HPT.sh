@@ -3,7 +3,7 @@
 #SBATCH --job-name=DL_HPT
 #SBATCH --output=LOGS/DL_HPT.out
 #SBATCH --error=LOGS/DL_HPT.err
-#SBATCH --time=04:00:00
+#SBATCH --time=06:00:00
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
