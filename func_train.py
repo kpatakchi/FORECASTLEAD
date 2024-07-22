@@ -239,7 +239,7 @@ def UNET_M(n_lat, n_lon, n_channels, ifn, dropout_rate):
 
     return model
 
-def UNET_S(n_lat, n_lon, n_channels, ifn, dropout_rate):
+def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate):
     import tensorflow as tf
     n_lat = n_lat
     n_lon = n_lon
@@ -292,7 +292,114 @@ def UNET_S(n_lat, n_lon, n_channels, ifn, dropout_rate):
 
     return model
 
-def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate):
+def UNET_S_DEEP(n_lat, n_lon, n_channels, ifn, dropout_rate): #UNET_S_DEEP
+    import tensorflow as tf
+    n_lat = n_lat
+    n_lon = n_lon
+    n_channels = n_channels  # t-1, t, t+1
+    ifn = ifn*4  # initial feature number (number of initial filters)
+    leakyrelu = tf.keras.layers.LeakyReLU()
+    dropout_rate = dropout_rate
+
+    # Inputs
+    inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
+    inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
+
+    # Contraction path
+    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs)
+    c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
+    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c1)
+    p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
+    p1 = tf.keras.layers.BatchNormalization()(p1)
+
+    c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
+    c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
+    c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
+    p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
+    p2 = tf.keras.layers.BatchNormalization()(p2)
+
+    # Bottleneck (removed one level of downsampling)
+    c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(p2)
+    c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
+    c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
+    c3 = tf.keras.layers.BatchNormalization()(c3)
+
+    # Expansive path (adjusted to match the new architecture)
+    u4 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c3)
+    u4 = tf.keras.layers.concatenate([u4, c2])
+    c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u4)
+    c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
+    c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c4)
+    c4 = tf.keras.layers.BatchNormalization()(c4)
+
+    u5 = tf.keras.layers.Conv2DTranspose(ifn, (3, 3), strides=(2, 2), padding='same')(c4)
+    u5 = tf.keras.layers.concatenate([u5, c1], axis=3)
+    c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(u5)
+    c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
+    c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c5)
+    c5 = tf.keras.layers.BatchNormalization()(c5)
+
+    outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
+
+    model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
+
+    return model
+
+def UNET_S_AVG(n_lat, n_lon, n_channels, ifn, dropout_rate):
+    import tensorflow as tf
+    n_lat = n_lat
+    n_lon = n_lon
+    n_channels = n_channels  # t-1, t, t+1
+    ifn = ifn  # initial feature number (number of initial filters)
+    leakyrelu = tf.keras.layers.LeakyReLU()
+    dropout_rate = dropout_rate
+
+    # Inputs
+    inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
+    inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
+
+    # Contraction path
+    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs)
+    c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
+    c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c1)
+    p1 = tf.keras.layers.AveragePooling2D((2, 2))(c1)
+    p1 = tf.keras.layers.BatchNormalization()(p1)
+
+    c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
+    c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
+    c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
+    p2 = tf.keras.layers.AveragePooling2D((2, 2))(c2)
+    p2 = tf.keras.layers.BatchNormalization()(p2)
+
+    # Bottleneck (removed one level of downsampling)
+    c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(p2)
+    c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
+    c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
+    c3 = tf.keras.layers.BatchNormalization()(c3)
+
+    # Expansive path (adjusted to match the new architecture)
+    u4 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c3)
+    u4 = tf.keras.layers.concatenate([u4, c2])
+    c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u4)
+    c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
+    c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c4)
+    c4 = tf.keras.layers.BatchNormalization()(c4)
+
+    u5 = tf.keras.layers.Conv2DTranspose(ifn, (3, 3), strides=(2, 2), padding='same')(c4)
+    u5 = tf.keras.layers.concatenate([u5, c1], axis=3)
+    c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(u5)
+    c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
+    c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c5)
+    c5 = tf.keras.layers.BatchNormalization()(c5)
+
+    outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
+
+    model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
+
+    return model
+
+
+def UNET_XS(n_lat, n_lon, n_channels, ifn, dropout_rate):
     import tensorflow as tf
     leakyrelu = tf.keras.layers.LeakyReLU()
     
@@ -334,7 +441,93 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate):
 
     return model
 
-    
+def UNET_ATT_RES(n_lat, n_lon, n_channels, ifn, dropout_rate):
+    import tensorflow as tf
+
+    # Convolutional block
+    def conv_block(x, filters, kernel_size, dropout_rate):
+        conv = tf.keras.layers.Conv2D(filters, kernel_size, padding='same', kernel_initializer='he_normal')(x)
+        conv = tf.keras.layers.BatchNormalization()(conv)
+        conv = tf.keras.layers.LeakyReLU()(conv)
+        conv = tf.keras.layers.Dropout(dropout_rate)(conv)
+        conv = tf.keras.layers.Conv2D(filters, kernel_size, padding='same', kernel_initializer='he_normal')(conv)
+        conv = tf.keras.layers.BatchNormalization()(conv)
+        conv = tf.keras.layers.LeakyReLU()(conv)
+        return conv
+
+    # Residual block
+    def res_conv_block(x, filters, kernel_size, dropout_rate):
+        conv = conv_block(x, filters, kernel_size, dropout_rate)
+        shortcut = tf.keras.layers.Conv2D(filters, (1, 1), padding='same', kernel_initializer='he_normal')(x)
+        shortcut = tf.keras.layers.BatchNormalization()(shortcut)
+        res_path = tf.keras.layers.add([shortcut, conv])
+        return res_path
+
+    # Gating signal
+    def gating_signal(input, filters):
+        x = tf.keras.layers.Conv2D(filters, (1, 1), padding='same', kernel_initializer='he_normal')(input)
+        x = tf.keras.layers.BatchNormalization()(x)
+        x = tf.keras.layers.LeakyReLU()(x)
+        return x
+
+    # Attention block
+    def attention_block(x, gating, filters):
+        theta_x = tf.keras.layers.Conv2D(filters, (2, 2), strides=(2, 2), padding='same', kernel_initializer='he_normal')(x)
+        phi_g = tf.keras.layers.Conv2D(filters, (1, 1), padding='same', kernel_initializer='he_normal')(gating)
+        upsample_g = tf.keras.layers.Conv2DTranspose(filters, (3, 3), strides=(theta_x.shape[1] // phi_g.shape[1], theta_x.shape[2] // phi_g.shape[2]), padding='same', kernel_initializer='he_normal')(phi_g)
+        concat_xg = tf.keras.layers.add([upsample_g, theta_x])
+        act_xg = tf.keras.layers.LeakyReLU()(concat_xg)
+        psi = tf.keras.layers.Conv2D(1, (1, 1), padding='same', kernel_initializer='he_normal')(act_xg)
+        sigmoid_xg = tf.keras.layers.Activation('sigmoid')(psi)
+        upsample_psi = tf.keras.layers.UpSampling2D(size=(x.shape[1] // sigmoid_xg.shape[1], x.shape[2] // sigmoid_xg.shape[2]))(sigmoid_xg)
+        y = tf.keras.layers.multiply([upsample_psi, x])
+        result = tf.keras.layers.Conv2D(x.shape[3], (1, 1), padding='same', kernel_initializer='he_normal')(y)
+        result = tf.keras.layers.BatchNormalization()(result)
+        return result
+
+    n_lat = n_lat
+    n_lon = n_lon
+    n_channels = n_channels
+    ifn = ifn
+    dropout_rate = dropout_rate
+
+    inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
+    inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
+
+    # Contraction path
+    c1 = res_conv_block(inputs_bn, ifn, (3, 3), dropout_rate)
+    p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
+    p1 = tf.keras.layers.BatchNormalization()(p1)
+
+    c2 = res_conv_block(p1, ifn * 2, (3, 3), dropout_rate)
+    p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
+    p2 = tf.keras.layers.BatchNormalization()(p2)
+
+    # Bottleneck
+    c3 = res_conv_block(p2, ifn * 4, (3, 3), dropout_rate)
+    c3 = tf.keras.layers.BatchNormalization()(c3)
+
+    # Expansive path with attention
+    g2 = gating_signal(c3, ifn * 2)
+    a2 = attention_block(c2, g2, ifn * 2)
+    u2 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c3)
+    u2 = tf.keras.layers.concatenate([u2, a2])
+    c4 = res_conv_block(u2, ifn * 2, (3, 3), dropout_rate)
+    c4 = tf.keras.layers.BatchNormalization()(c4)
+
+    g1 = gating_signal(c4, ifn)
+    a1 = attention_block(c1, g1, ifn)
+    u1 = tf.keras.layers.Conv2DTranspose(ifn, (3, 3), strides=(2, 2), padding='same')(c4)
+    u1 = tf.keras.layers.concatenate([u1, a1], axis=3)
+    c5 = res_conv_block(u1, ifn, (3, 3), dropout_rate)
+    c5 = tf.keras.layers.BatchNormalization()(c5)
+
+    outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
+
+    model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
+
+    return model
+
 def make_canvas(data, canvas_shape, trim=True):
     """
     Pads the input data with zeros to create a canvas of the specified shape
@@ -1089,10 +1282,18 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
 
     REFERENCE = xr.open_dataset(f"{ATMOS_DATA}/{reference_data}")
     REFERENCE = REFERENCE[variable].sel(time=slice(date_start, date_end))
+
+    if variable == "pr":
+        REFERENCE = REFERENCE.where(REFERENCE > 0, 0)
+                
     REFERENCE = HRES_NETCDF_LEADTIME_TRAIN_PREPROCESS(REFERENCE, "novar", leadtime)
+    
     model = xr.open_dataset(f"{ATMOS_DATA}/{model_data}")
     model = model[variable].sel(time=slice(date_start, date_end))
-    
+
+    if variable == "pr":
+        model = model.where(model > 0, 0)
+
     model_aligned, REFERENCE_aligned = xr.align(model, REFERENCE, join='inner')
 
     # Retrieve lat and lon shape from the model

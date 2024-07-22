@@ -36,7 +36,7 @@ laginensemble = False
 min_delta_or_lr = 0.00000000000000001  # just to avoid any limitations
 
 # Define the following for network configs:
-loss = "mse"
+loss_n = "mse-mae"
 min_LR = min_delta_or_lr
 lr_patience = 4
 patience = 16
@@ -46,6 +46,14 @@ n_channels = 7
 xpixels = 128
 ypixels = 256
 
+if loss_n == "mse-mae":
+    def mse_mae_loss(y_true, y_pred):
+        mse = tf.keras.losses.mean_squared_error(y_true, y_pred)
+        mae = tf.keras.losses.mean_absolute_error(y_true, y_pred)
+        return mse + mae
+
+    loss = mse_mae_loss
+    
 filename = func_train.data_unique_name_generator(model_data, reference_data, task_name, mm, date_start, date_end, variable, mask_type, laginensemble)
 data_unique_name = filename[:-4]
 print(data_unique_name)
@@ -75,7 +83,7 @@ val_dataset = val_dataset.with_options(options)
 
 train_x, train_y, val_x, val_y = None, None, None, None
 
-training_unique_name = func_train.generate_training_unique_name(loss, Filters, LR, min_LR, lr_factor, lr_patience, BS, patience, val_split, epochs)
+training_unique_name = func_train.generate_training_unique_name(loss_n, Filters, LR, min_LR, lr_factor, lr_patience, BS, patience, val_split, epochs)
 print(training_unique_name)
 
 # Distribute the training across available GPUs
