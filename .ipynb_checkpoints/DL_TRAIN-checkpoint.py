@@ -12,6 +12,7 @@ parser.add_argument("--mask_type", type=str, required=True, help="Mask Type")
 parser.add_argument("--HPT_path", type=str, required=True, help="Which HPT path for results?")
 parser.add_argument("--leadtime", type=str, required=True, help="Specify the lead time for correction (e.g., day02, day03 etc")
 parser.add_argument("--dropout", type=float, required=True, help="specify the dropout rate in U-Net")
+parser.add_argument("--unet_type", type=str, required=True, help="specify the type of u-net")
 
 args = parser.parse_args()
 
@@ -23,6 +24,7 @@ BS = args.bs
 lr_factor = args.lr_factor
 Filters = args.filters
 dropout = args.dropout
+unet_type = args.unet_type
 
 # Define the data specifications:
 model_data = ["ADAPTER_DE05." + leadtime + ".merged.nc"]
@@ -36,7 +38,7 @@ laginensemble = False
 min_delta_or_lr = 0.00000000000000001  # just to avoid any limitations
 
 # Define the following for network configs:
-loss_n = "mse-mae"
+loss_n = "mse"
 min_LR = min_delta_or_lr
 lr_patience = 4
 patience = 16
@@ -53,6 +55,8 @@ if loss_n == "mse-mae":
         return mse + mae
 
     loss = mse_mae_loss
+else:
+    loss = loss_n
     
 filename = func_train.data_unique_name_generator(model_data, reference_data, task_name, mm, date_start, date_end, variable, mask_type, laginensemble)
 data_unique_name = filename[:-4]
@@ -83,19 +87,19 @@ val_dataset = val_dataset.with_options(options)
 
 train_x, train_y, val_x, val_y = None, None, None, None
 
-training_unique_name = func_train.generate_training_unique_name(loss_n, Filters, LR, min_LR, lr_factor, lr_patience, BS, patience, val_split, epochs)
+training_unique_name = func_train.generate_training_unique_name(loss_n, Filters, LR, min_LR, lr_factor, lr_patience, BS, patience, val_split, epochs, str(dropout), unet_type, leadtime)
 print(training_unique_name)
 
 # Distribute the training across available GPUs
 strategy = tf.distribute.MirroredStrategy()
 
 with strategy.scope():
-    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout)
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
     optimizer = tf.keras.optimizers.Adam(learning_rate=LR, name='Adam')
     model.compile(optimizer=optimizer, loss=loss, weighted_metrics=['mse'])
 
     # Define the model checkpoint and early stopping callbacks
-    model_path = PPROJECT_DIR2 + HPT_path + training_unique_name + "_" + str(dropout) + '_' + leadtime + '.h5'
+    model_path = PPROJECT_DIR2 + HPT_path + training_unique_name + '.h5'
     checkpointer = tf.keras.callbacks.ModelCheckpoint(model_path, verbose=1, save_best_only=True, monitor='val_loss')
     callbacks = [tf.keras.callbacks.EarlyStopping(patience=patience, monitor='val_loss')]
 
@@ -110,4 +114,4 @@ with strategy.scope():
 # Save and plot the results
 print("Saving and plotting the results...")
 RESULTS_DF = pd.DataFrame(results.history)
-RESULTS_DF.to_csv(PPROJECT_DIR2 + HPT_path + training_unique_name + "_" + str(dropout) + "_" + leadtime +".csv")
+RESULTS_DF.to_csv(PPROJECT_DIR2 + HPT_path + training_unique_name + ".csv")

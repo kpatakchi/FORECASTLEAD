@@ -26,10 +26,12 @@ start_time=$(date +%s)
 for dropout in 0.1 0.3 0.5 0.7; do
   for lr in 0.01 0.001 0.0001 0.00001; do
     for bs in 4 8 16 32; do
-      for leadtime in {02..10}; do
-        echo "Running DL_TRAIN.py for day$leadtime with dropout=$dropout, lr=$lr, bs=$bs ..."
-        srun --nodes=1 --ntasks=1 --gres=gpu:4 --cpus-per-task=4 python DL_TRAIN.py --lr $lr --bs $bs --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path ${HPT_PATH} --leadtime day$leadtime --dropout $dropout &
-        sleep 1 # to make sure all 576 jobs fit in 32 nodes over time.
+      for unet_type in unet-l unet-m unet-s unet-xs; do
+        for leadtime in {02..10}; do
+          echo "Running DL_TRAIN.py for day$leadtime with dropout=$dropout, lr=$lr, bs=$bs, unet_type=$unet_type ..."
+          srun --nodes=1 --ntasks=1 --gres=gpu:4 --cpus-per-task=4 python DL_TRAIN.py --lr $lr --bs $bs --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path ${HPT_PATH} --leadtime day$leadtime --dropout $dropout --unet_type $unet_type &
+          sleep 1 # to make sure all jobs fit in the available nodes over time.
+        done
       done
     done
   done

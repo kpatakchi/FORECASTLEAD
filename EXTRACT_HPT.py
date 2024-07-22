@@ -20,6 +20,7 @@ def extract_min_val_loss(day):
     lrs_list = []
     bss_list = []
     val_losses_list = []
+    unet_types_list = []
 
     # Loop over each file and extract the minimum val_loss
     for file in filtered_files:
@@ -30,7 +31,8 @@ def extract_min_val_loss(day):
         dropout = float(parts[10])
         lr = float(parts[2])
         bs = int(parts[6])
-                
+        unet_type = str(parts[11])
+        
         # Read the CSV file
         df = pd.read_csv(file_path)
         
@@ -42,15 +44,16 @@ def extract_min_val_loss(day):
         lrs_list.append(lr)
         bss_list.append(bs)
         val_losses_list.append(min_val_loss)
-        
-    return np.array(dropouts_list), np.array(lrs_list), np.array(bss_list), np.array(val_losses_list)
+        unet_types_list.append(unet_type)
+
+    return np.array(dropouts_list), np.array(lrs_list), np.array(bss_list), np.array(val_losses_list), np.array(unet_types_list)
 
 # Dictionary to store the best hyperparameters for each lead day
 best_hyperparameters = {}
 
 # Loop through each day to find the best hyperparameters
 for day in days:
-    dropouts, lrs, bss, val_losses = extract_min_val_loss(day)
+    dropouts, lrs, bss, val_losses, unet_types = extract_min_val_loss(day)
     
     # Find the index of the minimum val_loss
     min_idx = np.argmin(val_losses)
@@ -60,6 +63,7 @@ for day in days:
         'dropout': dropouts[min_idx],
         'lr': lrs[min_idx],
         'bs': bss[min_idx],
+        'unet_type': unet_types[min_idx]
         'val_loss': val_losses[min_idx]
     }
 

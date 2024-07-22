@@ -10,6 +10,7 @@ def extract_min_val_loss(day, all_files, path_to_csv):
     lrs_list = []
     bss_list = []
     val_losses_list = []
+    unet_types_list = []
 
     # Loop over each file and extract the minimum val_loss
     for file in filtered_files:
@@ -21,7 +22,8 @@ def extract_min_val_loss(day, all_files, path_to_csv):
             dropout = float(parts[10])
             lr = float(parts[2])
             bs = int(parts[6])
-            
+            unet_type = str(parts[11])
+
             # Read the CSV file
             df = pd.read_csv(file_path)
             
@@ -33,11 +35,13 @@ def extract_min_val_loss(day, all_files, path_to_csv):
             lrs_list.append(lr)
             bss_list.append(bs)
             val_losses_list.append(min_val_loss)
+            unet_types_list.append(unet_type)
+
         except (IndexError, ValueError, FileNotFoundError, pd.errors.EmptyDataError) as e:
             print(f"Error processing file {file}: {e}")
             continue
         
-    return np.array(dropouts_list), np.array(lrs_list), np.array(bss_list), np.array(val_losses_list)
+    return np.array(dropouts_list), np.array(lrs_list), np.array(bss_list), np.array(val_losses_list), np.array(unet_types_list)
 
 
 def plot_hpt_scatter_data(ax, day, dropouts, lrs, bss, val_losses, cmap, fs, stepsincolor):
