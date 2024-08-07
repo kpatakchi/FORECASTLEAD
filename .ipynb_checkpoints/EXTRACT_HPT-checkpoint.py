@@ -63,7 +63,7 @@ for day in days:
         'dropout': dropouts[min_idx],
         'lr': lrs[min_idx],
         'bs': bss[min_idx],
-        'unet_type': unet_types[min_idx]
+        'unet_type': unet_types[min_idx],
         'val_loss': val_losses[min_idx]
     }
 

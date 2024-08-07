@@ -31,7 +31,7 @@ for leadtime in {02..10}; do
     
     # Now the hyperparameters LR, BS, and DROPOUT should be updated for the current lead day
     echo "Running DL_PREDICT.py for day$leadtime with LR: $LR, BS: $BS, DROPOUT: $DROPOUT ..."
-    srun --nodes=1 --ntasks=1 --gres=gpu:4 --cpus-per-task=4 python DL_PREDICT.py --lr $lr --bs $bs --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path $HPT_PATH --leadtime "day$leadtime" --dropout $dropout &
+    srun --nodes=1 --ntasks=1 --gres=gpu:4 --cpus-per-task=4 python DL_PREDICT.py --lr $lr --bs $bs --lr_factor $LR_FACTOR --filters $FILTERS --mask_type $MASK_TYPE --HPT_path $HPT_PATH --leadtime "day$leadtime" --dropout $dropout --unet_type $unet_type &
     sleep 10
     
 done

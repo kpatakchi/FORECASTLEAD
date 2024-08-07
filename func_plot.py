@@ -10,7 +10,6 @@ def extract_min_val_loss(day, all_files, path_to_csv):
     lrs_list = []
     bss_list = []
     val_losses_list = []
-    unet_types_list = []
 
     # Loop over each file and extract the minimum val_loss
     for file in filtered_files:
@@ -22,7 +21,6 @@ def extract_min_val_loss(day, all_files, path_to_csv):
             dropout = float(parts[10])
             lr = float(parts[2])
             bs = int(parts[6])
-            unet_type = str(parts[11])
 
             # Read the CSV file
             df = pd.read_csv(file_path)
@@ -35,16 +33,24 @@ def extract_min_val_loss(day, all_files, path_to_csv):
             lrs_list.append(lr)
             bss_list.append(bs)
             val_losses_list.append(min_val_loss)
-            unet_types_list.append(unet_type)
 
         except (IndexError, ValueError, FileNotFoundError, pd.errors.EmptyDataError) as e:
             print(f"Error processing file {file}: {e}")
             continue
         
-    return np.array(dropouts_list), np.array(lrs_list), np.array(bss_list), np.array(val_losses_list), np.array(unet_types_list)
+    return np.array(dropouts_list), np.array(lrs_list), np.array(bss_list), np.array(val_losses_list)
 
 
 def plot_hpt_scatter_data(ax, day, dropouts, lrs, bss, val_losses, cmap, fs, stepsincolor):
+
+    max_lr=0.01
+    min_lr=0.00001
+    min_bs=2
+    max_bs=16
+    min_dropout=0
+    max_dropout=0.3
+    dropoutstep=0.1
+    
     transformed_val_losses = np.log10(val_losses)
     
     local_vmax = transformed_val_losses.max()
@@ -60,22 +66,22 @@ def plot_hpt_scatter_data(ax, day, dropouts, lrs, bss, val_losses, cmap, fs, ste
     ax.set_zlabel('Batch Size', fontsize=8*fs)
     ax.set_title(f'Lead day {day[:-4][-2:]}', fontsize=12*fs)
 
-    ax.set_xticks(np.arange(0.1, 0.8, 0.2))
-    ax.set_yticks(np.log10([0.01, 0.001, 0.0001, 0.00001]))
-    ax.set_xticklabels(['0.1', '0.3', '0.5', '0.7'], fontsize=10*fs)
+    ax.set_xticks(np.arange(min_dropout, max_dropout+dropoutstep, dropoutstep))
+    ax.set_yticks(np.log10([min_lr, 0.001, 0.0001, max_lr]))
+    ax.set_xticklabels(['0', '0.1', '0.2', '0.3'], fontsize=10*fs)
     ax.set_yticklabels(['$10^{-2}$', '$10^{-3}$', '$10^{-4}$', '$10^{-5}$'], fontsize=10*fs)
-    ax.set_zticks(np.log2([4, 8, 16, 32]))
-    ax.set_zticklabels(['$2^{2}$', '$2^{3}$', '$2^{4}$', '$2^{5}$'], fontsize=10*fs)
+    ax.set_zticks(np.log2([min_bs, 4, 8, max_bs]))
+    ax.set_zticklabels(['$2^{1}$', '$2^{2}$', '$2^{3}$', '$2^{4}$'], fontsize=10*fs)
     
-    ax.set_xlim([0.1, 0.7])
-    ax.set_ylim(np.log10(0.01), np.log10(0.00001))
-    ax.set_zlim(np.log2([4, 32]))
+    ax.set_xlim([0, max_dropout])
+    ax.set_ylim(np.log10(max_lr), np.log10(min_lr))
+    ax.set_zlim(np.log2([min_bs, max_bs]))
     
     ax.grid(True, which='both')
     
-    ax.plot([dropouts[min_idx], dropouts[min_idx]], [np.log10(lrs[min_idx]), np.log10(lrs[min_idx])], [np.log2(4), np.log2(bss[min_idx])], linestyle='--', color='gray', linewidth=0.5)
-    ax.plot([dropouts[min_idx], dropouts[min_idx]], [np.log10(0.00001), np.log10(lrs[min_idx])], [np.log2(bss[min_idx]), np.log2(bss[min_idx])], linestyle='--', color='gray', linewidth=0.5)
-    ax.plot([0.1, dropouts[min_idx]], [np.log10(lrs[min_idx]), np.log10(lrs[min_idx])], [np.log2(bss[min_idx]), np.log2(bss[min_idx])], linestyle='--', color='gray', linewidth=0.5)
+    ax.plot([dropouts[min_idx], dropouts[min_idx]], [np.log10(lrs[min_idx]), np.log10(lrs[min_idx])], [np.log2(min_bs), np.log2(bss[min_idx])], linestyle='--', color='gray', linewidth=0.5)
+    ax.plot([dropouts[min_idx], dropouts[min_idx]], [np.log10(min_lr), np.log10(lrs[min_idx])], [np.log2(bss[min_idx]), np.log2(bss[min_idx])], linestyle='--', color='gray', linewidth=0.5)
+    ax.plot([min_dropout, dropouts[min_idx]], [np.log10(lrs[min_idx]), np.log10(lrs[min_idx])], [np.log2(bss[min_idx]), np.log2(bss[min_idx])], linestyle='--', color='gray', linewidth=0.5)
     
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=plt.Normalize(vmin=local_vmin, vmax=local_vmax))
     sm.set_array(transformed_val_losses)

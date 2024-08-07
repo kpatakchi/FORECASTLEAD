@@ -24,7 +24,7 @@ function set_hyperparameters() {
         temp_csv=$(mktemp)
         tail -n +2 "$HYPERPARAM_CSV" > "$temp_csv"
 
-        while IFS=, read -r day dropout lr bs val_loss unet_type; do
+        while IFS=, read -r day dropout lr bs unet_type val_loss; do
             if [ "$day" == "$lead_day" ]; then
                 dropout=$dropout
                 lr=$lr

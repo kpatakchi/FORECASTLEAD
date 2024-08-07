@@ -1,0 +1,741 @@
+/var/spool/parastation/jobs/10137645: line 17: /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTSEAD/bashenv-train: No such file or directory
+2024-08-06 23:13:06.312064: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:13:06.314512: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:13:06.317126: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:13:06.318679: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+2024-08-06 23:13:25.508575: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:13:25.510380: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:13:25.511924: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:13:25.513552: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+2024-08-06 23:13:44.051547: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:13:44.053432: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:13:44.055089: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:13:44.056715: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+2024-08-06 23:14:02.612142: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:14:02.614024: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:14:02.615659: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:14:02.617289: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+2024-08-06 23:14:21.200485: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:14:21.203395: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:14:21.206778: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:14:21.209352: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+2024-08-06 23:14:39.615975: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:14:39.617826: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:14:39.619469: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:14:39.621084: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+2024-08-06 23:14:59.020841: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:14:59.023681: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:14:59.026335: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:14:59.027979: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+2024-08-06 23:15:17.417966: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:15:17.420631: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:15:17.422281: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:15:17.423859: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+2024-08-06 23:15:35.813450: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:15:35.816680: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:15:35.818325: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:15:35.819859: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+2024-08-06 23:15:54.231127: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:15:54.233971: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:15:54.236578: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:15:54.238086: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+2024-08-06 23:16:12.609142: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:16:12.612128: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:16:12.613621: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:16:12.615856: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+2024-08-06 23:16:31.013021: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:16:31.015811: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:16:31.018092: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:16:31.020733: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+2024-08-06 23:16:49.403372: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:16:49.405272: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:16:49.407860: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:16:49.409549: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+2024-08-06 23:17:09.741442: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:17:09.743175: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:17:09.744780: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:17:09.746241: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for job 10137645
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+2024-08-06 23:17:46.727569: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-08-06 23:17:46.729267: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-08-06 23:17:46.730906: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-08-06 23:17:46.732411: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 25, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 339, in transunet_2d
+    X = transunet_2d_base(IN, filter_num, stack_num_down=stack_num_down, stack_num_up=stack_num_up, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 260, in transunet_2d_base
+    X = UNET_right(X, [X_decode[i],], filter_num_decode[i], stack_num=stack_num_up, activation=activation, 
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_unet_2d.py", line 86, in UNET_right
+    X = concatenate([X,]+X_list, axis=3, name=name+'_concat')
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 231, in concatenate
+    return Concatenate(axis=axis, **kwargs)(inputs)
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/layers/merging/concatenate.py", line 131, in build
+    raise ValueError(err_msg)
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concatenation axis. Received: input_shape=[(None, 32, 32, 256), (None, 32, 64, 256)]
+srun: error: jwb0323: task 0: Exited with exit code 1
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: Job 10137645 step creation still disabled, retrying (Requested nodes are busy)
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+srun: error: Unable to create step for job 10137645: Job/step already completing or completed
+error: *** job 10137645 CANCELLED DUE TO TIME LIMIT ***
