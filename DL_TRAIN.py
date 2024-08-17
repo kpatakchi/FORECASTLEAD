@@ -90,26 +90,44 @@ train_x, train_y, val_x, val_y = None, None, None, None
 training_unique_name = func_train.generate_training_unique_name(loss_n, Filters, LR, min_LR, lr_factor, lr_patience, BS, patience, val_split, epochs, str(dropout), unet_type, leadtime)
 print(training_unique_name)
 
-# Distribute the training across available GPUs
-strategy = tf.distribute.MirroredStrategy()
-
-with strategy.scope():
+if unet_type != "trans-unet":
+    # Distribute the training across available GPUs
+    strategy = tf.distribute.MirroredStrategy()
+    with strategy.scope():
+        model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+        optimizer = tf.keras.optimizers.Adam(learning_rate=LR, name='Adam')
+        model.compile(optimizer=optimizer, loss=loss, weighted_metrics=['mse'])
+        
+        # Define the model checkpoint and early stopping callbacks
+        model_path = PPROJECT_DIR2 + HPT_path + training_unique_name + '.h5'
+        checkpointer = tf.keras.callbacks.ModelCheckpoint(model_path, verbose=1, save_best_only=True, monitor='val_loss')
+        callbacks = [tf.keras.callbacks.EarlyStopping(patience=patience, monitor='val_loss')]
+        
+        # Define the ReduceLROnPlateau callback
+        reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=lr_factor, patience=lr_patience, min_lr=min_LR, min_delta=min_delta_or_lr)
+        
+        print("Training the model...")
+        
+        # Train the model using train_dataset and val_dataset
+        results = model.fit(train_dataset, validation_data=val_dataset, epochs=epochs, verbose=0, callbacks=[callbacks, checkpointer, reduce_lr])
+else:
     model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
     optimizer = tf.keras.optimizers.Adam(learning_rate=LR, name='Adam')
     model.compile(optimizer=optimizer, loss=loss, weighted_metrics=['mse'])
-
+    
     # Define the model checkpoint and early stopping callbacks
     model_path = PPROJECT_DIR2 + HPT_path + training_unique_name + '.h5'
     checkpointer = tf.keras.callbacks.ModelCheckpoint(model_path, verbose=1, save_best_only=True, monitor='val_loss')
     callbacks = [tf.keras.callbacks.EarlyStopping(patience=patience, monitor='val_loss')]
-
+    
     # Define the ReduceLROnPlateau callback
     reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=lr_factor, patience=lr_patience, min_lr=min_LR, min_delta=min_delta_or_lr)
-
+    
     print("Training the model...")
-
+    
     # Train the model using train_dataset and val_dataset
     results = model.fit(train_dataset, validation_data=val_dataset, epochs=epochs, verbose=0, callbacks=[callbacks, checkpointer, reduce_lr])
+
 
 # Save and plot the results
 print("Saving and plotting the results...")

@@ -23,7 +23,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
     if type_ == "trans-unet":
     
         model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
-                                    stack_num_up=2,embed_dim=768, num_mlp=3072, num_heads=12, num_transformer=12,
+                                    stack_num_up=2,embed_dim=1024, num_mlp=1024, num_heads=6, num_transformer=6,
                                     activation='ReLU', mlp_activation='GELU', output_activation=None, 
                                     batch_norm=True, pool=True, unpool='bilinear', name='transunet')
         return model
