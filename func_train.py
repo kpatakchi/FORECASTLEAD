@@ -773,7 +773,7 @@ def calculate_channels(n_ensembles, task_name, laginensemble=False):
     A4	Same as A3, but also including the lat/lon/altitude information.	“spatiotemporal”	N_ensembles+5 (if laginensemble=False), N_ensembles*2+5 (if laginensemble=True)
     A5	Same as A2, but also including the lat/lon/altitude iformation	“spatial”	N_ensembles+3 (if laginensemble=False), N_ensembles*2+3 (if laginensemble=True)
     """
-    if task_name == "model-only":
+    if task_name == "model_only":
         n_channels = n_ensembles
     elif task_name == "model-lag":
         n_channels = n_ensembles * 2
