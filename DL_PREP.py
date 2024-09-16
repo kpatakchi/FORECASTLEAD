@@ -13,7 +13,7 @@ mask_type=args.mask_type
 
 model_data = ["ADAPTER_DE05."+ leadtime + ".merged.nc"]
 reference_data = ["ADAPTER_DE05.day01.merged.nc"]
-task_name = "spatiotemporal"
+task_name = "model_only"
 mm = "MM"  # or DM
 date_start = "2018-01-01T13"
 date_end = "2022-12-31T23"
@@ -24,7 +24,7 @@ laginensemble = False
 
 # Define the following for network configs:
 val_split = 0.5
-n_channels = 7
+n_channels = 1
 xpixels = 128
 ypixels = 256
 
@@ -39,26 +39,11 @@ data_avail = func_train.prepare_train(PPROJECT_DIR, TRAIN_FILES, HRES_PREP, file
 
 data_avail = None
 
-import csv
+scaling_file = f"{PPROJECT_DIR2}/CODES-MS3/FORECASTLEAD/scaling_info.csv"
 
-
-def get_scaling_params(PPROJECT_DIR2, leadtime):
-    scaling_file = f"{PPROJECT_DIR2}/CODES-MS3/FORECASTLEAD/minmax_scaling.csv"
-    
-    with open(scaling_file, 'r') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            if row['leadtime'] == leadtime:
-                y_min = float(row['y_min'])
-                y_max = float(row['y_max'])
-                x_min = float(row['x_min'])
-                x_max = float(row['x_max'])
-                
-                return y_min, y_max, x_min, x_max
-                
-y_min, y_max, x_min, x_max = get_scaling_params(PPROJECT_DIR2, leadtime)
+y_mean, y_std, x_mean, x_std = func_train.get_scaling_params(scaling_file, PPROJECT_DIR2, leadtime)
 
 # Create the production data (if doesn't exist)
 data_avail = func_train.prepare_produce(PPROJECT_DIR, PRODUCE_FILES, HRES_PREP, filename,
                      model_data, reference_data, task_name, mm, date_start,
-                       date_end2, variable, mask_type, laginensemble, leadtime, y_min, y_max, x_min, x_max)
+                       date_end2, variable, mask_type, laginensemble, leadtime, y_mean, y_std, x_mean, x_std)

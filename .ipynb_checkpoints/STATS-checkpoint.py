@@ -36,9 +36,9 @@ MOD_D = func_stats.resample_dataset(MOD, "daily")
 CMOD_D = func_stats.resample_dataset(CMOD, "daily")
 
 # Apply mask to ignore very small values
-MOD_D = MOD_D.where(MOD_D >= 0.1, drop=True)
-CMOD_D = CMOD_D.where(CMOD_D >= 0.1, drop=True)
-REF_D = REF_D.where(REF_D>= 0.1, drop=True)
+MOD_D = MOD_D.where(MOD_D >= 0.01, drop=True)
+CMOD_D = CMOD_D.where(CMOD_D >= 0.01, drop=True)
+REF_D = REF_D.where(REF_D>= 0.01, drop=True)
 
 print("Datasets resampled.")
 

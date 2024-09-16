@@ -28,7 +28,7 @@ unet_type = args.unet_type
 # Define the data specifications:
 model_data = ["ADAPTER_DE05."+ leadtime + ".merged.nc"]
 reference_data = ["ADAPTER_DE05.day01.merged.nc"]
-task_name = "spatiotemporal"
+task_name = "model_only"
 mm = "MM"  # or DM
 date_start = "2018-01-01T13" # first day is not corrected
 date_end = "2022-12-31T23"
@@ -44,7 +44,7 @@ lr_patience = 4
 patience = 16
 epochs = 128
 val_split = 0.50
-n_channels = 7
+n_channels = 1
 xpixels = 128
 ypixels = 256
 
@@ -85,19 +85,10 @@ Y_PRED=Y_PRED[..., 0]
 train_x=None
 
 import csv
-def get_scaling_params(PPROJECT_DIR2, leadtime):
-    scaling_file = f"{PPROJECT_DIR2}/CODES-MS3/FORECASTLEAD/minmax_scaling.csv"
-    
-    with open(scaling_file, 'r') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            if row['leadtime'] == leadtime:
-                y_min = float(row['y_min'])
-                y_max = float(row['y_max'])
-                
-                return y_min, y_max
-                
-y_min, y_max = get_scaling_params(PPROJECT_DIR2, leadtime)
+
+scaling_file = f"{PPROJECT_DIR2}/CODES-MS3/FORECASTLEAD/scaling_info.csv"
+
+y_min, y_max, x_min, x_max = func_train.get_scaling_params(scaling_file, PPROJECT_DIR2, leadtime)
 
 # Save in PREDICT_FILES
 func_train.de_prepare_produce(Y_PRED, PREDICT_FILES + "/", HRES_PREP, filename, 

@@ -9,7 +9,7 @@ LR_FACTOR=0.5
 FILTERS=64
 MASK_TYPE="no_na_land"
 HPT_PATH="HPT/"
-dropout=0.1
+dropout=0.0
 unet_type="unet-l"
 
 # Path to the CSV file containing best hyperparameters

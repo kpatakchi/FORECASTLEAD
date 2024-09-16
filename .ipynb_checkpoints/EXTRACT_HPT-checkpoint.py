@@ -64,7 +64,7 @@ for day in days:
         'lr': lrs[min_idx],
         'bs': bss[min_idx],
         'unet_type': unet_types[min_idx],
-        'val_loss': val_losses[min_idx]
+        'val_loss': np.round(np.log10(val_losses[min_idx]), 3)
     }
 
 # Save the best hyperparameters to a file

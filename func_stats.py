@@ -33,11 +33,11 @@ def calculate_metrics(reference, model):
         dict: A dictionary containing the calculated metrics.
     """
     # Calculate mean error
-    mean_error = (model - reference).mean(dim='time')
+    mean_error = (model - reference).mean(dim='time', skipna=True)
 
     # Calculate root mean squared error
     squared_error = (model - reference)**2
-    mse = squared_error.mean(dim='time')
+    mse = squared_error.mean(dim='time', skipna=True)
     rmse = np.sqrt(mse)
 
     # Calculate correlation coefficient

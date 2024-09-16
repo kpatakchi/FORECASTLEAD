@@ -29,7 +29,7 @@ unet_type = args.unet_type
 # Define the data specifications:
 model_data = ["ADAPTER_DE05." + leadtime + ".merged.nc"]
 reference_data = ["ADAPTER_DE05.day01.merged.nc"]
-task_name = "spatiotemporal"
+task_name = "model_only"
 mm = "MM"  # or DM
 date_start = "2018-01-01T13"
 date_end = "2022-12-31T23"  # one year for testing
@@ -44,7 +44,7 @@ lr_patience = 4
 patience = 16
 epochs = 128
 val_split = 0.50
-n_channels = 7
+n_channels = 1
 xpixels = 128
 ypixels = 256
 
@@ -90,7 +90,7 @@ train_x, train_y, val_x, val_y = None, None, None, None
 training_unique_name = func_train.generate_training_unique_name(loss_n, Filters, LR, min_LR, lr_factor, lr_patience, BS, patience, val_split, epochs, str(dropout), unet_type, leadtime)
 print(training_unique_name)
 
-if unet_type != "trans-unet":
+if unet_type not in ["unet-trans-s", "unet-trans-l"]:
     # Distribute the training across available GPUs
     strategy = tf.distribute.MirroredStrategy()
     with strategy.scope():

@@ -12,7 +12,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
     leakyrelu = tf.keras.layers.LeakyReLU()
     dropout_rate=dropout_rate
 
-    if type_ == "unet_att":
+    if type_ == "unet-att-s":
         
         model = models.att_unet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1,
                                    stack_num_down=2, stack_num_up=2,
@@ -20,14 +20,30 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
                                    batch_norm=True, pool=True, unpool='bilinear', name='attunet')
         return model
 
-    if type_ == "trans-unet":
+    if type_ == "unet-att-l":
+        
+        model = models.att_unet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1,
+                                   stack_num_down=4, stack_num_up=4,
+                                   activation='ReLU', atten_activation='ReLU', attention='add', output_activation=None, 
+                                   batch_norm=True, pool=True, unpool='bilinear', name='attunet')
+        return model
+
+    if type_ == "unet-trans-s":
     
         model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
                                     stack_num_up=2,embed_dim=1024, num_mlp=1024, num_heads=6, num_transformer=6,
                                     activation='ReLU', mlp_activation='GELU', output_activation=None, 
                                     batch_norm=True, pool=True, unpool='bilinear', name='transunet')
         return model
-
+        
+    if type_ == "unet-trans-l":
+    
+        model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+                                    stack_num_up=4,embed_dim=1024, num_mlp=1024, num_heads=6, num_transformer=6,
+                                    activation='ReLU', mlp_activation='GELU', output_activation=None, 
+                                    batch_norm=True, pool=True, unpool='bilinear', name='transunet')
+        return model
+        
     if type_ == "unet-se":
 
         # squeeze and excitation block
@@ -936,7 +952,7 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
         dayofyear_resh = np.tile(dayofyear[:, np.newaxis, np.newaxis], (1, REFERENCE[1:, ...].shape[1], REFERENCE[1:, ...].shape[2]))
         yeardate = REFERENCE[1:, ...].time.dt.year.values
         yeardate_resh = np.tile(yeardate[:, np.newaxis, np.newaxis], (1, REFERENCE[1:, ...].shape[1], REFERENCE[1:, ...].shape[2]))
-        CAL = np.stack((dayofyear_resh, yeardate_resh), axis=3)
+        CAL = np.stack((dayofyear_resh, yeardate_resh), axis=3).astype(float)
 
         REFERENCE = REFERENCE.values[:, :, :, np.newaxis]  # add new axis along ensemble dimension
         datasets = [dataset.values for dataset in datasets]
@@ -1028,22 +1044,24 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
             canvas_m[light] *= 0.04  # Multiply by 0.04 in light conditions
             canvas_m[heavy] *= 0.95  # Multiply by 0.95 in heavy conditions
 
-        # rescaling to 0-1:
-        x_min = np.min(X_TRAIN)
-        x_max = np.max(X_TRAIN)
+        # rescaling (standardization):
+        x_min = np.nanmin(X_TRAIN)
+        x_max = np.nanmax(X_TRAIN)
 
         X_TRAIN = (X_TRAIN - x_min) / (x_max - x_min)
         X_TRAIN_tminus = (X_TRAIN_tminus - x_min) / (x_max - x_min)
 
-        for ch in range (0, 2):
-            cal_min = np.nanmin(CAL[..., ch])
-            cal_max = np.nanmax(CAL[..., ch])
-            CAL[..., ch] = (CAL[..., ch] - cal_min) / (cal_max - cal_min)
+        # Rescale day of the year (CAL[..., 0])
+        cal_min = np.nanmin(CAL[..., 0])
+        cal_max = np.nanmax(CAL[..., 0])
+        CAL[..., 0] = (CAL[..., 0] - cal_min) / (cal_max - cal_min)
+        # Set yeardate (CAL[..., 1]) to 0 if you don't want to consider it
+        CAL[..., 1] = 0
             
         for ch in range (0, 3):
             spp_min = np.nanmin(SPP[..., ch])
             spp_max = np.nanmax(SPP[..., ch])
-            SPP[..., ch] = (SPP[..., ch] - spp_min) / (spp_max - spp_min)
+            SPP[..., ch] = (SPP[..., ch] - spp_min) / (spp_max - spp_min) 
         
         if task_name == "model_only":
             X_TRAIN = X_TRAIN
@@ -1102,16 +1120,17 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
         canvas_x = None
         canvas_m = None
 
-        y_min = np.min(train_y)
-        y_max = np.max(train_y)
+        # rescaling the output (standardization)
+        y_min = np.nanmin(train_y)
+        y_max = np.nanmax(train_y)
 
-        train_y = (train_y - y_min) / (y_max - y_min)
-        val_y = (val_y - y_min) / (y_max - y_min)
-
+        train_y = 2 * (train_y - y_min) / (y_max - y_min) - 1
+        val_y =  2 * (val_y - y_min) / (y_max - y_min) - 1
+        
         # Save min and max values to a CSV file
         import csv
         
-        csv_file = f"{PPROJECT_DIR2}/CODES-MS3/FORECASTLEAD/minmax_scaling.csv"
+        csv_file = f"{PPROJECT_DIR2}/CODES-MS3/FORECASTLEAD/scaling_info.csv"
         file_exists = os.path.isfile(csv_file)
         
         with open(csv_file, 'a', newline='') as csvfile:
@@ -1120,7 +1139,7 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
                 writer.writerow(["leadtime", "y_min", "y_max", "x_min", "x_max"])
             writer.writerow([leadtime, y_min, y_max, x_min, x_max])
 
-        # Save as float32 files
+        # Save as float16 files
         np.savez(TRAIN_FILES + "/" + filename,
                  train_x=train_x,
                  train_y=train_y,
@@ -1209,8 +1228,9 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
         dayofyear = REFERENCE[1:, ...].time.dt.dayofyear.values
         dayofyear_resh = np.tile(dayofyear[:, np.newaxis, np.newaxis], (1, REFERENCE[1:, ...].shape[1], REFERENCE[1:, ...].shape[2]))
         yeardate = REFERENCE[1:, ...].time.dt.year.values
+        yeardate = yeardate*0 # add if you do not want to consider year information in inputs
         yeardate_resh = np.tile(yeardate[:, np.newaxis, np.newaxis], (1, REFERENCE[1:, ...].shape[1], REFERENCE[1:, ...].shape[2]))
-        CAL = np.stack((dayofyear_resh, yeardate_resh), axis=3)
+        CAL = np.stack((dayofyear_resh, yeardate_resh), axis=3).astype(float)
 
         REFERENCE = REFERENCE.values[:, :, :, np.newaxis]  # add new axis along ensemble dimension
         datasets = [dataset.values for dataset in datasets]
@@ -1304,11 +1324,14 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
         X_TRAIN = (X_TRAIN - x_min) / (x_max - x_min)
         X_TRAIN_tminus = (X_TRAIN_tminus - x_min) / (x_max - x_min)
 
-        for ch in range (0, 2):
-            cal_min = np.nanmin(CAL[..., ch])
-            cal_max = np.nanmax(CAL[..., ch])
-            CAL[..., ch] = (CAL[..., ch] - cal_min) / (cal_max - cal_min)
-            
+        # Rescale day of the year (CAL[..., 0])
+        cal_min = np.nanmin(CAL[..., 0])
+        cal_max = np.nanmax(CAL[..., 0])
+        CAL[..., 0] = (CAL[..., 0] - cal_min) / (cal_max - cal_min)
+        
+        # Set yeardate (CAL[..., 1]) to 0 if you don't want to consider it
+        CAL[..., 1] = 0
+
         for ch in range (0, 3):
             spp_min = np.nanmin(SPP[..., ch])
             spp_max = np.nanmax(SPP[..., ch])
@@ -1335,7 +1358,7 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
         canvas_y = canvas_y.astype(np.float16)
         canvas_m = canvas_m.astype(np.float16)
 
-        canvas_y = (canvas_y - y_min) / (y_max - y_min)
+        canvas_y = 2 * (canvas_y - y_min) / (y_max - y_min) - 1
         
         X_TRAIN_tminus = None
         CAL = None
@@ -1403,7 +1426,7 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
     
     # Restore the original shape of Y_PRED using unmake_canvas function
     Y_PRED = unmake_canvas(Y_PRED, (lat_shape, lon_shape))
-    Y_PRED = Y_PRED * (y_max - y_min) + y_min # rescale back to original format
+    Y_PRED = (Y_PRED + 1) / 2 * (y_max - y_min) + y_min # rescale back to original format
 
     # Subtract Y_PRED from model
     diff = model_aligned[1:, ...] - Y_PRED
@@ -1413,3 +1436,17 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
     data_unique_name = filename[:-4]
     output_filename = f"{PREDICT_FILES}/{model_data}.corrected.nc"
     diff_clipped.to_netcdf(output_filename)
+
+
+def get_scaling_params(scaling_file, PPROJECT_DIR2, leadtime):
+    import csv
+    with open(scaling_file, 'r') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row['leadtime'] == leadtime:
+                y_min = float(row['y_min'])
+                y_max = float(row['y_max'])
+                x_min = float(row['x_min'])
+                x_max = float(row['x_max'])
+                
+                return y_min, y_max, x_min, x_max
