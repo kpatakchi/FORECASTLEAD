@@ -87,8 +87,8 @@ print("Predicting the mismatches ...")
 Y_PRED = model.predict(train_x, verbose=0)
 Y_PRED=Y_PRED[..., 0]
 
-output_npz_path = f"{PREDICT_FILES}/Y_PRED_{training_unique_name}.npz"
-np.savez(output_npz_path, Y_PRED=Y_PRED)
+#output_npz_path = f"{PREDICT_FILES}/Y_PRED_{training_unique_name}.npz"
+#np.savez(output_npz_path, Y_PRED=Y_PRED)
 
 train_x=None
 
