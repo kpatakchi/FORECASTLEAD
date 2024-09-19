@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/STATS.py", line 55, in <module>
+    xr.Dataset(CMOD_METRICS).to_netcdf(CMOD_OUT)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/core/dataset.py", line 1890, in to_netcdf
+    return to_netcdf(  # type: ignore  # mypy cannot resolve the overloads:(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/api.py", line 1226, in to_netcdf
+    dump_to_store(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/api.py", line 1273, in dump_to_store
+    store.store(variables, attrs, check_encoding, writer, unlimited_dims=unlimited_dims)
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/common.py", line 267, in store
+    self.set_variables(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/common.py", line 305, in set_variables
+    target, source = self.prepare_variable(
+  File "/p/software/juwelsbooster/stages/2023/software/xarray/2022.9.0-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 490, in prepare_variable
+    nc4_var = self.ds.createVariable(
+  File "src/netCDF4/_netCDF4.pyx", line 2962, in netCDF4._netCDF4.Dataset.createVariable
+  File "src/netCDF4/_netCDF4.pyx", line 4304, in netCDF4._netCDF4.Variable.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2028, in netCDF4._netCDF4._ensure_nc_success
+RuntimeError: NetCDF: Invalid argument
+srun: error: jwb0353: task 0: Exited with exit code 1

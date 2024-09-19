@@ -3,12 +3,12 @@
 #SBATCH --job-name=DL_PREDICT
 #SBATCH --output=LOGS/DL_PREDICT.out
 #SBATCH --error=LOGS/DL_PREDICT.err
-#SBATCH --time=02:30:00
+#SBATCH --time=00:30:00
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
 #SBATCH --account=deepacf
-#SBATCH --nodes=2
+#SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=4
@@ -22,7 +22,7 @@ rm -r $PREDICT_FILES/*
 srun --nodes=1 --ntasks=1 --gres=gpu:4 --cpus-per-task=4 python EXTRACT_HPT.py # to extract the best hyperparameters in a csv file.
 sleep 30
 
-for leadtime in {02..10}; do
+for leadtime in {05..05}; do
     lead_day_file="day${leadtime}.csv"
     echo "Setting hyperparameters for $lead_day_file ..."
     

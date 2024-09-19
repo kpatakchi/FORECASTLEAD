@@ -6,7 +6,7 @@
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=4
-#SBATCH --time=01:45:00
+#SBATCH --time=02:00:00
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
@@ -24,7 +24,7 @@ rm scaling_info.csv
 for leadtime in {02..10}; do
     echo "Running DL_PREP.py for day$leadtime ..."
     srun --ntasks=1 --nodes=1 python DL_PREP.py --leadtime day$leadtime --mask_type  $MASK_TYPE &
-    sleep 15
+    sleep 2
 done
 
 # Wait for all background jobs to finish

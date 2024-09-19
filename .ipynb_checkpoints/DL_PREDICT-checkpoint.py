@@ -25,6 +25,11 @@ Filters=args.filters
 dropout = args.dropout
 unet_type = args.unet_type
 
+print(leadtime)
+print(LR)
+print(BS)
+print(unet_type)
+
 # Define the data specifications:
 model_data = ["ADAPTER_DE05."+ leadtime + ".merged.nc"]
 reference_data = ["ADAPTER_DE05.day01.merged.nc"]
@@ -79,8 +84,11 @@ model.load_weights(model_path)
 
 # produce 
 print("Predicting the mismatches ...")
-Y_PRED = model.predict(train_x, verbose=2)
+Y_PRED = model.predict(train_x, verbose=0)
 Y_PRED=Y_PRED[..., 0]
+
+output_npz_path = f"{PREDICT_FILES}/Y_PRED_{training_unique_name}.npz"
+np.savez(output_npz_path, Y_PRED=Y_PRED)
 
 train_x=None
 

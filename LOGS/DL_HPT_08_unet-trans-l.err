@@ -1,468 +1,430 @@
-2024-09-09 03:42:48.699880: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 03:42:48.702767: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 03:42:48.705354: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 03:42:48.706991: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 03:42:52.800656: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 03:42:52.802590: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 03:42:52.804285: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 03:42:52.805942: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 03:43:03.597825: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 03:43:03.599747: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 03:43:03.601337: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 03:43:03.603681: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 03:43:08.313675: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 03:43:08.373672: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 03:43:08.376331: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 03:43:08.377884: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 03:43:08.379481: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 03:43:08.829930: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 03:43:09.029321: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 03:43:09.031224: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 03:43:09.032788: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 03:43:09.034313: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 03:43:09.229380: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x66ca2850 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 03:43:09.229434: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:09.229441: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:09.229448: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:09.229454: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:09.234558: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 03:43:09.400676: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-2024-09-09 03:43:09.770472: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 03:43:09.773296: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 03:43:09.776003: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 03:43:09.778770: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 03:43:12.428645: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 03:43:12.841201: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 03:43:12.843830: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 03:43:12.845457: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 03:43:12.847042: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 03:43:12.913975: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 03:43:13.201693: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x65b087b0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 03:43:13.201749: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:13.201756: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:13.201763: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:13.201769: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:13.206958: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 03:43:13.371592: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-2024-09-09 03:43:17.899419: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 03:43:17.901262: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 03:43:17.902919: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 03:43:17.904431: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 03:43:23.910663: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 03:43:24.426290: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 03:43:24.428431: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 03:43:24.430129: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 03:43:24.431808: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 03:43:24.678341: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 03:43:25.214559: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x152152bfcf40 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 03:43:25.214632: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:25.214639: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:25.214646: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:25.214652: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:25.232006: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 03:43:25.449204: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-2024-09-09 03:43:28.531883: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 03:43:28.546593: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 03:43:29.031263: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 03:43:29.360474: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x6508bb20 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 03:43:29.360525: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:29.360533: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:29.360539: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:29.360545: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:29.365556: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 03:43:29.426969: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 03:43:29.529496: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-2024-09-09 03:43:29.775087: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 03:43:29.988463: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x6572b670 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 03:43:29.988532: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:29.988541: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:29.988549: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:29.988555: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:30.005123: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 03:43:30.220277: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-2024-09-09 03:43:30.509026: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 03:43:30.871572: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x14c9b5401090 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 03:43:30.871623: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:30.871632: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:30.871638: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:30.871644: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:30.876758: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 03:43:31.042032: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-2024-09-09 03:43:32.482637: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 03:43:33.010293: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 03:43:33.351835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 03:43:33.356825: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x6591cba0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 03:43:33.356875: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:33.356883: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:33.356889: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:33.356895: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:33.361908: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 03:43:33.353740: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 03:43:33.355392: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 03:43:33.357087: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 03:43:33.523937: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-2024-09-09 03:43:37.741952: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 03:43:38.576029: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 03:43:39.124273: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x659fd1a0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 03:43:39.124330: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:39.124339: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:39.124347: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:39.124355: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:39.129701: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 03:43:39.294771: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-2024-09-09 03:43:44.695956: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 03:43:45.257124: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 03:43:45.559697: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x65c12710 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 03:43:45.559762: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:45.559770: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:45.559776: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:45.559782: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:45.578246: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 03:43:45.793030: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-2024-09-09 03:43:53.511339: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 03:43:54.267708: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 03:43:54.665947: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x65329210 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 03:43:54.666019: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:54.666026: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:54.666033: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:54.666039: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 03:43:54.682183: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 03:43:54.894169: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-srun: Job 10294697 step creation temporarily disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation temporarily disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation temporarily disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation temporarily disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation temporarily disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation temporarily disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Step created for StepId=10294697.10
-2024-09-09 04:18:15.929430: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 04:18:15.932496: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 04:18:15.935635: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 04:18:15.938122: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 04:18:35.526023: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 04:18:36.129495: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 04:18:36.541473: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x66f4e8f0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 04:18:36.541525: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 04:18:36.541532: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 04:18:36.541538: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 04:18:36.541545: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 04:18:36.546731: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 04:18:36.709185: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Step created for StepId=10294697.11
-2024-09-09 04:54:12.660939: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 04:54:12.662868: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 04:54:12.666448: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 04:54:12.668139: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 04:54:32.217753: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 04:54:32.724879: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 04:54:33.024910: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x66328ee0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 04:54:33.024963: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 04:54:33.024971: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 04:54:33.024977: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 04:54:33.024984: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 04:54:33.030083: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 04:54:33.191366: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Step created for StepId=10294697.12
-2024-09-09 05:15:18.485295: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 05:15:18.487199: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 05:15:18.488869: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 05:15:18.490526: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 05:15:38.055871: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 05:15:38.543788: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 05:15:38.777776: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x66e76ec0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 05:15:38.777825: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:15:38.777832: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:15:38.777838: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:15:38.777844: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:15:38.782962: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 05:15:38.944979: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Step created for StepId=10294697.13
-2024-09-09 05:27:21.141226: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 05:27:21.143115: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 05:27:21.144660: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 05:27:21.146218: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 05:27:40.738245: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 05:27:41.355356: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 05:27:41.762751: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x148d67474720 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 05:27:41.762809: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:27:41.762824: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:27:41.762836: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:27:41.762847: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:27:41.768148: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 05:27:41.930037: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Step created for StepId=10294697.14
-2024-09-09 05:29:13.666302: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 05:29:13.669851: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 05:29:13.672283: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 05:29:13.673981: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-srun: Job 10294697 step creation still disabled, retrying (Requested nodes are busy)
-srun: Step created for StepId=10294697.15
-2024-09-09 05:29:29.890176: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-09 05:29:29.893221: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-09 05:29:29.895933: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-09 05:29:29.897600: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-09 05:29:33.214575: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 05:29:33.734899: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 05:29:34.042314: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x6641dae0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 05:29:34.042369: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:29:34.042377: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:29:34.042383: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:29:34.042389: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:29:34.047526: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 05:29:34.210282: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
-2024-09-09 05:29:49.439942: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
-2024-09-09 05:29:49.922272: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
-2024-09-09 05:29:50.157424: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x6561b560 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2024-09-09 05:29:50.157479: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:29:50.157487: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:29:50.157493: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:29:50.157499: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
-2024-09-09 05:29:50.162576: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
-2024-09-09 05:29:50.326314: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2024-09-17 03:00:52.061873: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 03:00:52.063609: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 03:00:52.066937: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 03:00:52.069733: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 03:00:56.271189: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 03:00:56.274120: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 03:00:56.276848: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 03:00:56.279254: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 03:01:00.053995: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 03:01:00.055863: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 03:01:00.059277: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 03:01:00.062153: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 03:01:03.664047: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 03:01:03.665904: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 03:01:03.667427: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 03:01:03.669159: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 03:01:07.668675: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 03:01:07.670575: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 03:01:07.672111: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 03:01:07.673802: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 03:01:10.533945: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 03:01:11.089513: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 03:01:11.616441: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x6610e890 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 03:01:11.616484: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:11.616491: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:11.616498: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:11.616504: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:11.621737: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 03:01:11.783846: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2024-09-17 03:01:12.267779: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 03:01:12.269539: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 03:01:12.271044: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 03:01:12.272679: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 03:01:14.652030: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 03:01:15.147031: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 03:01:15.409728: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x65ab5700 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 03:01:15.409785: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:15.409794: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:15.409802: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:15.409809: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:15.414868: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 03:01:15.575705: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2024-09-17 03:01:18.418421: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 03:01:18.966402: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 03:01:19.302474: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x6553d210 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 03:01:19.302538: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:19.302556: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:19.302564: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:19.302572: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:19.307634: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 03:01:19.470538: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2024-09-17 03:01:21.977044: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 03:01:22.604733: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 03:01:23.028536: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x153c240f04f0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 03:01:23.028584: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:23.028592: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:23.028598: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:23.028604: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:23.033744: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 03:01:23.195842: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2024-09-17 03:01:25.821872: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 03:01:26.289890: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 03:01:26.534841: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x14a44b4ffd70 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 03:01:26.534886: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:26.534894: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:26.534900: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:26.534906: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:26.540218: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 03:01:26.703103: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2024-09-17 03:01:27.166193: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 03:01:27.169180: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 03:01:27.170747: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 03:01:27.172303: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 03:01:29.047642: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 03:01:29.049599: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 03:01:29.051248: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 03:01:29.052908: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 03:01:30.509476: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 03:01:31.034647: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 03:01:31.072373: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 03:01:31.075332: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 03:01:31.078911: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 03:01:31.081745: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 03:01:31.295064: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x14e0fadda5e0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 03:01:31.295125: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:31.295132: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:31.295138: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:31.295144: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:31.300312: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 03:01:31.461488: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2024-09-17 03:01:36.105118: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 03:01:36.108104: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 03:01:36.109609: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 03:01:36.112037: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 03:01:46.051598: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 03:01:46.956467: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 03:01:47.506651: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x676a9eb0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 03:01:47.506724: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:47.506732: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:47.506738: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:47.506744: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:47.521301: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 03:01:47.736010: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2024-09-17 03:01:48.606500: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 03:01:49.558382: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 03:01:50.063329: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x66d8ce60 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 03:01:50.063401: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:50.063409: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:50.063416: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:50.063422: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:50.083481: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 03:01:50.306862: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2024-09-17 03:01:50.325803: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 03:01:51.098451: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 03:01:51.474503: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x65700670 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 03:01:51.474571: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:51.474579: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:51.474585: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:51.474591: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:51.493977: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 03:01:51.714316: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+2024-09-17 03:01:55.119746: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 03:01:55.891632: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 03:01:56.283914: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x65acc8f0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 03:01:56.283988: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:56.283997: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:56.284003: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:56.284009: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:01:56.300696: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 03:01:56.516108: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+srun: Job 10337009 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for StepId=10337009.10
+2024-09-17 03:52:45.338804: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 03:52:45.340722: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 03:52:45.342408: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 03:52:45.344065: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 03:53:03.645640: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 03:53:04.188383: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 03:53:04.489127: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x657032f0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 03:53:04.489185: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:53:04.489193: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:53:04.489199: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:53:04.489205: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 03:53:04.494222: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 03:53:04.655825: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for StepId=10337009.11
+2024-09-17 04:00:56.466734: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 04:00:56.469811: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 04:00:56.471497: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 04:00:56.473155: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 04:01:14.724554: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 04:01:15.351006: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 04:01:15.799305: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x6651e490 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 04:01:15.799361: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:01:15.799369: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:01:15.799375: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:01:15.799381: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:01:15.804417: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 04:01:15.965300: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for StepId=10337009.12
+2024-09-17 04:16:53.117284: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 04:16:53.119216: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 04:16:53.120922: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 04:16:53.122621: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 04:17:11.389500: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 04:17:11.845771: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 04:17:12.137339: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x65c50930 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 04:17:12.137395: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:17:12.137402: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:17:12.137409: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:17:12.137415: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:17:12.142715: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 04:17:12.304630: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for StepId=10337009.13
+2024-09-17 04:19:31.335074: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 04:19:31.336885: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 04:19:31.339748: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 04:19:31.341297: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 04:19:49.663915: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 04:19:50.282162: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 04:19:50.686806: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x652aab80 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 04:19:50.686854: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:19:50.686861: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:19:50.686867: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:19:50.686873: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:19:50.691859: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 04:19:50.854497: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for StepId=10337009.14
+2024-09-17 04:26:43.212133: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 04:26:43.213890: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 04:26:43.217248: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 04:26:43.219883: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 04:27:01.505095: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 04:27:01.984415: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 04:27:02.209387: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x15333bf8ae80 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 04:27:02.209450: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:27:02.209466: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:27:02.209481: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:27:02.209493: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:27:02.214684: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 04:27:02.376124: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10337009 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for StepId=10337009.15
+2024-09-17 04:30:28.249417: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-17 04:30:28.251318: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-17 04:30:28.252892: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-17 04:30:28.254648: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-17 04:30:46.447545: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-17 04:30:47.028702: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-09-17 04:30:47.388651: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x668af9f0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-09-17 04:30:47.388707: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:30:47.388714: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (1): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:30:47.388720: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (2): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:30:47.388726: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (3): NVIDIA A100-SXM4-40GB, Compute Capability 8.0
+2024-09-17 04:30:47.394096: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-09-17 04:30:47.555855: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.

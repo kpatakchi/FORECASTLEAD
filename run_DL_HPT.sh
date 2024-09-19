@@ -6,8 +6,8 @@ source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.s
 #rm -r $HPT_DIR/*
 
 # Define arrays for parameter values
-#unet_type_values=("unet-xs" "unet-s" "unet-m" "unet-l" "unet-trans-s" "unet-trans-l" "unet-att-s" "unet-att-l")
-unet_type_values=("unet-m")
+#unet_type_values=("unet-xs" "unet-s" "unet-m" "unet-l" "unet-trans-s" "unet-trans-l" "unet-att-s" "unet-att-l" "unet-se")
+unet_type_values=("unet-xs" "unet-trans-s")
 leadtime_values=("02" "03" "04" "05" "06" "07" "08" "09" "10")  # Adjust as needed
 
 # Define weight dictionaries
@@ -125,7 +125,7 @@ seconds=$((runtime % 60))
 echo "Time limit for ${UNET_TYPE}, leadtime ${LEADTIME}: ${TIME_LIMIT}"
 
 # Print runtime in a human-readable format
-echo "Run time for ${UNET_TYPE} with leadtime ${LEADTIME}: ${hours} hours, ${minutes} minutes, ${seconds} seconds"
+echo "Run time for ${UNET_TYPE} with leadtime ${LEADTIME}: ${runtime} seconds"
 EOT
         # Submit the job script
         sleep 0.1
