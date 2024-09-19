@@ -7,7 +7,7 @@ source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.s
 
 # Define arrays for parameter values
 #unet_type_values=("unet-xs" "unet-s" "unet-m" "unet-l" "unet-trans-s" "unet-trans-l" "unet-att-s" "unet-att-l" "unet-se")
-unet_type_values=("unet-xs" "unet-trans-s")
+unet_type_values=("unet-xs" "unet-s")
 leadtime_values=("02" "03" "04" "05" "06" "07" "08" "09" "10")  # Adjust as needed
 
 # Define weight dictionaries
