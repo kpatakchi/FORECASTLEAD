@@ -37,14 +37,15 @@ def extract_min_val_loss(day):
         df = pd.read_csv(file_path)
         
         # Find the minimum validation loss
-        min_val_loss = df["val_loss"].min()
-        
-        # Append the hyperparameters and min_val_loss to the lists
-        dropouts_list.append(dropout)
-        lrs_list.append(lr)
-        bss_list.append(bs)
-        val_losses_list.append(min_val_loss)
-        unet_types_list.append(unet_type)
+        min_val_loss = df["val_loss"].min(skipna=True)
+
+        if min_val_loss <1000:
+            # Append the hyperparameters and min_val_loss to the lists
+            dropouts_list.append(dropout)
+            lrs_list.append(lr)
+            bss_list.append(bs)
+            val_losses_list.append(min_val_loss)
+            unet_types_list.append(unet_type)
 
     return np.array(dropouts_list), np.array(lrs_list), np.array(bss_list), np.array(val_losses_list), np.array(unet_types_list)
 

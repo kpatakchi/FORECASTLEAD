@@ -7,7 +7,7 @@ source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.s
 
 # Define arrays for parameter values
 #unet_type_values=("unet-xs" "unet-s" "unet-m" "unet-l" "unet-trans-s" "unet-trans-l" "unet-att-s" "unet-att-l" "unet-se")
-unet_type_values=("unet-xs" "unet-s")
+unet_type_values=("unet-m")
 leadtime_values=("02" "03" "04" "05" "06" "07" "08" "09" "10")  # Adjust as needed
 
 # Define weight dictionaries
@@ -74,14 +74,14 @@ for UNET_TYPE in "${unet_type_values[@]}"; do
         cat <<EOT > $JOB_SCRIPT
 #!/bin/bash
 
-#SBATCH --job-name=DL_HPT_leadtime_${LEADTIME}_${UNET_TYPE}_%j
+#SBATCH --job-name=production_leadtime_${LEADTIME}_${UNET_TYPE}_%j
 #SBATCH --output=LOGS/DL_HPT_${LEADTIME}_${UNET_TYPE}.out
 #SBATCH --error=LOGS/DL_HPT_${LEADTIME}_${UNET_TYPE}.err
 #SBATCH --time=${TIME_LIMIT}
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
-#SBATCH --account=esmtst
+#SBATCH --account=deepacf
 #SBATCH --nodes=${NODES}
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4

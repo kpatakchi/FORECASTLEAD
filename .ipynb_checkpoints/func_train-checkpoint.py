@@ -56,7 +56,6 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
             
         # Inputs
         inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
-        #inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
     
         # Contraction path
         c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs)
@@ -64,34 +63,29 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
         c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c1)
         p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
-        p1 = tf.keras.layers.BatchNormalization(trainable=False)(p1)
     
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
         c2 = se_block(c2, ifn * 2)  # Add attention block here
         c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
         p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
-        p2 = tf.keras.layers.BatchNormalization(trainable=False)(p2)
     
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(p2)
         c3 = se_block(c3, ifn * 4)  # Add attention block here
         c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
         p3 = tf.keras.layers.MaxPooling2D((2, 2))(c3)
-        p3 = tf.keras.layers.BatchNormalization(trainable=False)(p3)
     
         c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(p3)
         c4 = se_block(c4, ifn * 8)  # Add attention block here
         c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
         c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c4)
         p4 = tf.keras.layers.MaxPooling2D((2, 2))(c4)
-        p4 = tf.keras.layers.BatchNormalization(trainable=False)(p4)
     
         c5 = tf.keras.layers.Conv2D(ifn * 16, (3, 3), activation=leakyrelu, padding='same')(p4)
         c5 = se_block(c5, ifn * 16)  # Add attention block here
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
         c5 = tf.keras.layers.Conv2D(ifn * 16, (3, 3), activation=leakyrelu, padding='same')(c5)
-        c5 = tf.keras.layers.BatchNormalization(trainable=False)(c5)
     
         # Expansive path
         u6 = tf.keras.layers.Conv2DTranspose(ifn * 8, (3, 3), strides=(2, 2), padding='same')(c5)
@@ -100,7 +94,6 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c6 = se_block(c6, ifn * 8)  # Add attention block here
         c6 = tf.keras.layers.Dropout(dropout_rate)(c6)  # Add dropout layer here
         c6 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c6)
-        c6 = tf.keras.layers.BatchNormalization(trainable=False)(c6)
     
         u7 = tf.keras.layers.Conv2DTranspose(ifn * 4, (3, 3), strides=(2, 2), padding='same')(c6)
         u7 = tf.keras.layers.concatenate([u7, c3])
@@ -108,7 +101,6 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c7 = se_block(c7, ifn * 4)  # Add attention block here
         c7 = tf.keras.layers.Dropout(dropout_rate)(c7)  # Add dropout layer here
         c7 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c7)
-        c7 = tf.keras.layers.BatchNormalization(trainable=False)(c7)
     
         u8 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c7)
         u8 = tf.keras.layers.concatenate([u8, c2])
@@ -116,7 +108,6 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c8 = se_block(c8, ifn * 2)  # Add attention block here
         c8 = tf.keras.layers.Dropout(dropout_rate)(c8)  # Add dropout layer here
         c8 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c8)
-        c8 = tf.keras.layers.BatchNormalization(trainable=False)(c8)
     
         u9 = tf.keras.layers.Conv2DTranspose(ifn, (3, 3), strides=(2, 2), padding='same')(c8)
         u9 = tf.keras.layers.concatenate([u9, c1], axis=3)
@@ -124,7 +115,6 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c9 = se_block(c9, ifn)  # Add attention block here
         c9 = tf.keras.layers.Dropout(dropout_rate)(c9)  # Add dropout layer here
         c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c9)
-        c9 = tf.keras.layers.BatchNormalization(trainable=False)(c9)
     
         outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c9)
     
@@ -136,37 +126,31 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
 
         # Inputs
         inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
-        #inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
     
         # Contraction path
         c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs)
         c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
         c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c1)
         p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
-        p1 = tf.keras.layers.BatchNormalization(trainable=False)(p1)
     
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
         c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
         p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
-        p2 = tf.keras.layers.BatchNormalization(trainable=False)(p2)
     
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(p2)
         c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
         p3 = tf.keras.layers.MaxPooling2D((2, 2))(c3)
-        p3 = tf.keras.layers.BatchNormalization(trainable=False)(p3)
     
         c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(p3)
         c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
         c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c4)
         p4 = tf.keras.layers.MaxPooling2D((2, 2))(c4)
-        p4 = tf.keras.layers.BatchNormalization(trainable=False)(p4)
     
         c5 = tf.keras.layers.Conv2D(ifn * 16, (3, 3), activation=leakyrelu, padding='same')(p4)
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
         c5 = tf.keras.layers.Conv2D(ifn * 16, (3, 3), activation=leakyrelu, padding='same')(c5)
-        c5 = tf.keras.layers.BatchNormalization(trainable=False)(c5)
     
         # Expansive path
         u6 = tf.keras.layers.Conv2DTranspose(ifn * 8, (3, 3), strides=(2, 2), padding='same')(c5)
@@ -174,28 +158,24 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c6 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(u6)
         c6 = tf.keras.layers.Dropout(dropout_rate)(c6)  # Add dropout layer here
         c6 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c6)
-        c6 = tf.keras.layers.BatchNormalization(trainable=False)(c6)
     
         u7 = tf.keras.layers.Conv2DTranspose(ifn * 4, (3, 3), strides=(2, 2), padding='same')(c6)
         u7 = tf.keras.layers.concatenate([u7, c3])
         c7 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(u7)
         c7 = tf.keras.layers.Dropout(dropout_rate)(c7)  # Add dropout layer here
         c7 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c7)
-        c7 = tf.keras.layers.BatchNormalization(trainable=False)(c7)
     
         u8 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c7)
         u8 = tf.keras.layers.concatenate([u8, c2])
         c8 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u8)
         c8 = tf.keras.layers.Dropout(dropout_rate)(c8)  # Add dropout layer here
         c8 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c8)
-        c8 = tf.keras.layers.BatchNormalization(trainable=False)(c8)
     
         u9 = tf.keras.layers.Conv2DTranspose(ifn, (3, 3), strides=(2, 2), padding='same')(c8)
         u9 = tf.keras.layers.concatenate([u9, c1], axis=3)
         c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(u9)
         c9 = tf.keras.layers.Dropout(dropout_rate)(c9)  # Add dropout layer here
         c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c9)
-        c9 = tf.keras.layers.BatchNormalization(trainable=False)(c9)
     
         outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c9)
     
@@ -207,37 +187,31 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
 
         # Inputs
         inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
-        #inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
     
         # Contraction path
         c1 = tf.keras.layers.DepthwiseConv2D((3, 3), depth_multiplier=int(ifn/16), activation=leakyrelu, padding='same')(inputs)
         c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
         c1 = tf.keras.layers.DepthwiseConv2D((3, 3), depth_multiplier=int(ifn/16), activation=leakyrelu, padding='same')(c1)
         p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
-        p1 = tf.keras.layers.BatchNormalization(trainable=False)(p1)
     
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
         c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
         p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
-        p2 = tf.keras.layers.BatchNormalization(trainable=False)(p2)
     
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(p2)
         c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
         p3 = tf.keras.layers.MaxPooling2D((2, 2))(c3)
-        p3 = tf.keras.layers.BatchNormalization(trainable=False)(p3)
     
         c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(p3)
         c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
         c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c4)
         p4 = tf.keras.layers.MaxPooling2D((2, 2))(c4)
-        p4 = tf.keras.layers.BatchNormalization(trainable=False)(p4)
     
         c5 = tf.keras.layers.Conv2D(ifn * 16, (3, 3), activation=leakyrelu, padding='same')(p4)
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
         c5 = tf.keras.layers.Conv2D(ifn * 16, (3, 3), activation=leakyrelu, padding='same')(c5)
-        c5 = tf.keras.layers.BatchNormalization(trainable=False)(c5)
     
         # Expansive path
         u6 = tf.keras.layers.Conv2DTranspose(ifn * 8, (3, 3), strides=(2, 2), padding='same')(c5)
@@ -245,28 +219,24 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c6 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(u6)
         c6 = tf.keras.layers.Dropout(dropout_rate)(c6)  # Add dropout layer here
         c6 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c6)
-        c6 = tf.keras.layers.BatchNormalization(trainable=False)(c6)
     
         u7 = tf.keras.layers.Conv2DTranspose(ifn * 4, (3, 3), strides=(2, 2), padding='same')(c6)
         u7 = tf.keras.layers.concatenate([u7, c3])
         c7 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(u7)
         c7 = tf.keras.layers.Dropout(dropout_rate)(c7)  # Add dropout layer here
         c7 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c7)
-        c7 = tf.keras.layers.BatchNormalization(trainable=False)(c7)
     
         u8 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c7)
         u8 = tf.keras.layers.concatenate([u8, c2])
         c8 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u8)
         c8 = tf.keras.layers.Dropout(dropout_rate)(c8)  # Add dropout layer here
         c8 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c8)
-        c8 = tf.keras.layers.BatchNormalization(trainable=False)(c8)
     
         u9 = tf.keras.layers.Conv2DTranspose(ifn, (3, 3), strides=(2, 2), padding='same')(c8)
         u9 = tf.keras.layers.concatenate([u9, c1], axis=3)
         c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(u9)
         c9 = tf.keras.layers.Dropout(dropout_rate)(c9)  # Add dropout layer here
         c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c9)
-        c9 = tf.keras.layers.BatchNormalization(trainable=False)(c9)
     
         outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c9)
     
@@ -278,32 +248,27 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         
         # Inputs
         inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
-        #inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
     
         # Contraction path
         c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs)
         c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
         c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c1)
         p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
-        p1 = tf.keras.layers.BatchNormalization(trainable=False)(p1)
     
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
         c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
         p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
-        p2 = tf.keras.layers.BatchNormalization(trainable=False)(p2)
     
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(p2)
         c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
         p3 = tf.keras.layers.MaxPooling2D((2, 2))(c3)
-        p3 = tf.keras.layers.BatchNormalization(trainable=False)(p3)
     
         # Bottleneck
         c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(p3)
         c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
         c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c4)
-        c4 = tf.keras.layers.BatchNormalization(trainable=False)(c4)
     
         # Expansive path
         u5 = tf.keras.layers.Conv2DTranspose(ifn * 4, (3, 3), strides=(2, 2), padding='same')(c4)
@@ -311,21 +276,18 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c5 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(u5)
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
         c5 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c5)
-        c5 = tf.keras.layers.BatchNormalization(trainable=False)(c5)
     
         u6 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c5)
         u6 = tf.keras.layers.concatenate([u6, c2])
         c6 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u6)
         c6 = tf.keras.layers.Dropout(dropout_rate)(c6)  # Add dropout layer here
         c6 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c6)
-        c6 = tf.keras.layers.BatchNormalization(trainable=False)(c6)
     
         u7 = tf.keras.layers.Conv2DTranspose(ifn, (3, 3), strides=(2, 2), padding='same')(c6)
         u7 = tf.keras.layers.concatenate([u7, c1], axis=3)
         c7 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(u7)
         c7 = tf.keras.layers.Dropout(dropout_rate)(c7)  # Add dropout layer here
         c7 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c7)
-        c7 = tf.keras.layers.BatchNormalization(trainable=False)(c7)
     
         outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c7)
     
@@ -337,32 +299,27 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         
         # Inputs
         inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
-        #inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
     
         # Contraction path
         c1 = tf.keras.layers.DepthwiseConv2D((3, 3), depth_multiplier=int(ifn/16), activation=leakyrelu, padding='same')(inputs)
         c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
         c1 = tf.keras.layers.DepthwiseConv2D((3, 3), depth_multiplier=int(ifn/16), activation=leakyrelu, padding='same')(c1)
         p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
-        p1 = tf.keras.layers.BatchNormalization(trainable=False)(p1)
     
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
         c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
         p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
-        p2 = tf.keras.layers.BatchNormalization(trainable=False)(p2)
     
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(p2)
         c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
         p3 = tf.keras.layers.MaxPooling2D((2, 2))(c3)
-        p3 = tf.keras.layers.BatchNormalization(trainable=False)(p3)
     
         # Bottleneck
         c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(p3)
         c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
         c4 = tf.keras.layers.Conv2D(ifn * 8, (3, 3), activation=leakyrelu, padding='same')(c4)
-        c4 = tf.keras.layers.BatchNormalization(trainable=False)(c4)
     
         # Expansive path
         u5 = tf.keras.layers.Conv2DTranspose(ifn * 4, (3, 3), strides=(2, 2), padding='same')(c4)
@@ -370,21 +327,18 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c5 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(u5)
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
         c5 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c5)
-        c5 = tf.keras.layers.BatchNormalization(trainable=False)(c5)
     
         u6 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c5)
         u6 = tf.keras.layers.concatenate([u6, c2])
         c6 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u6)
         c6 = tf.keras.layers.Dropout(dropout_rate)(c6)  # Add dropout layer here
         c6 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c6)
-        c6 = tf.keras.layers.BatchNormalization(trainable=False)(c6)
     
         u7 = tf.keras.layers.Conv2DTranspose(ifn, (3, 3), strides=(2, 2), padding='same')(c6)
         u7 = tf.keras.layers.concatenate([u7, c1], axis=3)
         c7 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(u7)
         c7 = tf.keras.layers.Dropout(dropout_rate)(c7)  # Add dropout layer here
         c7 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c7)
-        c7 = tf.keras.layers.BatchNormalization(trainable=False)(c7)
     
         outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c7)
     
@@ -396,26 +350,22 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
 
         # Inputs
         inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
-        #inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
     
         # Contraction path
         c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs)
         c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
         c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c1)
         p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
-        p1 = tf.keras.layers.BatchNormalization(trainable=False)(p1)
     
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
         c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
         p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
-        p2 = tf.keras.layers.BatchNormalization(trainable=False)(p2)
     
         # Bottleneck (removed one level of downsampling)
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(p2)
         c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
-        c3 = tf.keras.layers.BatchNormalization(trainable=False)(c3)
     
         # Expansive path (adjusted to match the new architecture)
         u4 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c3)
@@ -423,14 +373,12 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u4)
         c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
         c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c4)
-        c4 = tf.keras.layers.BatchNormalization(trainable=False)(c4)
     
         u5 = tf.keras.layers.Conv2DTranspose(ifn, (3, 3), strides=(2, 2), padding='same')(c4)
         u5 = tf.keras.layers.concatenate([u5, c1], axis=3)
         c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(u5)
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
         c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c5)
-        c5 = tf.keras.layers.BatchNormalization(trainable=False)(c5)
     
         outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
     
@@ -442,26 +390,22 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
 
         # Inputs
         inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
-        #inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
     
         # Contraction path
         c1 = tf.keras.layers.DepthwiseConv2D((3, 3), depth_multiplier=int(ifn/16), activation=leakyrelu, padding='same')(inputs)
         c1 = tf.keras.layers.Dropout(dropout_rate)(c1)  # Add dropout layer here
         c1 = tf.keras.layers.DepthwiseConv2D((3, 3), depth_multiplier=int(ifn/16), activation=leakyrelu, padding='same')(c1)
         p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
-        p1 = tf.keras.layers.BatchNormalization(trainable=False)(p1)
     
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
         c2 = tf.keras.layers.Dropout(dropout_rate)(c2)  # Add dropout layer here
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
         p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
-        p2 = tf.keras.layers.BatchNormalization(trainable=False)(p2)
     
         # Bottleneck (removed one level of downsampling)
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(p2)
         c3 = tf.keras.layers.Dropout(dropout_rate)(c3)  # Add dropout layer here
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
-        c3 = tf.keras.layers.BatchNormalization(trainable=False)(c3)
     
         # Expansive path (adjusted to match the new architecture)
         u4 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c3)
@@ -469,14 +413,12 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u4)
         c4 = tf.keras.layers.Dropout(dropout_rate)(c4)  # Add dropout layer here
         c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c4)
-        c4 = tf.keras.layers.BatchNormalization(trainable=False)(c4)
     
         u5 = tf.keras.layers.Conv2DTranspose(ifn, (3, 3), strides=(2, 2), padding='same')(c4)
         u5 = tf.keras.layers.concatenate([u5, c1], axis=3)
         c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(u5)
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
         c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c5)
-        c5 = tf.keras.layers.BatchNormalization(trainable=False)(c5)
     
         outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
     
@@ -488,14 +430,12 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
 
         # Inputs
         inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
-        #inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
     
         # Contraction path (only one level)
         c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(inputs)
         c1 = tf.keras.layers.Dropout(dropout_rate)(c1)
         c1 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c1)
         p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
-        p1 = tf.keras.layers.BatchNormalization(trainable=False)(p1)
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
         c2 = tf.keras.layers.Dropout(dropout_rate)(c2)
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
@@ -504,7 +444,6 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c2)
         c3 = tf.keras.layers.Dropout(dropout_rate)(c3)
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
-        c3 = tf.keras.layers.BatchNormalization(trainable=False)(c3)
     
         # Expansive path (only one level)
         u4 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c3)
@@ -512,11 +451,9 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u4)
         c4 = tf.keras.layers.Dropout(dropout_rate)(c4)
         c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c4)
-        c4 = tf.keras.layers.BatchNormalization(trainable=False)(c4)
         c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c4)
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)
         c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c5)
-        c5 = tf.keras.layers.BatchNormalization(trainable=False)(c5)
     
         outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
     
@@ -528,14 +465,12 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
 
         # Inputs
         inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
-        #inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
     
         # Contraction path (only one level)
         c1 = tf.keras.layers.DepthwiseConv2D((3, 3), depth_multiplier=int(ifn/16), activation=leakyrelu, padding='same')(inputs)
         c1 = tf.keras.layers.Dropout(dropout_rate)(c1)
         c1 = tf.keras.layers.DepthwiseConv2D((3, 3), depth_multiplier=int(ifn/16), activation=leakyrelu, padding='same')(c1)
         p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
-        p1 = tf.keras.layers.BatchNormalization(trainable=False)(p1)
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(p1)
         c2 = tf.keras.layers.Dropout(dropout_rate)(c2)
         c2 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c2)
@@ -544,7 +479,6 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c2)
         c3 = tf.keras.layers.Dropout(dropout_rate)(c3)
         c3 = tf.keras.layers.Conv2D(ifn * 4, (3, 3), activation=leakyrelu, padding='same')(c3)
-        c3 = tf.keras.layers.BatchNormalization(trainable=False)(c3)
     
         # Expansive path (only one level)
         u4 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c3)
@@ -552,11 +486,9 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(u4)
         c4 = tf.keras.layers.Dropout(dropout_rate)(c4)
         c4 = tf.keras.layers.Conv2D(ifn * 2, (3, 3), activation=leakyrelu, padding='same')(c4)
-        c4 = tf.keras.layers.BatchNormalization(trainable=False)(c4)
         c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c4)
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)
         c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c5)
-        c5 = tf.keras.layers.BatchNormalization(trainable=False)(c5)
     
         outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
     
@@ -569,11 +501,9 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         # Convolutional block
         def conv_block(x, filters, kernel_size, dropout_rate):
             conv = tf.keras.layers.Conv2D(filters, kernel_size, padding='same', kernel_initializer='he_normal')(x)
-            conv = tf.keras.layers.BatchNormalization(trainable=False)(conv)
             conv = tf.keras.layers.LeakyReLU()(conv)
             conv = tf.keras.layers.Dropout(dropout_rate)(conv)
             conv = tf.keras.layers.Conv2D(filters, kernel_size, padding='same', kernel_initializer='he_normal')(conv)
-            conv = tf.keras.layers.BatchNormalization(trainable=False)(conv)
             conv = tf.keras.layers.LeakyReLU()(conv)
             return conv
     
@@ -581,14 +511,12 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         def res_conv_block(x, filters, kernel_size, dropout_rate):
             conv = conv_block(x, filters, kernel_size, dropout_rate)
             shortcut = tf.keras.layers.Conv2D(filters, (1, 1), padding='same', kernel_initializer='he_normal')(x)
-            shortcut = tf.keras.layers.BatchNormalization(trainable=False)(shortcut)
             res_path = tf.keras.layers.add([shortcut, conv])
             return res_path
     
         # Gating signal
         def gating_signal(input, filters):
             x = tf.keras.layers.Conv2D(filters, (1, 1), padding='same', kernel_initializer='he_normal')(input)
-            x = tf.keras.layers.BatchNormalization(trainable=False)(x)
             x = tf.keras.layers.LeakyReLU()(x)
             return x
     
@@ -604,24 +532,19 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
             upsample_psi = tf.keras.layers.UpSampling2D(size=(x.shape[1] // sigmoid_xg.shape[1], x.shape[2] // sigmoid_xg.shape[2]))(sigmoid_xg)
             y = tf.keras.layers.multiply([upsample_psi, x])
             result = tf.keras.layers.Conv2D(x.shape[3], (1, 1), padding='same', kernel_initializer='he_normal')(y)
-            result = tf.keras.layers.BatchNormalization(trainable=False)(result)
             return result
     
         inputs = tf.keras.layers.Input((n_lat, n_lon, n_channels))
-        #inputs_bn = tf.keras.layers.BatchNormalization()(inputs)
     
         # Contraction path
         c1 = res_conv_block(inputs, ifn, (3, 3), dropout_rate)
         p1 = tf.keras.layers.MaxPooling2D((2, 2))(c1)
-        p1 = tf.keras.layers.BatchNormalization(trainable=False)(p1)
     
         c2 = res_conv_block(p1, ifn * 2, (3, 3), dropout_rate)
         p2 = tf.keras.layers.MaxPooling2D((2, 2))(c2)
-        p2 = tf.keras.layers.BatchNormalization(trainable=False)(p2)
     
         # Bottleneck
         c3 = res_conv_block(p2, ifn * 4, (3, 3), dropout_rate)
-        c3 = tf.keras.layers.BatchNormalization(trainable=False)(c3)
     
         # Expansive path with attention
         g2 = gating_signal(c3, ifn * 2)
@@ -629,14 +552,12 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         u2 = tf.keras.layers.Conv2DTranspose(ifn * 2, (3, 3), strides=(2, 2), padding='same')(c3)
         u2 = tf.keras.layers.concatenate([u2, a2])
         c4 = res_conv_block(u2, ifn * 2, (3, 3), dropout_rate)
-        c4 = tf.keras.layers.BatchNormalization(trainable=False)(c4)
     
         g1 = gating_signal(c4, ifn)
         a1 = attention_block(c1, g1, ifn)
         u1 = tf.keras.layers.Conv2DTranspose(ifn, (3, 3), strides=(2, 2), padding='same')(c4)
         u1 = tf.keras.layers.concatenate([u1, a1], axis=3)
         c5 = res_conv_block(u1, ifn, (3, 3), dropout_rate)
-        c5 = tf.keras.layers.BatchNormalization(trainable=False)(c5)
     
         outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
     
