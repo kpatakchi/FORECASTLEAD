@@ -964,25 +964,7 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
             canvas_m[dry] *= 0.01  # Multiply by 0.01 in dry conditions
             canvas_m[light] *= 0.04  # Multiply by 0.04 in light conditions
             canvas_m[heavy] *= 0.95  # Multiply by 0.95 in heavy conditions
-
-        # rescaling (standardization):
-        x_min = np.nanmin(X_TRAIN)
-        x_max = np.nanmax(X_TRAIN)
-
-        X_TRAIN = (X_TRAIN - x_min) / (x_max - x_min)
-        X_TRAIN_tminus = (X_TRAIN_tminus - x_min) / (x_max - x_min)
-
-        # Rescale day of the year (CAL[..., 0])
-        cal_min = np.nanmin(CAL[..., 0])
-        cal_max = np.nanmax(CAL[..., 0])
-        CAL[..., 0] = (CAL[..., 0] - cal_min) / (cal_max - cal_min)
-        # Set yeardate (CAL[..., 1]) to 0 if you don't want to consider it
-        CAL[..., 1] = 0
             
-        for ch in range (0, 3):
-            spp_min = np.nanmin(SPP[..., ch])
-            spp_max = np.nanmax(SPP[..., ch])
-            SPP[..., ch] = (SPP[..., ch] - spp_min) / (spp_max - spp_min) 
         
         if task_name == "model_only":
             X_TRAIN = X_TRAIN
@@ -1041,12 +1023,22 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
         canvas_x = None
         canvas_m = None
 
-        # rescaling the output (standardization)
+        # rescale the input data
+        for ii in range (X_TRAIN.shape[-1]):
+            x_minn = np.nanmin(X_TRAIN[..., ii])
+            x_maxx = np.nanmax(X_TRAIN[..., ii])
+            X_TRAIN[..., ii] = (X_TRAIN[..., ii] - x_minn) / (x_maxx - x_minn)
+
+        # recall the minimum/maximum from training data (precipitation, first channel only)
+        x_min = np.nanmin(X_TRAIN[0])
+        x_max = np.nanmax(X_TRAIN[0])
+        
+        # rescaling the output:
         y_min = np.nanmin(train_y)
         y_max = np.nanmax(train_y)
 
-        train_y = 2 * (train_y - y_min) / (y_max - y_min) - 1
-        val_y =  2 * (val_y - y_min) / (y_max - y_min) - 1
+        train_y = (train_y - y_min) / (y_max - y_min)
+        val_y =  (val_y - y_min) / (y_max - y_min)
         
         # Save min and max values to a CSV file
         import csv
@@ -1242,22 +1234,6 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
             canvas_m[light] *= 0.04  # Multiply by 0.04 in light conditions
             canvas_m[heavy] *= 0.95  # Multiply by 0.95 in heavy conditions
 
-        X_TRAIN = (X_TRAIN - x_min) / (x_max - x_min)
-        X_TRAIN_tminus = (X_TRAIN_tminus - x_min) / (x_max - x_min)
-
-        # Rescale day of the year (CAL[..., 0])
-        cal_min = np.nanmin(CAL[..., 0])
-        cal_max = np.nanmax(CAL[..., 0])
-        CAL[..., 0] = (CAL[..., 0] - cal_min) / (cal_max - cal_min)
-        
-        # Set yeardate (CAL[..., 1]) to 0 if you don't want to consider it
-        CAL[..., 1] = 0
-
-        for ch in range (0, 3):
-            spp_min = np.nanmin(SPP[..., ch])
-            spp_max = np.nanmax(SPP[..., ch])
-            SPP[..., ch] = (SPP[..., ch] - spp_min) / (spp_max - spp_min)
-
         if task_name == "model_only":
             X_TRAIN = X_TRAIN
 
@@ -1274,12 +1250,25 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
             X_TRAIN = np.concatenate((X_TRAIN_tminus, X_TRAIN, CAL, SPP), axis=3)
 
         canvas_x = make_canvas(X_TRAIN, canvas_size, trim)
+
+        # rescale the input data
+        for ii in range (canvas_x.shape[-1]):
+            x_minn = np.nanmin(canvas_x[..., ii])
+            x_maxx = np.nanmax(canvas_x[..., ii])
+            canvas_x[..., ii] = (canvas_x[..., ii] - x_minn) / (x_maxx - x_minn)
+
+        # rescale the first channel (precipitation input data):
+        canvas_x[..., 0] = (canvas_x[..., 0] - x_min) / (x_max - x_min)
         
+        if task_name != "model_only": #rescale the second channel as well
+            canvas_x[..., 1] = (canvas_x[..., 1] - x_min) / (x_max - x_min)
+    
         canvas_x = canvas_x.astype(np.float16)
         canvas_y = canvas_y.astype(np.float16)
         canvas_m = canvas_m.astype(np.float16)
 
-        canvas_y = 2 * (canvas_y - y_min) / (y_max - y_min) - 1
+        # rescale the outputs:
+        canvas_y = (canvas_y - y_min) / (y_max - y_min)
         
         X_TRAIN_tminus = None
         CAL = None
