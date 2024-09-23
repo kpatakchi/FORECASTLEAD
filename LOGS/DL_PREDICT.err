@@ -1,120 +1,45 @@
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/EXTRACT_HPT.py", line 60, in <module>
-    min_idx = np.argmin(val_losses)
-  File "<__array_function__ internals>", line 180, in argmin
-  File "/p/software/juwelsbooster/stages/2023/software/SciPy-bundle/2022.05-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 1312, in argmin
-    return _wrapfunc(a, 'argmin', axis=axis, out=out, **kwds)
-  File "/p/software/juwelsbooster/stages/2023/software/SciPy-bundle/2022.05-gcccoremkl-11.3.0-2022.1.0/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 57, in _wrapfunc
-    return bound(*args, **kwds)
-ValueError: attempt to get argmin of an empty sequence
-srun: error: jwb0956: task 0: Exited with exit code 1
-2024-09-19 21:02:47.808152: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-19 21:02:47.811817: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-19 21:02:47.814422: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-19 21:02:47.816017: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 83, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project1/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-17_0.5_4_4_16_0.5_128_0.0_unet-s_day05.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-srun: error: jwb0956: task 0: Exited with exit code 1
-2024-09-19 21:03:06.865625: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-19 21:03:06.867404: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-19 21:03:06.869984: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-19 21:03:06.871649: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-2024-09-19 21:03:07.536978: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-19 21:03:07.538743: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-19 21:03:07.540407: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-19 21:03:07.543279: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 83, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project1/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-17_0.5_4_4_16_0.5_128_0.0_unet-s_day06.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 83, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project1/cesmtst/patakchiyousefi1/HPT//mse_64_0.001_1e-17_0.5_4_4_16_0.5_128_0.0_unet-s_day07.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-srun: error: jwb0958: task 0: Exited with exit code 1
-srun: Job 10349798 step creation temporarily disabled, retrying (Requested nodes are busy)
-srun: Step created for StepId=10349798.4
-srun: error: jwb0956: task 0: Exited with exit code 1
-2024-09-19 21:03:18.353772: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-19 21:03:18.356468: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-19 21:03:18.358755: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-19 21:03:18.360286: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 83, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project1/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-17_0.5_4_8_16_0.5_128_0.0_unet-s_day08.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-srun: error: jwb0958: task 0: Exited with exit code 1
-2024-09-19 21:03:27.928510: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-19 21:03:27.930357: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-19 21:03:27.931951: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-19 21:03:27.934627: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 83, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project1/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-17_0.5_4_8_16_0.5_128_0.0_unet-s_day09.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-srun: error: jwb0956: task 0: Exited with exit code 1
-2024-09-19 21:03:38.120226: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
-2024-09-19 21:03:38.122938: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
-2024-09-19 21:03:38.124614: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
-2024-09-19 21:03:38.126104: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
-Traceback (most recent call last):
-  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_PREDICT.py", line 83, in <module>
-    model.load_weights(model_path)
-  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
-    raise e.with_traceback(filtered_tb) from None
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 533, in __init__
-    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
-  File "/p/software/juwelsbooster/stages/2023/software/h5py/3.7.0-GCCcore-11.3.0-serial/lib/python3.10/site-packages/h5py/_hl/files.py", line 226, in make_fid
-    fid = h5f.open(name, flags, fapl=fapl)
-  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
-  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
-  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
-FileNotFoundError: [Errno 2] Unable to open file (unable to open file: name = '/p/project1/cesmtst/patakchiyousefi1/HPT//mse_64_0.0001_1e-17_0.5_4_8_16_0.5_128_0.0_unet-s_day10.h5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
-srun: error: jwb0958: task 0: Exited with exit code 1
+rm: cannot remove '/p/scratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PREDICT_FILES/*': No such file or directory
+2024-09-20 10:09:25.759688: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-20 10:09:25.761633: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-20 10:09:25.763271: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-20 10:09:25.764838: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-20 10:09:28.184808: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+2024-09-20 10:09:52.748949: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-20 10:09:52.750804: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-20 10:09:52.752355: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-20 10:09:52.753920: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-20 10:09:56.373565: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+srun: Job 10351227 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10351227 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10351227 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job 10351227 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Step created for StepId=10351227.3
+2024-09-20 10:10:42.271287: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-20 10:10:42.273116: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-20 10:10:42.274711: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-20 10:10:42.277307: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-20 10:10:44.471540: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+srun: Job 10351227 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10351227 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10351227 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for StepId=10351227.4
+2024-09-20 10:11:16.148956: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-20 10:11:16.151540: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-20 10:11:16.153133: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-20 10:11:16.154820: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-20 10:11:18.371852: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+srun: Job 10351227 step creation still disabled, retrying (Requested nodes are busy)
+srun: Job 10351227 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for StepId=10351227.5
+2024-09-20 10:11:34.240495: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-20 10:11:34.242431: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-20 10:11:34.245160: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-20 10:11:34.247898: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-20 10:11:36.386625: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
+srun: Job 10351227 step creation still disabled, retrying (Requested nodes are busy)
+srun: Step created for StepId=10351227.6
+2024-09-20 10:12:14.917237: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-09-20 10:12:14.919145: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-09-20 10:12:14.920842: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-09-20 10:12:14.922444: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-09-20 10:12:17.278211: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8600
