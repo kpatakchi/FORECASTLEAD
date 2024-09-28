@@ -11,12 +11,13 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
     ifn = ifn  # initial feature number (number of initial filters)
     leakyrelu = tf.keras.layers.LeakyReLU()
     dropout_rate=dropout_rate
+    output_activation = "sigmoid"
 
     if type_ == "unet-att-s":
         
         model = models.att_unet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1,
                                    stack_num_down=2, stack_num_up=2,
-                                   activation='ReLU', atten_activation='ReLU', attention='add', output_activation=None, 
+                                   activation='ReLU', atten_activation='ReLU', attention='add', output_activation=output_activation, 
                                    batch_norm=False, pool=True, unpool='bilinear', name='attunet')
         return model
 
@@ -24,7 +25,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         
         model = models.att_unet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1,
                                    stack_num_down=4, stack_num_up=4,
-                                   activation='ReLU', atten_activation='ReLU', attention='add', output_activation=None, 
+                                   activation='ReLU', atten_activation='ReLU', attention='add', output_activation=output_activation, 
                                    batch_norm=False, pool=True, unpool='bilinear', name='attunet')
         return model
 
@@ -32,7 +33,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
     
         model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
                                     stack_num_up=2,embed_dim=1024, num_mlp=1024, num_heads=6, num_transformer=6,
-                                    activation='ReLU', mlp_activation='GELU', output_activation=None, 
+                                    activation='ReLU', mlp_activation='GELU', output_activation=output_activation, 
                                     batch_norm=False, pool=True, unpool='bilinear', name='transunet')
         return model
         
@@ -40,7 +41,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
     
         model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
                                     stack_num_up=4,embed_dim=1024, num_mlp=1024, num_heads=6, num_transformer=6,
-                                    activation='ReLU', mlp_activation='GELU', output_activation=None, 
+                                    activation='ReLU', mlp_activation='GELU', output_activation=output_activation, 
                                     batch_norm=False, pool=True, unpool='bilinear', name='transunet')
         return model
         
@@ -116,7 +117,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c9 = tf.keras.layers.Dropout(dropout_rate)(c9)  # Add dropout layer here
         c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c9)
     
-        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c9)
+        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation=output_activation)(c9)
     
         model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
     
@@ -177,7 +178,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c9 = tf.keras.layers.Dropout(dropout_rate)(c9)  # Add dropout layer here
         c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c9)
     
-        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c9)
+        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation=output_activation)(c9)
     
         model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
     
@@ -238,7 +239,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c9 = tf.keras.layers.Dropout(dropout_rate)(c9)  # Add dropout layer here
         c9 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c9)
     
-        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c9)
+        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation=output_activation)(c9)
     
         model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
     
@@ -289,7 +290,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c7 = tf.keras.layers.Dropout(dropout_rate)(c7)  # Add dropout layer here
         c7 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c7)
     
-        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c7)
+        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation=output_activation)(c7)
     
         model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
     
@@ -340,7 +341,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c7 = tf.keras.layers.Dropout(dropout_rate)(c7)  # Add dropout layer here
         c7 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c7)
     
-        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c7)
+        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation=output_activation)(c7)
     
         model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
     
@@ -380,7 +381,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
         c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c5)
     
-        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
+        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation=output_activation)(c5)
     
         model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
     
@@ -420,7 +421,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)  # Add dropout layer here
         c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c5)
     
-        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
+        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation=output_activation)(c5)
     
         model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
     
@@ -455,7 +456,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)
         c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c5)
     
-        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
+        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation=output_activation)(c5)
     
         model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
     
@@ -490,7 +491,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         c5 = tf.keras.layers.Dropout(dropout_rate)(c5)
         c5 = tf.keras.layers.Conv2D(ifn, (3, 3), activation=leakyrelu, padding='same')(c5)
     
-        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
+        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation=output_activation)(c5)
     
         model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
     
@@ -559,7 +560,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         u1 = tf.keras.layers.concatenate([u1, a1], axis=3)
         c5 = res_conv_block(u1, ifn, (3, 3), dropout_rate)
     
-        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation='linear')(c5)
+        outputs = tf.keras.layers.Conv2D(1, (1, 1), activation=output_activation)(c5)
     
         model = tf.keras.Model(inputs=[inputs], outputs=[outputs])
     
@@ -1023,22 +1024,22 @@ def prepare_train(PPROJECT_DIR, TRAIN_FILES, ATMOS_DATA, filename, model_data, r
         canvas_x = None
         canvas_m = None
 
-        # rescale the input data
-        for ii in range (X_TRAIN.shape[-1]):
-            x_minn = np.nanmin(X_TRAIN[..., ii])
-            x_maxx = np.nanmax(X_TRAIN[..., ii])
-            X_TRAIN[..., ii] = (X_TRAIN[..., ii] - x_minn) / (x_maxx - x_minn)
-
-        # recall the minimum/maximum from training data (precipitation, first channel only)
-        x_min = np.nanmin(X_TRAIN[0])
-        x_max = np.nanmax(X_TRAIN[0])
+        if task_name == "model_only":
+            # this rescaling only works for model_only; 
+            # store the minimum/maximum from training data (precipitation, first channel only)
+            x_min = np.nanmin(train_x)
+            x_max = np.nanmax(train_x)
+            train_x = (train_x - x_min) / (x_max - x_min)
+            val_x = (val_x - x_min) / (x_max - x_min)
         
-        # rescaling the output:
-        y_min = np.nanmin(train_y)
-        y_max = np.nanmax(train_y)
+            # rescaling the output:
+            y_min = np.nanmin(train_y)
+            y_max = np.nanmax(train_y)
+            train_y = (train_y - y_min) / (y_max - y_min)
+            val_y =  (val_y - y_min) / (y_max - y_min)
 
-        train_y = (train_y - y_min) / (y_max - y_min)
-        val_y =  (val_y - y_min) / (y_max - y_min)
+        else:
+            print ("this rescaling only works for model_only; check and add rescaling for this method")
         
         # Save min and max values to a CSV file
         import csv
@@ -1250,25 +1251,18 @@ def prepare_produce(PPROJECT_DIR, PRODUCE_FILES, ATMOS_DATA, filename, model_dat
             X_TRAIN = np.concatenate((X_TRAIN_tminus, X_TRAIN, CAL, SPP), axis=3)
 
         canvas_x = make_canvas(X_TRAIN, canvas_size, trim)
-
-        # rescale the input data
-        for ii in range (canvas_x.shape[-1]):
-            x_minn = np.nanmin(canvas_x[..., ii])
-            x_maxx = np.nanmax(canvas_x[..., ii])
-            canvas_x[..., ii] = (canvas_x[..., ii] - x_minn) / (x_maxx - x_minn)
-
-        # rescale the first channel (precipitation input data):
-        canvas_x[..., 0] = (canvas_x[..., 0] - x_min) / (x_max - x_min)
-        
-        if task_name != "model_only": #rescale the second channel as well
-            canvas_x[..., 1] = (canvas_x[..., 1] - x_min) / (x_max - x_min)
     
         canvas_x = canvas_x.astype(np.float16)
         canvas_y = canvas_y.astype(np.float16)
         canvas_m = canvas_m.astype(np.float16)
 
-        # rescale the outputs:
-        canvas_y = (canvas_y - y_min) / (y_max - y_min)
+        if task_name == "model_only":
+            # this rescaling only works for model_only; 
+            # store the minimum/maximum from training data (precipitation, first channel only)
+            canvas_x = (canvas_x - x_min) / (x_max - x_min)
+            canvas_y = (canvas_y - x_min) / (x_max - x_min)        
+        else:
+            print ("this rescaling only works for model_only; check and add rescaling for this method")
         
         X_TRAIN_tminus = None
         CAL = None
@@ -1336,7 +1330,14 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
     
     # Restore the original shape of Y_PRED using unmake_canvas function
     Y_PRED = unmake_canvas(Y_PRED, (lat_shape, lon_shape))
-    Y_PRED = (Y_PRED + 1) / 2 * (y_max - y_min) + y_min # rescale back to original format
+    Y_PRED = (Y_PRED) * (y_max - y_min) + y_min  # rescale back to original format
+
+    # Restore the original shape of Y_PRED using unmake_canvas function
+    flattened_Y_PRED = Y_PRED.flatten()
+    unique_values, counts = np.unique(flattened_Y_PRED, return_counts=True)
+    most_frequent_value = unique_values[np.argmax(counts)]
+    Y_PRED = Y_PRED - most_frequent_value
+    print("frequent value: " + str(most_frequent_value) + " removed")
 
     # Subtract Y_PRED from model
     diff = model_aligned[1:, ...] - Y_PRED

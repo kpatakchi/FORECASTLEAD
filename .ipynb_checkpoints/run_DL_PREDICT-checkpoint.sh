@@ -3,7 +3,7 @@
 #SBATCH --job-name=DL_PREDICT
 #SBATCH --output=LOGS/DL_PREDICT.out
 #SBATCH --error=LOGS/DL_PREDICT.err
-#SBATCH --time=02:30:00
+#SBATCH --time=00:30:00
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
