@@ -1303,19 +1303,25 @@ def unmake_canvas(canvas, original_shape):
     data = canvas[:, top_pad:top_pad+original_dim1, left_pad:left_pad+original_dim2]
     return data
 
-def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, date_start, date_end, variable, training_unique_name, reference_data, leadtime, y_min, y_max):
-        
-    import xarray as xr
-    import pandas as pd
+import xarray as xr
+import pandas as pd
+import numpy as np
 
+import xarray as xr
+import pandas as pd
+import numpy as np
+
+def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, date_start, date_end, variable, training_unique_name, reference_data, leadtime, y_min, y_max):
+    
+    # Load the reference and model data
     REFERENCE = xr.open_dataset(f"{ATMOS_DATA}/{reference_data}")
     REFERENCE = REFERENCE[variable].sel(time=slice(date_start, date_end))
 
     if variable == "pr":
         REFERENCE = REFERENCE.where(REFERENCE > 0, 0)
-                
+
     REFERENCE = HRES_NETCDF_LEADTIME_TRAIN_PREPROCESS(REFERENCE, "novar", leadtime)
-    
+
     model = xr.open_dataset(f"{ATMOS_DATA}/{model_data}")
     model = model[variable].sel(time=slice(date_start, date_end))
 
@@ -1327,27 +1333,46 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
     # Retrieve lat and lon shape from the model
     lat_shape = model_aligned.latitude.shape[0]
     lon_shape = model_aligned.longitude.shape[0]
-    
+
     # Restore the original shape of Y_PRED using unmake_canvas function
     Y_PRED = unmake_canvas(Y_PRED, (lat_shape, lon_shape))
-    Y_PRED = (Y_PRED) * (y_max - y_min) + y_min  # rescale back to original format
 
-    # Restore the original shape of Y_PRED using unmake_canvas function
-    flattened_Y_PRED = Y_PRED.flatten()
-    unique_values, counts = np.unique(flattened_Y_PRED, return_counts=True)
-    most_frequent_value = unique_values[np.argmax(counts)]
-    Y_PRED = Y_PRED - most_frequent_value
-    print("frequent value: " + str(most_frequent_value) + " removed")
+    # Rescale Y_PRED back to its original format
+    Y_PRED = (Y_PRED) * (y_max - y_min) + y_min  
 
-    # Subtract Y_PRED from model
+    # Subtract Y_PRED from model to get the difference
     diff = model_aligned[1:, ...] - Y_PRED
-    diff_clipped = np.clip(diff, 0, None) # so that there is no less than zero precip generated!
-    
+
+    # Find the most frequent value in diff
+    unique_values_diff, counts_diff = np.unique(diff, return_counts=True)
+    most_frequent_value_diff = unique_values_diff[np.argmax(counts_diff)]
+    print(f"Most frequent value in diff: {most_frequent_value_diff}")
+
+    #remove the most frequent value in diff:
+    diff = diff - most_frequent_value_diff
+
+    unique_values_diff, counts_diff = np.unique(diff, return_counts=True)
+    most_frequent_value_diff = unique_values_diff[np.argmax(counts_diff)]
+    filtered_values = unique_values_diff[unique_values_diff > 0.05]
+    filtered_counts = counts_diff[unique_values_diff > 0.05]
+
+    # Find the most frequent value in the filtered array
+    if filtered_values.size > 0:
+        next_frequent_value = filtered_values[np.argmax(filtered_counts)]
+        print(f"Next most frequent value greater than 0.05: {next_frequent_value}")
+        diff = diff - next_frequent_value
+    else:
+        print("No values greater than 0.05 found.")
+
+    # replace non-significant values with zero.
+    diff = diff.where((diff >= 0.05) | (diff <= -0.05), 0)
+    diff_clipped = diff.clip(min=0)    
+
     # Save the result in a NETCDF file
-    data_unique_name = filename[:-4]
     output_filename = f"{PREDICT_FILES}/{model_data}.corrected.nc"
     diff_clipped.to_netcdf(output_filename)
 
+    print(f"Corrected data saved to {output_filename}")
 
 def get_scaling_params(scaling_file, PPROJECT_DIR2, leadtime):
     import csv

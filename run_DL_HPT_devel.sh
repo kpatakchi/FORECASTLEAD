@@ -3,7 +3,7 @@
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.sh
 
-#rm -r $HPT_DIR/*
+rm -r $HPT_DIR/*
 
 # Define arrays for parameter values
 #unet_type_values=("unet-xs" "unet-s" "unet-m" "unet-l" "unet-trans-s" "unet-trans-l" "unet-att-s" "unet-att-l" "unet-se")
@@ -35,7 +35,7 @@ calculate_weight_product() {
 calculate_time_limit() {
     weight_product=$1
 
-    total_seconds=$((weight_product * 720))
+    total_seconds=$((weight_product * 960))
 
     # Convert total_seconds to HH:MM:SS format
     hours=$((total_seconds / 3600))
@@ -87,7 +87,7 @@ source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.s
 start_time=\$(date +%s)
 
 # Iterate over dropout, learning rate, and batch size
-for lr_value in 0.0001; do
+for lr_value in 0.001; do
     for bs_value in 4; do
         dropout_value=0
         echo "Running DL_TRAIN_devel.py for day${LEADTIME} with dropout=\${dropout_value}, lr=\${lr_value}, bs=\${bs_value}, unet_type=${UNET_TYPE} ..."

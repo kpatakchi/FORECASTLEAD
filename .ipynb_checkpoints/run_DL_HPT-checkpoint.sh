@@ -85,7 +85,6 @@ for UNET_TYPE in "${unet_type_values[@]}"; do
 #SBATCH --nodes=${NODES}
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:4
-#SBATCH --cpus-per-task=4
 
 # Reload environment settings
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
@@ -99,7 +98,7 @@ for lr_value in 0.00001 0.0001 0.001 0.01; do
     for bs_value in 1 2 4 8; do
         dropout_value=0
         echo "Running DL_TRAIN.py for day${LEADTIME} with dropout=\${dropout_value}, lr=\${lr_value}, bs=\${bs_value}, unet_type=${UNET_TYPE} ..."
-        srun --nodes=1 --ntasks=1 --gres=gpu:4 --cpus-per-task=4 \
+        srun --nodes=1 --ntasks=1 --gres=gpu:4 \
             python DL_TRAIN.py --lr \${lr_value} --bs \${bs_value} --lr_factor ${LR_FACTOR} \
             --filters ${FILTERS} --mask_type ${MASK_TYPE} --HPT_path ${HPT_PATH} \
             --leadtime day${LEADTIME} --dropout \${dropout_value} --unet_type ${UNET_TYPE} &
