@@ -16,6 +16,8 @@ The figure illustrates forecast lead time error correction over using various DL
 ### Modify the environment and directories based on your working system: 
 Modify `bashenv`, `bashenv-train`, `directories.py`, and `directories.sh` accordingly. 
 
+`conda_env.sh`: This script sets up a Miniconda environment with Python 3.9, installs required libraries, and configures a clean Jupyter kernel.
+
 ### Run `run_all_jobs.sh` for automating the sequential submission of Slurm batch jobs:
 It submits a series of batch scripts ensuring that each script starts only after the previous one has completed successfully. The script uses job dependencies to manage the execution order.
 

@@ -3,12 +3,13 @@
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.sh
 
-#rm -r $HPT_DIR/*
+rm -r $HPT_DIR/*
 
 # Define arrays for parameter values
 #unet_type_values=("unet-xs" "unet-s" "unet-m" "unet-l" "unet-trans-s" "unet-trans-l" "unet-att-s" "unet-att-l" "unet-se")
-unet_type_values=("unet-xs")
+unet_type_values=("unet-se")
 leadtime_values=("02" "03" "04" "05" "06" "07" "08" "09" "10")  # Adjust as needed
+#leadtime_values=("04")  # Adjust as needed
 
 # Define weight dictionaries
 declare -A unet_weights=( ["unet-xs"]=3 ["unet-s"]=4 ["unet-m"]=4 ["unet-l"]=5 ["unet-se"]=5 ["unet-trans-s"]=5 ["unet-trans-l"]=6 ["unet-att-s"]=3 ["unet-att-l"]=6)
@@ -34,7 +35,7 @@ calculate_weight_product() {
 calculate_time_limit() {
     weight_product=$1
 
-    total_seconds=$((weight_product * 720))
+    total_seconds=$((weight_product * 960))
 
     # Convert total_seconds to HH:MM:SS format
     hours=$((total_seconds / 3600))
@@ -65,7 +66,7 @@ for UNET_TYPE in "${unet_type_values[@]}"; do
         cat <<EOT > $JOB_SCRIPT
 #!/bin/bash
 
-#SBATCH --job-name=DL_HPT_leadtime_${LEADTIME}_${UNET_TYPE}_%j
+#SBATCH --job-name=produce_devel_leadtime_${LEADTIME}_${UNET_TYPE}_%j
 #SBATCH --output=LOGS/DL_HPT_${LEADTIME}_${UNET_TYPE}.out
 #SBATCH --error=LOGS/DL_HPT_${LEADTIME}_${UNET_TYPE}.err
 #SBATCH --time=${TIME_LIMIT}
@@ -86,7 +87,7 @@ source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.s
 start_time=\$(date +%s)
 
 # Iterate over dropout, learning rate, and batch size
-for lr_value in 0.0001; do
+for lr_value in 0.001; do
     for bs_value in 4; do
         dropout_value=0
         echo "Running DL_TRAIN_devel.py for day${LEADTIME} with dropout=\${dropout_value}, lr=\${lr_value}, bs=\${bs_value}, unet_type=${UNET_TYPE} ..."

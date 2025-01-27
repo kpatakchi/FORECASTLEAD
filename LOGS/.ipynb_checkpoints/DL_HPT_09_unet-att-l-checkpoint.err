@@ -1,0 +1,240 @@
+2024-10-26 04:13:45.239109: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:13:45.240978: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:13:45.242659: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:13:45.245264: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+2024-10-26 04:13:46.025535: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:13:46.027407: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:13:46.030687: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:13:46.032386: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+srun: error: jwb0646: task 0: Exited with exit code 1
+srun: error: jwb0647: task 0: Exited with exit code 1
+2024-10-26 04:13:49.760691: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:13:49.764263: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:13:49.766843: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:13:49.770208: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+srun: error: jwb0648: task 0: Exited with exit code 1
+2024-10-26 04:13:54.704617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:13:54.706519: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:13:54.709067: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:13:54.711713: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+srun: error: jwb0649: task 0: Exited with exit code 1
+2024-10-26 04:13:58.003062: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:13:58.004840: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:13:58.006362: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:13:58.008144: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+2024-10-26 04:13:59.883706: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:13:59.885332: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:13:59.886861: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:13:59.888527: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+srun: error: jwb0865: task 0: Exited with exit code 1
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+2024-10-26 04:14:02.281658: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:14:02.283484: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:14:02.286547: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:14:02.288045: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+srun: error: jwb0646: task 0: Exited with exit code 1
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+2024-10-26 04:14:03.866060: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:14:03.867882: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:14:03.869540: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:14:03.871271: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+srun: error: jwb0868: task 0: Exited with exit code 1
+srun: error: jwb0647: task 0: Exited with exit code 1
+2024-10-26 04:14:08.041815: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:14:08.045474: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:14:08.047918: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:14:08.049516: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+srun: error: jwb0648: task 0: Exited with exit code 1
+2024-10-26 04:14:12.040536: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:14:12.042210: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:14:12.043854: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:14:12.045645: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+srun: error: jwb0649: task 0: Exited with exit code 1
+2024-10-26 04:14:16.139492: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:14:16.141309: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:14:16.142976: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:14:16.144527: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+srun: error: jwb0646: task 0: Exited with exit code 1
+2024-10-26 04:14:20.080497: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:14:20.083972: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:14:20.085536: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:14:20.088019: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+srun: error: jwb0647: task 0: Exited with exit code 1
+2024-10-26 04:14:24.286753: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:14:24.289376: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:14:24.290959: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:14:24.293586: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+srun: error: jwb0648: task 0: Exited with exit code 1
+2024-10-26 04:14:28.312018: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:14:28.314001: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:14:28.319067: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:14:28.320617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+srun: error: jwb0649: task 0: Exited with exit code 1
+2024-10-26 04:14:32.346945: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:14:32.348765: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:14:32.350433: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:14:32.352126: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+srun: error: jwb0646: task 0: Exited with exit code 1
+2024-10-26 04:14:36.283341: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-26 04:14:36.285105: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-26 04:14:36.287796: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-26 04:14:36.289419: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 97, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 13, in UNET
+    sigmoid = tf.keras.activations.sigmoid()
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/p/software/juwelsbooster/stages/2023/software/TensorFlow/2.11.0-foss-2022a-CUDA-11.7/lib/python3.10/site-packages/tensorflow/python/util/dispatch.py", line 1170, in op_dispatch_handler
+    result = api_dispatcher.Dispatch(args, kwargs)
+TypeError: Missing required positional argument
+srun: error: jwb0647: task 0: Exited with exit code 1

@@ -1,0 +1,256 @@
+2024-10-18 23:13:10.597967: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:10.600984: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:10.602542: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:10.605043: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0124: task 0: Exited with exit code 1
+2024-10-18 23:13:14.581494: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:14.584298: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:14.587150: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:14.588699: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0350: task 0: Exited with exit code 1
+2024-10-18 23:13:18.745576: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:18.747420: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:18.749132: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:18.750787: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0378: task 0: Exited with exit code 1
+2024-10-18 23:13:22.708555: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:22.710220: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:22.711743: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:22.715570: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0453: task 0: Exited with exit code 1
+2024-10-18 23:13:26.834480: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:26.836311: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:26.838897: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:26.840714: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0124: task 0: Exited with exit code 1
+2024-10-18 23:13:30.864673: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:30.867344: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:30.868861: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:30.870425: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0350: task 0: Exited with exit code 1
+2024-10-18 23:13:35.032021: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:35.034822: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:35.037309: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:35.042126: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0378: task 0: Exited with exit code 1
+2024-10-18 23:13:39.015177: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:39.017000: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:39.019424: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:39.021101: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0453: task 0: Exited with exit code 1
+2024-10-18 23:13:43.076529: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:43.078269: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:43.080490: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:43.082050: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0124: task 0: Exited with exit code 1
+2024-10-18 23:13:47.125644: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:47.127375: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:47.129076: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:47.130682: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0350: task 0: Exited with exit code 1
+2024-10-18 23:13:51.299514: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:51.301270: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:51.303904: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:51.305618: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0378: task 0: Exited with exit code 1
+2024-10-18 23:13:55.339284: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:55.341935: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:55.344511: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:55.347270: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0453: task 0: Exited with exit code 1
+2024-10-18 23:13:59.315287: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:13:59.317110: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:13:59.318945: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:13:59.321655: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0124: task 0: Exited with exit code 1
+2024-10-18 23:14:03.318107: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:14:03.319950: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:14:03.321627: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:14:03.324305: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0350: task 0: Exited with exit code 1
+2024-10-18 23:14:07.572085: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:14:07.573928: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:14:07.576604: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:14:07.578177: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0378: task 0: Exited with exit code 1
+2024-10-18 23:14:11.648586: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38364 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:03:00.0, compute capability: 8.0
+2024-10-18 23:14:11.651671: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38364 MB memory:  -> device: 1, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:44:00.0, compute capability: 8.0
+2024-10-18 23:14:11.653343: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38364 MB memory:  -> device: 2, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:84:00.0, compute capability: 8.0
+2024-10-18 23:14:11.654819: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38364 MB memory:  -> device: 3, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:c4:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_TRAIN.py", line 114, in <module>
+    model = func_train.UNET(xpixels, ypixels, n_channels, Filters, dropout, unet_type)
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/func_train.py", line 42, in UNET
+    model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/_model_transunet_2d.py", line 347, in transunet_2d
+    OUT = CONV_output(X, n_labels, kernel_size=1, activation=output_activation, name='{}_output'.format(name))
+  File "/p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/keras_unet_collection/layer_utils.py", line 414, in CONV_output
+    activation_func = eval(activation)
+  File "<string>", line 1, in <module>
+NameError: name 'sigmoid' is not defined
+srun: error: jwb0453: task 0: Exited with exit code 1

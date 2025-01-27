@@ -9,7 +9,7 @@
 #SBATCH --partition=booster
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
-#SBATCH --account=deepacf
+#SBATCH --account=esmtst
 
 #This is for touching all files in scratch
 

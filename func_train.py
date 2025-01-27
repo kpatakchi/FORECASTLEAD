@@ -11,13 +11,13 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
     ifn = ifn  # initial feature number (number of initial filters)
     leakyrelu = tf.keras.layers.LeakyReLU()
     dropout_rate=dropout_rate
-    output_activation = "sigmoid"
+    output_activation = "linear"
 
     if type_ == "unet-att-s":
         
         model = models.att_unet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1,
                                    stack_num_down=2, stack_num_up=2,
-                                   activation='ReLU', atten_activation='ReLU', attention='add', output_activation=output_activation, 
+                                   activation='ReLU', atten_activation='ReLU', attention='add', output_activation='ReLU', 
                                    batch_norm=False, pool=True, unpool='bilinear', name='attunet')
         return model
 
@@ -25,7 +25,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
         
         model = models.att_unet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1,
                                    stack_num_down=4, stack_num_up=4,
-                                   activation='ReLU', atten_activation='ReLU', attention='add', output_activation=output_activation, 
+                                   activation='ReLU', atten_activation='ReLU', attention='add', output_activation='ReLU', 
                                    batch_norm=False, pool=True, unpool='bilinear', name='attunet')
         return model
 
@@ -33,7 +33,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
     
         model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=2,
                                     stack_num_up=2,embed_dim=1024, num_mlp=1024, num_heads=6, num_transformer=6,
-                                    activation='ReLU', mlp_activation='GELU', output_activation=output_activation, 
+                                    activation='ReLU', mlp_activation='GELU', output_activation='ReLU', 
                                     batch_norm=False, pool=True, unpool='bilinear', name='transunet')
         return model
         
@@ -41,7 +41,7 @@ def UNET(n_lat, n_lon, n_channels, ifn, dropout_rate, type_):
     
         model = models.transunet_2d((n_lat, n_lon, n_channels), filter_num=[ifn, ifn*2, ifn*4, ifn*8], n_labels=1, stack_num_down=4,
                                     stack_num_up=4,embed_dim=1024, num_mlp=1024, num_heads=6, num_transformer=6,
-                                    activation='ReLU', mlp_activation='GELU', output_activation=output_activation, 
+                                    activation='ReLU', mlp_activation='GELU', output_activation='ReLU', 
                                     batch_norm=False, pool=True, unpool='bilinear', name='transunet')
         return model
         
@@ -1351,20 +1351,20 @@ def de_prepare_produce(Y_PRED, PREDICT_FILES, ATMOS_DATA, filename, model_data, 
     #remove the most frequent value in diff:
     diff = diff - most_frequent_value_diff
 
-    unique_values_diff, counts_diff = np.unique(diff, return_counts=True)
-    most_frequent_value_diff = unique_values_diff[np.argmax(counts_diff)]
-    filtered_values = unique_values_diff[unique_values_diff > 0.05]
-    filtered_counts = counts_diff[unique_values_diff > 0.05]
+    #unique_values_diff, counts_diff = np.unique(diff, return_counts=True)
+    #most_frequent_value_diff = unique_values_diff[np.argmax(counts_diff)]
+    #filtered_values = unique_values_diff[unique_values_diff > 0.5]
+    #filtered_counts = counts_diff[unique_values_diff > 0.2]
 
     # Find the most frequent value in the filtered array
-    if filtered_values.size > 0:
-        next_frequent_value = filtered_values[np.argmax(filtered_counts)]
-        print(f"Next most frequent value greater than 0.05: {next_frequent_value}")
-        diff = diff - next_frequent_value
-    else:
-        print("No values greater than 0.05 found.")
+    #if filtered_values.size > 1000:
+    #    next_frequent_value = filtered_values[np.argmax(filtered_counts)]
+    #    print(f"Next most frequent value greater than 0.05: {next_frequent_value}")
+    #    diff = diff - next_frequent_value
+    #else:
+    #    print("No values greater than 0.1 found.")
 
-    # replace non-significant values with zero.
+    # replace non-significant (0.05 mm) values with zero.
     diff = diff.where((diff >= 0.05) | (diff <= -0.05), 0)
     diff_clipped = diff.clip(min=0)    
 

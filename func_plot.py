@@ -72,7 +72,7 @@ def plot_hpt_3dscatter_data(ax, day, dropouts, lrs, bss, val_losses, cmap, fs, s
     ax.set_xticklabels(['0', '0.1', '0.2', '0.3'], fontsize=10*fs)
     ax.set_yticklabels(['$10^{-5}$', '$10^{-4}$', '$10^{-3}$', '$10^{-2}$'], fontsize=10*fs)
     ax.set_zticks(np.log2([min_bs, 2, 4, max_bs]))
-    ax.set_zticklabels(['$2^{1}$', '$2^{2}$', '$2^{3}$', '$2^{4}$'], fontsize=10*fs)
+    ax.set_zticklabels(['$2^{0}$', '$2^{1}$', '$2^{2}$', '$2^{3}$'], fontsize=10*fs)
     
     ax.set_xlim([0, max_dropout])
     ax.set_ylim(np.log10(max_lr), np.log10(min_lr))
@@ -131,7 +131,7 @@ def plot_hpt_2dscatter_data(ax, day, lrs, bss, val_losses, cmap, fs, stepsincolo
     ax.set_xticks(np.log10([min_lr, 0.0001, 0.001, max_lr]))
     ax.set_xticklabels(['$10^{-5}$', '$10^{-4}$', '$10^{-3}$', '$10^{-2}$'], fontsize=10*fs)
     ax.set_yticks(np.log2([min_bs, 2, 4, max_bs]))
-    ax.set_yticklabels(['$2^{1}$', '$2^{2}$', '$2^{3}$', '$2^{4}$'], fontsize=10*fs)
+    ax.set_yticklabels(['$2^{0}$', '$2^{1}$', '$2^{2}$', '$2^{3}$'], fontsize=10*fs)
     
     # Set limits for the axes
     #ax.set_xlim(np.log10(min_lr)*0.99, np.log10(max_lr)*1.01)

@@ -75,8 +75,8 @@ val_m = train_files["val_m"]
 
 print("Data loaded!")
 
-train_dataset = tf.data.Dataset.from_tensor_slices((train_x, train_y)).batch(BS)
-val_dataset = tf.data.Dataset.from_tensor_slices((val_x, val_y)).batch(BS)
+train_dataset = tf.data.Dataset.from_tensor_slices((train_x, train_y, train_m)).batch(BS)
+val_dataset = tf.data.Dataset.from_tensor_slices((val_x, val_y, val_m)).batch(BS)
 
 # Disable auto sharding
 options = tf.data.Options()
