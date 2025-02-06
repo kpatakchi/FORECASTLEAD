@@ -44,9 +44,9 @@ def extract_min_val_loss(day, all_files, path_to_csv):
 
 def plot_hpt_3dscatter_data(ax, day, dropouts, lrs, bss, val_losses, cmap, fs, stepsincolor):
 
-    max_lr=0.01
+    max_lr=0.001
     min_lr=0.00001
-    min_bs=1
+    min_bs=2
     max_bs=8
     min_dropout=0
     max_dropout=0.3
@@ -97,9 +97,9 @@ def plot_hpt_3dscatter_data(ax, day, dropouts, lrs, bss, val_losses, cmap, fs, s
 
 def plot_hpt_2dscatter_data(ax, day, lrs, bss, val_losses, cmap, fs, stepsincolor, aspect_ratio, show_ylabel):
 
-    max_lr = 0.01
+    max_lr = 0.001
     min_lr = 0.00001
-    min_bs = 1
+    min_bs = 2
     max_bs = 8
     
     # Log-transform the data
@@ -128,10 +128,10 @@ def plot_hpt_2dscatter_data(ax, day, lrs, bss, val_losses, cmap, fs, stepsincolo
     ax.set_title(f'Lead day {day[:-4][-2:]}', fontsize=12*fs)
 
     # Configure ticks and labels
-    ax.set_xticks(np.log10([min_lr, 0.0001, 0.001, max_lr]))
-    ax.set_xticklabels(['$10^{-5}$', '$10^{-4}$', '$10^{-3}$', '$10^{-2}$'], fontsize=10*fs)
-    ax.set_yticks(np.log2([min_bs, 2, 4, max_bs]))
-    ax.set_yticklabels(['$2^{0}$', '$2^{1}$', '$2^{2}$', '$2^{3}$'], fontsize=10*fs)
+    ax.set_xticks(np.log10([min_lr, 0.0001, max_lr]))
+    ax.set_xticklabels(['$10^{-5}$', '$10^{-4}$', '$10^{-3}$'], fontsize=10*fs)
+    ax.set_yticks(np.log2([min_bs, 4, max_bs]))
+    ax.set_yticklabels(['$2^{1}$', '$2^{2}$', '$2^{3}$'], fontsize=10*fs)
     
     # Set limits for the axes
     #ax.set_xlim(np.log10(min_lr)*0.99, np.log10(max_lr)*1.01)

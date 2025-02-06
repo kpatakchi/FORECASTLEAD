@@ -3,16 +3,16 @@
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.sh
 
-rm -r $HPT_DIR/*
+#rm -r $HPT_DIR/*
 
 # Define arrays for parameter values
 #unet_type_values=("unet-xs" "unet-s" "unet-m" "unet-l" "unet-trans-s" "unet-trans-l" "unet-att-s" "unet-att-l" "unet-se")
-leadtime_values=("02")  # Adjust as needed
-unet_type_values=("unet-xs" "unet-s")
+leadtime_values=("02" "03" "04" "05" "06" "07" "08" "09" "10")  # Adjust as needed
+unet_type_values=("unet-m" "unet-l")
 
 # Define weight dictionaries
-declare -A unet_weights=( ["unet-xs"]=5 ["unet-s"]=5 ["unet-m"]=4 ["unet-l"]=5 ["unet-se"]=5 ["unet-trans-s"]=5 ["unet-trans-l"]=6 ["unet-att-s"]=3 ["unet-att-l"]=6)
-declare -A leadtime_weights=( ["02"]=7 ["03"]=7 ["04"]=5 ["05"]=3 ["06"]=2 ["07"]=2 ["08"]=2 ["09"]=1 ["10"]=1 )
+declare -A unet_weights=( ["unet-xs"]=4 ["unet-s"]=5 ["unet-m"]=5 ["unet-l"]=5 ["unet-se"]=5 ["unet-trans-s"]=5 ["unet-trans-l"]=6 ["unet-att-s"]=5 ["unet-att-l"]=6)
+declare -A leadtime_weights=( ["02"]=9 ["03"]=7 ["04"]=6 ["05"]=5 ["06"]=4 ["07"]=3 ["08"]=2 ["09"]=1 ["10"]=1 )
 #declare -A node_weights=( [16]=2 [14]=3 [10]=4 [8]=5 [6]=9 [4]=12 [2]=24) for 16 combo
 declare -A node_weights=([9]=2 [7]=3 [5]=4) # for 9 combo
 
@@ -36,6 +36,11 @@ calculate_time_limit() {
     weight_product=$1
 
     total_seconds=$((weight_product * 960))
+
+    # Cap total_seconds at 86400 (24 hours)
+    if [[ $total_seconds -gt 86400 ]]; then
+        total_seconds=86400
+    fi
 
     # Convert total_seconds to HH:MM:SS format
     hours=$((total_seconds / 3600))
@@ -92,7 +97,7 @@ source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv-train
 source /p/project1/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/DL_settings.sh
 
 # Capture start time
-start_time=\$(date +%s)
+start_time=$(date +%s)
 
 # Iterate over dropout, learning rate, and batch size
 for lr_value in 0.00001 0.0001 0.001; do
