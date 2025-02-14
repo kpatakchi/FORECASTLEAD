@@ -95,6 +95,7 @@ def plot_hpt_3dscatter_data(ax, day, dropouts, lrs, bss, val_losses, cmap, fs, s
     cb.set_ticks(tick_values)
     cb.set_ticklabels([f"{tick:.1f}" for tick in tick_values])
 
+
 def plot_hpt_2dscatter_data(ax, day, lrs, bss, val_losses, cmap, fs, stepsincolor, aspect_ratio, show_ylabel):
 
     max_lr = 0.001
@@ -119,11 +120,11 @@ def plot_hpt_2dscatter_data(ax, day, lrs, bss, val_losses, cmap, fs, stepsincolo
                cmap=cmap, vmin=local_vmin, vmax=local_vmax, s=100)
         
     # Set axis labels and title
-    ax.set_xlabel('Learning Rate', fontsize=8*fs)
-    if show_ylabel:
-        ax.set_ylabel('Batch Size', fontsize=8*fs)
-    else:
-        ax.set_ylabel('')  # Hide the y-axis label
+    #ax.set_xlabel('Learning Rate', fontsize=8*fs)
+    #if show_ylabel:
+    #    ax.set_ylabel('Batch Size', fontsize=8*fs)
+    #else:
+    #    ax.set_ylabel('')  # Hide the y-axis label
     
     ax.set_title(f'Lead day {day[:-4][-2:]}', fontsize=12*fs)
 
@@ -145,14 +146,14 @@ def plot_hpt_2dscatter_data(ax, day, lrs, bss, val_losses, cmap, fs, stepsincolo
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=plt.Normalize(vmin=local_vmin, vmax=local_vmax))
     sm.set_array(transformed_val_losses)
     
-    cb = plt.colorbar(sm, ax=ax, pad=0.18, aspect=40, shrink=0.5, location="bottom")
-    cb.set_label('$\\log_{10}(\mathrm{val\_loss})$', fontsize=10*fs)
+    cb = plt.colorbar(sm, ax=ax, pad=0.18, aspect=30, shrink=0.70, location="bottom")
+    #cb.set_label('$\\log_{10}(\mathrm{val\_loss})$', fontsize=10*fs)
     cb.ax.tick_params(labelsize=9*fs)
 
     tick_values = np.linspace(local_vmin, local_vmax, int(stepsincolor/2))
     cb.set_ticks(tick_values)
-    cb.set_ticklabels([f"{tick:.1f}" for tick in tick_values])
-
+    cb.set_ticklabels([f"{tick:.2f}" for tick in tick_values])
+    
 def add_border(image, border_color=(255, 0, 0), border_width=5):
     """Add a border around an image."""
     # Get the size of the image

@@ -40,7 +40,7 @@ date_end = "2022-12-31T23"
 date_end2 = "2023-12-31T23"
 variable = "pr"
 laginensemble = False
-min_delta_or_lr=0.00000000000000001 #just to avoid any limitations
+min_delta_or_lr = 0.00000000001  # just to avoid any limitations
 
 # Define the following for network configs:
 loss_n = "mse"
