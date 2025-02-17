@@ -41,9 +41,9 @@ data_avail = None
 
 scaling_file = f"{PPROJECT_DIR2}/CODES-MS3/FORECASTLEAD/scaling_info.csv"
 
-y_mean, y_std, x_mean, x_std = func_train.get_scaling_params(scaling_file, PPROJECT_DIR2, leadtime)
+y_min, y_max, x_min, x_max = func_train.get_scaling_params(scaling_file, PPROJECT_DIR2, leadtime)
 
 # Create the production data (if doesn't exist)
 data_avail = func_train.prepare_produce(PPROJECT_DIR, PRODUCE_FILES, HRES_PREP, filename,
                      model_data, reference_data, task_name, mm, date_start,
-                       date_end2, variable, mask_type, laginensemble, leadtime, y_mean, y_std, x_mean, x_std)
+                       date_end2, variable, mask_type, laginensemble, leadtime, y_min, y_max, x_min, x_max)
