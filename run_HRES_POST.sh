@@ -8,10 +8,10 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
 #SBATCH --time=24:00:00
-#SBATCH --partition=booster
+#SBATCH --partition=batch
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
-#SBATCH --account=deepacf
+#SBATCH --account=esmtst
 
 source bashenv
 
@@ -49,7 +49,7 @@ for year in {2018..2023}; do
 #SBATCH --partition=batch
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
-#SBATCH --account=deepacf
+#SBATCH --account=esmtst
 
 $script "$start"
 EOL
