@@ -1,5 +1,5 @@
 #!/bin/sh
-# each day takes 2mins (60minutes for a month)
+# each day takes 2mins to run (60minutes for a month)
 
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 <start_time>"
