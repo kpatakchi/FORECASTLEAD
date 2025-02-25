@@ -39,6 +39,8 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
         search_patterns+=$newfile" "
         subdate=$(date -d "${subdate} ${i2}")
     done
+
+    echo "Number of files in search_patterns: ${#search_patterns[@]}"
     
     #first one starts from 13, second one is a copy with zero values over 12, third is 1 and 2 merged
     merged_output="$HRES_DUMP4/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").13.0-90-1.boundary_1.tp.nc"
@@ -63,7 +65,9 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
         search_patterns+=$newfile" "
         subdate=$(date -d "${subdate} ${i22}")
     done
-    
+
+    echo "Number of files in search_patterns: ${#search_patterns[@]}"
+
     #first one starts from 13, second one is a copy with zero values over 12, third is 1 and 2 merged
     merged_output11="$HRES_DUMP4/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").13.90-144-3.boundary_1.tp.nc"
     merged_output22="$HRES_DUMP4/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.90-144-prev.nc"
@@ -88,7 +92,9 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
         search_patterns+=$newfile" "
         subdate=$(date -d "${subdate} ${i222}")
     done
-    
+
+    echo "Number of files in search_patterns: ${#search_patterns[@]}"
+
     #first one starts from 13, second one is a copy with zero values over 12, third is 1 and 2 merged
     merged_output111="$HRES_DUMP4/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").13.144-240-6.boundary_1.tp.nc"
     merged_output222="$HRES_DUMP4/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.144-240-prev.nc"
