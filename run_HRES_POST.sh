@@ -7,7 +7,7 @@
 #SBATCH --error=LOGS/HRES_POST_job.err
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
-#SBATCH --time=24:00:00
+#SBATCH --time=01:00:00
 #SBATCH --partition=batch
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
@@ -37,7 +37,7 @@ if [ "$RUN_SECOND_PART" = true ]; then
 
     script="/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/HRES_POST2.sh"
     for year in {2018..2018}; do
-        for month in {01..12}; do
+        for month in {01..01}; do
             start="${year}${month}01 13"
             job_name="HRES_POST_$(date -d "$start" "+%Y%m%d_%H%M%S")"
             while true; do
@@ -71,3 +71,4 @@ EOL
 #rm -r $HRES_DUMP/* $HRES_DUMP2/* $HRES_DUMP3/* $HRES_DUMP4/*
 
 fi
+exit

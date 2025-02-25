@@ -41,6 +41,11 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
     done
 
     echo "Number of files in search_patterns: ${#search_patterns[@]}"
+
+    # Iterate over the array and print each pattern
+    for pattern in "${search_patterns[@]}"; do
+        echo "$pattern"
+    done
     
     #first one starts from 13, second one is a copy with zero values over 12, third is 1 and 2 merged
     merged_output="$HRES_DUMP4/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").13.0-90-1.boundary_1.tp.nc"
