@@ -46,12 +46,17 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
     #first one starts from 13, second one is a copy with zero values over 12, third is 1 and 2 merged
     merged_output="$HRES_DUMP4/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").13.0-90-1.boundary_1.tp.nc"
     merged_output2="$HRES_DUMP4/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.0-90-zero.nc"
-    merged_output3="$HRES_POST/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.0-90-1.boundary_1.tp.nc"
+    merged_output3="$HRES_DUMP5/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.0-90-1.boundary_1.tp.nc"
+    original_file="$HRES_OR/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.0-90-1.boundary_1.nc"
+    post_file="$HRES_POST/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.0-90-1.boundary_1.nc"
     
     cdo -O -b F64 --no_history -timcumsum -divc,1000. -setattribute,tp@units=m -chname,pr,tp -mergetime ${search_patterns[@]} $merged_output
     cdo -O -b F64 --no_history -mulc,0 -seltimestep,1 -shifttime,-1hour -copy $merged_output $merged_output2
     cdo -O -b F64 --no_history -mergetime $merged_output2 $merged_output $merged_output3 
-    ncatted -O -h -a history,global,o,c,"post-processed to ECMWF format (reverted from instantaneous to cumulative total precipitation) - by k.patakchi.yousefi" $merged_output3 
+
+    cdo -O -b F64 -replace $original_file $merged_output3 $post_file    
+    
+    ncatted -O -h -a history,global,o,c,"post-processed precipitation - by k.patakchi.yousefi" $post_file 
     
     rm $merged_output $merged_output2
     subdate=$(date -d "${subdate} - 1 hour")
@@ -74,19 +79,17 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
     #first one starts from 13, second one is a copy with zero values over 12, third is 1 and 2 merged
     merged_output11="$HRES_DUMP4/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").13.90-144-3.boundary_1.tp.nc"
     merged_output22="$HRES_DUMP4/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.90-144-prev.nc"
-    merged_output33="$HRES_POST/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.90-144-3.boundary_1.tp.nc"
+    merged_output33="$HRES_DUMP5/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.90-144-3.boundary_1.tp.nc"
+    original_file="$HRES_OR/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.90-144-3.boundary_1.nc"
+    post_file="$HRES_POST/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.90-144-3.boundary_1.nc"
 
-    echo "cdo 1:"
     cdo -L -O -b F64 --no_history -seltimestep,2/19 -divc,1000. -setattribute,tp@units=m -chname,pr,tp -mergetime ${search_patterns[@]} $merged_output11
-
-    echo "cdo 2:"
     cdo -O -b F64 --no_history -seltimestep,91 -copy $merged_output3 $merged_output22 
-    
-    echo "cdo 3:"
     cdo -O -b F64 --no_history -timcumsum -mergetime $merged_output22 $merged_output11 $merged_output33 
 
-    echo "nco:"
-    ncatted -O -h -a history,global,o,c,"post-processed to ECMWF format (reverted from instantaneous to cumulative total precipitation) - by k.patakchi.yousefi" $merged_output33 
+    cdo -O -b F64 -replace $original_file $merged_output33 $post_file  
+    
+    ncatted -O -h -a history,global,o,c,"post-processed precipitation - by k.patakchi.yousefi" $post_file 
 
     rm $merged_output11 $merged_output22
     subdate=$(date -d "${subdate} - 3 hours")
@@ -110,12 +113,17 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
     #first one starts from 13, second one is a copy with zero values over 12, third is 1 and 2 merged
     merged_output111="$HRES_DUMP4/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").13.144-240-6.boundary_1.tp.nc"
     merged_output222="$HRES_DUMP4/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.144-240-prev.nc"
-    merged_output333="$HRES_POST/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.144-240-6.boundary_1.tp.nc"
-    
+    merged_output333="$HRES_DUMP5/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.144-240-6.boundary_1.tp.nc"
+    original_file="$HRES_OR/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.144-240-6.boundary_1.nc"
+    post_file="$HRES_POST/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.144-240-6.boundary_1.nc"
+
     cdo -L -O -b F64 --no_history -seltimestep,2/17 -divc,1000. -setattribute,tp@units=m -chname,pr,tp -mergetime ${search_patterns[@]} $merged_output111 
     cdo -O -b F64 --no_history -seltimestep,19 -copy $merged_output33 $merged_output222 
     cdo -O -b F64 --no_history -timcumsum -mergetime $merged_output222 $merged_output111 $merged_output333 
-    ncatted -O -h -a history,global,o,c,"post-processed to ECMWF format (reverted from instantaneous to cumulative total precipitation) - by k.patakchi.yousefi" $merged_output333 
+
+    cdo -O -b F64 -replace $original_file $merged_output333 $post_file  
+    
+    ncatted -O -h -a history,global,o,c,"post-processed precipitation - by k.patakchi.yousefi" $post_file 
 
     rm $merged_output111 $merged_output222
 

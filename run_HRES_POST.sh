@@ -23,6 +23,7 @@ if [ "$RUN_FIRST_PART" = true ]; then
     rm $HRES_DUMP2/*
     rm -rf $HRES_DUMP3 && mkdir $HRES_DUMP3
     rm -rf $HRES_DUMP4 && mkdir $HRES_DUMP4
+    rm -rf $HRES_DUMP5 && mkdir $HRES_DUMP5
     
     # run the first part of post-processing:
     source HRES_POST.sh
@@ -42,7 +43,7 @@ if [ "$RUN_SECOND_PART" = true ]; then
             job_name="HRES_POST_$(date -d "$start" "+%Y%m%d_%H%M%S")"
             while true; do
                 num_jobs=$(squeue -u patakchiyousefi1 | wc -l)
-                if ((num_jobs <= 8)); then
+                if ((num_jobs <= 20)); then
                     echo "submitted $start job!"
                     sbatch <<EOL
 #!/bin/bash
@@ -51,7 +52,7 @@ if [ "$RUN_SECOND_PART" = true ]; then
 #SBATCH --error=LOGS/HRES_POST.err
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
-#SBATCH --time=02:00:00
+#SBATCH --time=01:30:00
 #SBATCH --partition=batch
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
@@ -68,7 +69,7 @@ EOL
         done
     done
 
-#rm -r $HRES_DUMP/* $HRES_DUMP2/* $HRES_DUMP3/* $HRES_DUMP4/*
+rm -r $HRES_DUMP $HRES_DUMP2
 
 fi
 
