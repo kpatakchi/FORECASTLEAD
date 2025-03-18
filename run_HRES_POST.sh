@@ -7,7 +7,7 @@
 #SBATCH --error=LOGS/HRES_POST_job.err
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
-#SBATCH --time=24:00:00
+#SBATCH --time=12:00:00
 #SBATCH --partition=batch
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL
@@ -26,7 +26,7 @@ if [ "$RUN_FIRST_PART" = true ]; then
     rm -rf $HRES_DUMP5 && mkdir $HRES_DUMP5
     
     # run the first part of post-processing:
-    source HRES_POST.sh
+    source HRES_POST.sh &> LOGS/HRES_POST.log
 fi
 
 RUN_SECOND_PART=true  # Change to true to enable
@@ -37,22 +37,22 @@ if [ "$RUN_SECOND_PART" = true ]; then
     rm $HRES_POST/*
 
     script="/p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/HRES_POST2.sh"
-    for year in {2018..2023}; do
+    for year in {2021..2021}; do
         for month in {01..12}; do
             start="${year}${month}01 13"
             job_name="HRES_POST_$(date -d "$start" "+%Y%m%d_%H%M%S")"
             while true; do
                 num_jobs=$(squeue -u patakchiyousefi1 | wc -l)
-                if ((num_jobs <= 20)); then
+                if ((num_jobs <= 25)); then
                     echo "submitted $start job!"
                     sbatch <<EOL
 #!/bin/bash
 #SBATCH --job-name=$job_name
-#SBATCH --output=LOGS/HRES_POST.out
-#SBATCH --error=LOGS/HRES_POST.err
+#SBATCH --output=LOGS/$job_name.out
+#SBATCH --error=LOGS/$job_name.err
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
-#SBATCH --time=01:30:00
+#SBATCH --time=01:00:00
 #SBATCH --partition=batch
 #SBATCH --mail-user=k.patakchi.yousefi@fz-juelich.de
 #SBATCH --mail-type=ALL

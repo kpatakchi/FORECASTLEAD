@@ -1,5 +1,6 @@
 #!/bin/sh
 # each day takes 2mins to run (60minutes for a month)
+export TZ=UTC  # Force UTC timezone to avoid DST transition issues
 
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 <start_time>"
@@ -34,7 +35,7 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
     subdate=$current_date
     while (( $(date -d "${subdate}" +%s) < $(date -d "${current_date} ${i1}" +%s) )); do
         sub_formatted_date=$(date -d "${subdate}" "+%Y%m%d%H")
-        daycount=$(printf "%02d" $((($(date -d "${subdate}" +%s) - $(date -d "${current_date}" +%s))/86400 + 1)))
+        daycount=$(printf "%02d" $((($(date -d "${subdate}" +%s) - $(date -d "${current_date}" +%s) - 3600)/86400 + 1)))
         newfile=$(ls $HRES_DUMP3/*day*$daycount*${sub_formatted_date}*)
         if [ -n "$newfile" ]; then
             search_patterns+=("$newfile")
@@ -60,14 +61,15 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
     
     rm $merged_output $merged_output2
     subdate=$(date -d "${subdate} - 1 hour")
-    
+    subdate=$(date -d "${subdate} ${i22}")
+
     echo "0-90 is done"
     ####################### 90-144-3 ######################
 
     search_patterns=()  # Move outside the inner loop to accumulate patterns for the day
     while (( $(date -d "${subdate}" +%s) < $(date -d "${current_date} ${i11}" +%s) )); do
         sub_formatted_date=$(date -d "${subdate}" "+%Y%m%d%H")
-        daycount=$(printf "%02d" $((($(date -d "${subdate}" +%s) - $(date -d "${current_date}" +%s))/86400 + 1)))
+        daycount=$(printf "%02d" $((($(date -d "${subdate}" +%s) - $(date -d "${current_date}" +%s) - 10800)/86400 + 1)))
         newfile=$(ls $HRES_DUMP3/*day*$daycount*${sub_formatted_date}*)
         if [ -n "$newfile" ]; then
             search_patterns+=("$newfile")
@@ -83,7 +85,7 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
     original_file="$HRES_OR/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.90-144-3.boundary_1.nc"
     post_file="$HRES_POST/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.90-144-3.boundary_1.nc"
 
-    cdo -L -O -b F64 --no_history -seltimestep,2/19 -divc,1000. -setattribute,tp@units=m -chname,pr,tp -mergetime ${search_patterns[@]} $merged_output11
+    cdo -L -O -b F64 --no_history -divc,1000. -setattribute,tp@units=m -chname,pr,tp -mergetime ${search_patterns[@]} $merged_output11
     cdo -O -b F64 --no_history -seltimestep,91 -copy $merged_output3 $merged_output22 
     cdo -O -b F64 --no_history -timcumsum -mergetime $merged_output22 $merged_output11 $merged_output33 
 
@@ -93,6 +95,7 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
 
     rm $merged_output11 $merged_output22
     subdate=$(date -d "${subdate} - 3 hours")
+    subdate=$(date -d "${subdate} ${i222}")
 
     echo "90-144 is done"
 
@@ -101,7 +104,7 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
     search_patterns=()  # Move outside the inner loop to accumulate patterns for the day
     while (( $(date -d "${subdate}" +%s) < $(date -d "${current_date} ${i111}" +%s) )); do
         sub_formatted_date=$(date -d "${subdate}" "+%Y%m%d%H")
-        daycount=$(printf "%02d" $((($(date -d "${subdate}" +%s) - $(date -d "${current_date}" +%s))/86400 + 1)))
+        daycount=$(printf "%02d" $((($(date -d "${subdate}" +%s) - $(date -d "${current_date}" +%s) - 21600)/86400 + 1)))
         newfile=$(ls $HRES_DUMP3/*day*$daycount*${sub_formatted_date}*)
         if [ -n "$newfile" ]; then
             search_patterns+=("$newfile")
@@ -117,7 +120,7 @@ while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
     original_file="$HRES_OR/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.144-240-6.boundary_1.nc"
     post_file="$HRES_POST/ADAPTER_DE05_$(date -d "${current_date}" "+%Y%m%d").12.144-240-6.boundary_1.nc"
 
-    cdo -L -O -b F64 --no_history -seltimestep,2/17 -divc,1000. -setattribute,tp@units=m -chname,pr,tp -mergetime ${search_patterns[@]} $merged_output111 
+    cdo -L -O -b F64 --no_history -divc,1000. -setattribute,tp@units=m -chname,pr,tp -mergetime ${search_patterns[@]} $merged_output111 
     cdo -O -b F64 --no_history -seltimestep,19 -copy $merged_output33 $merged_output222 
     cdo -O -b F64 --no_history -timcumsum -mergetime $merged_output222 $merged_output111 $merged_output333 
 
