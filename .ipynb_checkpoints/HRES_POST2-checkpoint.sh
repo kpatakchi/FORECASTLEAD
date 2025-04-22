@@ -27,7 +27,7 @@ start=$(date -d "$start" "+%Y%m%d %H")
 end=$(date -d "$start + 1 month" "+%Y%m%d %H")
 
 current_date=$start
-while (( $(date -d "${current_date}" +%s) <= $(date -d "${end}" +%s) )); do
+while (( $(date -d "${current_date}" +%s) < $(date -d "${end}" +%s) )); do
 
     ####################### 0-90-1 ######################
 
