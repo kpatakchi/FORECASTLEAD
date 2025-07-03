@@ -9,14 +9,14 @@ args = parser.parse_args()
 # Load arguments
 leadtime = int(args.leadtime)
 
-REF_dir="/p/scratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PF/DE05_HRES-RAW/postpro/data/sss_REF_merged.nc"
+REF_dir="/p/data1/jibg33/patakchiyousefi1/postpro_data/DE05_HRES-RAW/sss_REF_merged.nc"
 REF = xr.open_dataset(REF_dir)
 REF_SSS = REF.sss
 
 print(f"Calculating SSS stats for {leadtime:02d}...")
 
-HRES_SSS = os.path.join("/p/scratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PF/DE05_HRES-RAW/postpro/data/", f"sss_HRES_leadtime_{leadtime}.nc")
-HRES_C_SSS = os.path.join("/p/scratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PF/DE05_HRES-COR/postpro/data/", f"sss_HRES_C_leadtime_{leadtime}.nc")
+HRES_SSS = os.path.join("/p/data1/jibg33/patakchiyousefi1/postpro_data/DE05_HRES-RAW/", f"sss_HRES_leadtime_{leadtime}.nc")
+HRES_C_SSS = os.path.join("/p/data1/jibg33/patakchiyousefi1/postpro_data/DE05_HRES-COR/", f"sss_HRES_C_leadtime_{leadtime}.nc")
 
 print("Opening the dataset...")
 HRES_SSS = xr.open_dataset(HRES_SSS).sss

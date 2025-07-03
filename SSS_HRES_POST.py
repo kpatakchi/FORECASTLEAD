@@ -4,7 +4,7 @@ import os
 import glob
 
 # ========== HRES-RAW ==========
-data_dir = "/p/scratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PF/DE05_HRES-RAW/postpro/data"
+data_dir = "/p/data1/jibg33/patakchiyousefi1/postpro_data/DE05_HRES-RAW/"
 output_dir = data_dir
 file_list = sorted(glob.glob(os.path.join(data_dir, "sss*0012-0228.nc")))
 
@@ -26,7 +26,7 @@ for leadtime, da_list in leadtime_dict.items():
     print(f"Saved: {output_file}")
 
 # ========== HRES-COR ==========
-data_dir = "/p/scratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PF/DE05_HRES-COR/postpro/data"
+data_dir = "/p/data1/jibg33/patakchiyousefi1/postpro_data/DE05_HRES-COR/"
 output_dir = data_dir
 file_list = sorted(glob.glob(os.path.join(data_dir, "sss*0012-0228.nc")))
 

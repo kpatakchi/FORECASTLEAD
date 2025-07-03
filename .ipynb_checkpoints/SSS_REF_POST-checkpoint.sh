@@ -3,7 +3,7 @@
 source /p/project/cesmtst/patakchiyousefi1/CODES-MS3/FORECASTLEAD/bashenv
 
 # Set the working directory
-DATA_DIR="/p/scratch/cesmtst/patakchiyousefi1/FORECASTLEAD_CESMTST_SCRATCH/PF/DE05_HRES-RAW/postpro/data"
+DATA_DIR="/p/data1/jibg33/patakchiyousefi1/postpro_data/DE05_HRES-RAW"
 OUTPUT_FILE="${DATA_DIR}/sss_REF_merged.nc"
 
 # Remove the existing output file, if it exists
